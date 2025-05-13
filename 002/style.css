@@ -1,0 +1,37 @@
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: rgb(74, 92, 255);
+  text-align: center;
+  font-family: verdana;
+  letter-spacing: 3px; 
+
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  background-color: blue;
+  width: 150 px;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+.lentele {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+.button {
+  font-family: verdana;
+  font-size: 20px;
+  color: aliceblue;
+  background-color: blue;
+  width: 160px;
+  height: 60px;
+  border-radius: 20px;
+  align-content: center;
+  vertical-align: auto;
+}
