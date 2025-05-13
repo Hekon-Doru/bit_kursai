@@ -1,0 +1,40 @@
+.first {
+  color: #8b8b8b;
+  font-size: 30px;
+  font-weight: 400;
+  font-family: Cal Sans;
+}
+
+.second {
+  color: #555656;
+  font-size: 30px;
+  font-weight: 900;
+  font-family: Cal Sans;
+}
+
+.rudas {
+  color: brown;
+}
+
+
+a span {
+  color: green;
+}
+
+
+span {
+  color: rgb(5, 8, 5);
+}
+
+
+.grandpa div.dad div div {
+ color: blue; 
+}
+
+.dad {
+ color: green;
+}
+
+.son {
+ color: yellow;
+}
