@@ -18,6 +18,7 @@ body {
   height: auto;
   position: relative;
   align-content: center;
+  z-index: 1;
 
 }
 
@@ -92,6 +93,7 @@ img {
   position: absolute;
   left: +40%;
   top: 0%;
+  z-index: 10;
   max-height: 360px;
   padding: 20px;
 }
@@ -100,7 +102,7 @@ img {
   display: block;
 } */
 
-span.str:hover .strExpl {
+.str:hover + .strExpl {
   display: block;
 }
 
