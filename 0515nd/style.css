@@ -96,7 +96,14 @@ img {
   padding: 20px;
 }
 
-section .right span.str:hover .strExpl{
+/* section:hover .strExpl {
+  display: block;
+} */
+
+span.str:hover .strExpl {
   display: block;
 }
 
+/* span.str:hover {
+  background-color: #000000;
+} */
