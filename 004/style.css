@@ -15,13 +15,8 @@ body {
 .square-div {
   background-color: rgb(50, 52, 180);
   height: 260px;
-  width: 30%;
-  min-width: 300px;
-  max-width: 380px;
-  padding: 20px;
+  width: 33.3333%;
   font-size: 20px;
-  margin: 10px;
-  border-radius: 10px;
   border: 1px dashed white;
   box-sizing: border-box;
   display: inline-block;

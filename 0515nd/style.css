@@ -1,0 +1,73 @@
+body {
+  background-color: #d1d1ff;
+  color: #000000;
+  margin: 0;
+  font-size: 0;
+}
+
+.box {
+  display: inline-block;
+  align-content: center;
+  text-align: center;
+  width: 60%;  
+}
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.box span {
+  background-color: rgb(50, 52, 180);
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: auto;
+  width: 33.3333%;
+  font-size: 20px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20px;
+}
+
+.box span:hover {
+  background-color: rgb(122, 124, 255);
+  cursor: pointer;
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: auto;
+  width: 33.3333%;
+  font-size: 20px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20px;
+}
+
+img {
+  width: 100%;
+}
+
+/* 
+div > * {
+  vertical-align: center;
+  line-height: normal;
+} */
+
+.box2 {
+  background-color: rgb(50, 52, 180);
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 40%;
+  font-size: 20px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20px;
+
+}
+
+.ble {
+  vertical-align: top;
+}
