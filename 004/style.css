@@ -1,0 +1,62 @@
+body {
+  background-color: rgb(31, 85, 167);
+  color: rgb(148, 205, 255);
+  margin: 0;
+  font-size: 0;
+  font-family: 'Cal Sans';
+}
+
+.cal-sans-regular {
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.square-div {
+  background-color: rgb(50, 52, 180);
+  height: 260px;
+  width: 30%;
+  min-width: 300px;
+  max-width: 380px;
+  padding: 20px;
+  font-size: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px dashed white;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.bin {
+  text-align: center;
+  margin: 0 auto;
+  width: auto;
+}
+
+#ajdi {
+  background-color: rgb(53, 65, 230);
+}
+
+[data-saugau="541"] {
+  background-color: aqua;
+}
+
+.pin {
+  font-size: 30px;
+}
+
+section p {
+  color: red;
+}
+
+section > p {
+  color: black;
+}
+
+section ~ p {
+  color: orange;
+}
+/* praktinis pritaikomumas super visiems*/
+section + p {
+  color: green;
+}

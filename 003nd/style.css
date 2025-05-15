@@ -1,19 +1,20 @@
-div p {
-color: red;
+div {
+  color: green;
 }
 
-p {
+
+div.spalva {
   color: blue;
 }
 
-h2 {
-  text-decoration: none;
+h1 {
+  color: blueviolet;
 }
 
-u {
-  text-decoration: none;
+p {
+  color: red;
 }
 
-i {
-  font-style: normal;
+h1.rozinis {
+  color: pink;
 }
