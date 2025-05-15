@@ -1,0 +1,67 @@
+section {
+  margin-top: 200px;
+  display: inline-block;
+  border: 2px solid black;
+  position: relative;
+  margin: 30px;
+}
+
+
+section div {
+  width: 200px;
+  height: 200px;
+  font-size: 50px;
+}
+
+.one {
+  background-color: rgba(182, 101, 25, 0.418);
+  position: relative;
+  top: 20px;
+  left: 20px;
+  display: none;
+}
+
+.two {
+  background-color: rgba(0, 56, 56, 0.24);
+  position: relative;
+  top: -50px;
+  left: 50px;
+  display: none;
+}
+
+.three {
+  background-color: #a52a2a70;
+}
+
+.four {
+  background-color: #2aa54d70;
+  position: absolute;
+  display: none;
+  top: 20px;
+  left: 20px;
+}
+
+.base {
+  background-color: rgba(182, 101, 25, 0.418);
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+section:hover .four {
+  display: block;
+}
+
+section:hover .one {
+  display: block;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}

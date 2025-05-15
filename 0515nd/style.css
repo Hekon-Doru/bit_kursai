@@ -3,46 +3,19 @@ body {
   color: #000000;
   margin: 0;
   font-size: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
 }
 
 .box {
+  box-sizing: border-box;
   display: inline-block;
-  align-content: center;
-  text-align: center;
-  width: 60%;  
+  border: 1px solid white;
+  width: 100%;
 }
 
 h1 {
-  text-align: center;
   font-size: 60px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.box span {
-  background-color: rgb(50, 52, 180);
-  color: aliceblue;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: auto;
-  width: 33.3333%;
-  font-size: 20px;
-  border: 1px solid white;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 20px;
-}
-
-.box span:hover {
-  background-color: rgb(122, 124, 255);
-  cursor: pointer;
-  color: aliceblue;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: auto;
-  width: 33.3333%;
-  font-size: 20px;
-  border: 1px solid white;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 20px;
 }
 
 img {
@@ -55,19 +28,33 @@ div > * {
   line-height: normal;
 } */
 
-.box2 {
+.right {
   background-color: rgb(50, 52, 180);
   color: aliceblue;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 60%;
+  font-size: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid white;
+}
+
+
+.left {
+  background-color: rgb(50, 52, 180);
+  color: aliceblue;
   width: 40%;
   font-size: 20px;
   border: 1px solid white;
   box-sizing: border-box;
   display: inline-block;
   padding: 20px;
-
+  border: 1px solid white;
 }
 
-.ble {
-  vertical-align: top;
+span {
+  width: 33.3333%;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid white;
 }
