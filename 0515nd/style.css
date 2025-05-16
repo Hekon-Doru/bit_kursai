@@ -10,17 +10,20 @@ body {
   transition: 50ms;
 }
 
+section {
+  z-index: 1;
+  position: relative;
+}
+
 .box {
   box-sizing: border-box;
   display: inline-block;
   border: 1px solid white;
-  width: 100%;
+  width: 80%;
   height: auto;
   position: relative;
   align-content: center;
-  z-index: 1;
-
-}
+  }
 
 h1 {
   font-size: 200%;
@@ -89,13 +92,17 @@ img {
   color: #000000;
   text-align: left;
   width: 100;
-  background-color: rgba(240, 248, 255, 0.904);
+  height: auto;
   position: absolute;
-  left: +40%;
-  top: 0%;
-  z-index: 10;
+  left: +33.3333%;
+  top: 50%;
+  z-index: 9999;
   max-height: 360px;
+  padding: 20px;  background: white;
+  color: #000;
   padding: 20px;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 /* section:hover .strExpl {
@@ -106,6 +113,6 @@ img {
   display: block;
 }
 
-/* span.str:hover {
-  background-color: #000000;
-} */
+span.str:hover {
+  background-color: #0e26ff;
+}
