@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-size: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 800px;
 
 }
 
@@ -28,11 +29,21 @@ nav {
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 20px 5%;
   font-size: 12px;
+  font-weight: bold;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
+
+.btn:hover {
+  font-size: 12px;
+  border: none;
+  background-color: #00aa55;
+  color: #ffffff;
+}
+
 
 .btn.random {
   background-color: #000000;
@@ -68,13 +79,8 @@ h1 {
   vertical-align: top;
   margin: auto;
   position: relative;
-  /* top: -100px; */
+  top: -100px;
   z-index: 1;
-}
-
-.cta {
-  position: relative;
-  top: -150px;
 }
 
 p {
@@ -83,8 +89,12 @@ p {
   display: inline-block;
   text-align: center;
   position: relative;
-  top: -100px;
+  top: -200px;
 
+}
+.cta {
+  position: relative;
+  top: -250px;
 }
 
 .takeMe {
@@ -93,6 +103,12 @@ p {
   border-radius: 5px;
   z-index: 9999;
 }
+/* 
+.takeMe:hover {
+  background-color: #00aa55;
+  color: #ffffff;
+  font-weight: 800;
+} */
 
 .findOutMore {
   background-color: #ffffff;
@@ -100,6 +116,13 @@ p {
   border-radius: 5px;
   border: 1px solid black;
   z-index: 9999;
+}
+
+/* .findOutMore:hover {
+  background-color: #00aa55;
+  color: #ffffff;
+  font-weight: 800;
+  border: none; */
 }
 
 /* 
