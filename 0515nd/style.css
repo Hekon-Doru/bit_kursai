@@ -7,7 +7,6 @@ body {
   text-align: center;
   justify-content: top;
   align-items: top;
-  transition: 50ms;
 }
 
 section {
@@ -68,6 +67,7 @@ img {
   padding: 20px;
   border: 1px solid white;
   position: relative;
+  transition: 550ms;
 }
 
 
@@ -86,34 +86,61 @@ img {
   min-width: 400px;
 }
 
-.strExpl {
+
+.expl {
   display: none;
-  font-size: 18px;
-  color: #000000;
+  font-size: 16px;
   text-align: left;
   width: auto;
   height: auto;
   position: absolute;
-  left: 0%;
-  top: 50%;
   z-index: 9999;
   padding: 20px;
   background: white;
-  color: #000;
+  color: none;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 0%;
-  border-top-left-radius: 0%;
 }
 
-/* section:hover .strExpl {
-  display: block;
-} */
-
-.str:hover+.strExpl {
-  display: block;
-}
-
-span.str:hover {
+div span:hover {
   background-color: #306BAC;
+}
+  
+.str:hover+div.str.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+}
+
+.dex:hover+div.dex.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+}
+
+.con:hover+div.con.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+}
+.int:hover+div.int.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+}
+.wis:hover+div.wis.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+}
+.cha:hover+div.cha.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
 }
