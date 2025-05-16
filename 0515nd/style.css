@@ -23,6 +23,7 @@ section {
   height: auto;
   position: relative;
   align-content: center;
+  top: 60px;
   }
 
 h1 {
@@ -91,18 +92,18 @@ img {
   font-size: 18px;
   color: #000000;
   text-align: left;
-  width: 100;
+  width: auto;
   height: auto;
   position: absolute;
-  left: +33.3333%;
+  left: 0%;
   top: 50%;
   z-index: 9999;
-  max-height: 360px;
   padding: 20px;  background: white;
   color: #000;
   padding: 20px;
-  border: 1px solid #333;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 0%;
+  border-top-left-radius: 0%;
 }
 
 /* section:hover .strExpl {
