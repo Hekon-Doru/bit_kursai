@@ -23,6 +23,9 @@ section {
   position: relative;
   align-content: center;
   top: 60px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 50px;
 }
 
 h1 {
@@ -68,6 +71,7 @@ img {
   border: 1px solid white;
   position: relative;
   transition: 550ms;
+  border-radius: 20px;
 }
 
 
@@ -100,10 +104,15 @@ img {
   color: none;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border: 2px solid #009218;
+  margin: 20px;
 }
 
 div span:hover {
-  background-color: #306BAC;
+  background-color: #009218;
+  color: white;
+  border-radius: 20px;
 }
   
 /* faktiskai nereikalingas kodas, kuris dubliuojasi, uztenka pritaikyti vienoda klase visiem hoveriam, ir kodas veiks
