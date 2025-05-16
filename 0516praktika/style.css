@@ -1,28 +1,21 @@
 body {
   background-image: url("hehhee_PPPP.png");
-  background-repeat: no-repeat;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  height: 900px;
-
-  position: relative;
-
   color: #000000;
   margin: 0;
   font-size: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 nav {
   height: 80px;
-  /* 
-  background-color: #f1f1f1; */
   align-content: center;
   display: block;
   border-bottom: 1px solid black;
-
   text-align: center;
   vertical-align: middle;
   min-width: 800px;
@@ -30,11 +23,8 @@ nav {
 
 .box {
   width: 30.3333%;
-  /* 
-  background-color: #d84c4c; */
   display: inline-block;
   padding: 1%;
-
 }
 
 .btn {
@@ -65,28 +55,36 @@ nav {
   text-align: right;
 }
 
-div h1 {
-  font-size: 200px;
+main div {
+  text-align: center;
+  font-size: 100px;
+  position: relative;
+  align-content: center;
+}
+
+h1 {
+  font-size: 400%;
   text-align: center;
   vertical-align: top;
   margin: auto;
-  margin-top: -20px;
+  position: relative;
+  /* top: -100px; */
   z-index: 1;
 }
 
-
-
-div p {
-
-  max-width: 600px;
-  display: inline-block;
-  text-align: center;
-
+.cta {
+  position: relative;
+  top: -150px;
 }
 
-main div {
+p {
+  font-size: 24%;
+  max-width: 800px;
+  display: inline-block;
   text-align: center;
-  font-size: 12px;
+  position: relative;
+  top: -100px;
+
 }
 
 .takeMe {
