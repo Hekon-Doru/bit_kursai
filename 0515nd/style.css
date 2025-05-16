@@ -106,6 +106,8 @@ div span:hover {
   background-color: #306BAC;
 }
   
+/* faktiskai nereikalingas kodas, kuris dubliuojasi, uztenka pritaikyti vienoda klase visiem hoveriam, ir kodas veiks
+
 .str:hover+div.str.expl {
   display: block;
   background-color: white;
@@ -139,6 +141,12 @@ div span:hover {
   transition: 950ms;
 }
 .cha:hover+div.cha.expl {
+  display: block;
+  background-color: white;
+  color: #000000;
+  transition: 950ms;
+} */
+.stat:hover+div.stat.expl {
   display: block;
   background-color: white;
   color: #000000;
