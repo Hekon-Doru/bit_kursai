@@ -1,0 +1,85 @@
+body {
+  background-color: #afafaf;
+  margin: 50px;
+}
+
+section {
+  /* displeju dedam ne ant pacio divo o ant divo tevo kai norim naudoti flex */
+  display: flex;
+  border: 3px solid #ffffff;
+  /* justify-content: space-between; vienodais tarpais */
+  /* justify-content: space-around; */
+  justify-content: flex-end;
+  align-items: center;
+  /* lygiuoja vertikaliai su align-items
+  su justify - horizontaliai */
+  gap: 25px;
+  flex-wrap: wrap;
+  /* max-width: 900px ; */
+  flex-direction: column;
+  /* jei row keičiasi į column alignt as reversinasi - center- jis horizontaliai pasidaro justify vertikaliai */
+}
+
+section div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  min-height: 200px;
+  height: auto;
+  background-color: #f3681770;
+  border: 3px solid #f3681770;
+  color: #ffffff;
+  font-size: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
+  z-index: 10;
+}
+
+section div.big {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  /* fiksuota pozicija ekrane, top,left 0 */
+  width: 300px;
+  min-height: 300px;
+  height: auto;
+  padding: 30px;
+  z-index: 9;
+  /* z-index galioja tik ant relative arba absolute pozicijoje esančių brolių */
+}
+
+.test-hover {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  min-height: 200px;
+  height: auto;
+  background-color: #f3681770;
+  border: 3px solid #f36817;
+  color: #ffffff00;
+  font-size: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(.14,.84,.43,.73); 
+  /* https://cubic-bezier.com/ */
+  left: 0;
+  border-bottom-right-radius: 50px;
+ border-top-right-radius: 50px;
+}
+
+.test-hover:hover {
+  background-color: #ff9456;
+ color: #ffffff;
+ font-size: 50px;
+ left: 20px;
+ width: 350px;
+ border-bottom-right-radius: 50px;
+ border-top-right-radius: 50px;
+}
+
+/* :has() yra vienintelis budas css'e kaip pasiziureti i virsu */
+/* :not() selects the element that is not "" element  */
