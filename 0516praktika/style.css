@@ -17,8 +17,8 @@ nav {
   align-content: center;
   display: block;
   border-bottom: 1px solid black;
-  text-align: center;
-  vertical-align: middle;
+  text-align: center;/* 
+  vertical-align: middle; */
   min-width: 800px;
 }
 
@@ -36,7 +36,11 @@ nav {
   background-color: transparent;
   cursor: pointer;
 }
-
+.btn.random {
+  background-color: #000000;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
 .btn:hover {
   font-size: 12px;
   border: none;
@@ -45,11 +49,7 @@ nav {
 }
 
 
-.btn.random {
-  background-color: #000000;
-  color: #f1f1f1;
-  border-radius: 5px;
-}
+
 
 .mid {
   font-size: 20px;
@@ -74,13 +74,13 @@ main div {
 }
 
 h1 {
-  font-size: 400%;
+  font-size: 20vw;
   text-align: center;
   vertical-align: top;
-  margin: auto;
+  margin: 0px;
   position: relative;
-  top: -100px;
-  z-index: 1;
+  /* top: -100px; */
+  z-index: 0;
 }
 
 p {
@@ -89,12 +89,12 @@ p {
   display: inline-block;
   text-align: center;
   position: relative;
-  top: -200px;
+  /* top: -200px; */
 
 }
 .cta {
   position: relative;
-  top: -250px;
+/*   top: -250px; */
 }
 
 .takeMe {

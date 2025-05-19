@@ -9,7 +9,7 @@ body {
   align-items: top;
 }
 
-section {
+main {
   z-index: 1;
   position: relative;
 }
@@ -90,7 +90,6 @@ img {
   min-width: 400px;
 }
 
-
 .expl {
   display: none;
   font-size: 16px;
@@ -109,12 +108,21 @@ img {
   margin: 20px;
 }
 
+nav {
+  font-size: medium;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  
+
+}
+
 div span:hover {
   background-color: #009218;
   color: white;
   border-radius: 20px;
 }
-  
+
 /* faktiskai nereikalingas kodas, kuris dubliuojasi, uztenka pritaikyti vienoda klase visiem hoveriam, ir kodas veiks
 
 .str:hover+div.str.expl {
