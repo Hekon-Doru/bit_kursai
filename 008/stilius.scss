@@ -1,0 +1,38 @@
+/* .pirmas .antras .kitas {
+  color: crimson;
+} */
+
+.kitas {
+  color: skyblue;
+}
+
+.pirmas {
+  .antras {
+    color: darkgreen;
+    .kitas {
+      color: crimson;
+    }
+    ;
+  }
+}
+/* 
+.pirmas .antras {
+  color: green;
+} */
+
+.antras {
+  color: darkgoldenrod;
+}
+
+.didelis {
+  &__gyvuliai{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    &__bebrai {
+      color: red;
+    }
+    
+    &__barsukai {
+      color: blue;
+    }
+  }
+}

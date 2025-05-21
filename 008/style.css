@@ -1,0 +1,38 @@
+h1 {
+  color: crimson !important;
+  font-size: 20px;
+}
+
+body {
+  background-color: blue;
+}
+
+/* minimalus ekranas */
+@media (min-width: 300px) {
+  body {
+    background-color: rgb(190, 149, 149);
+  }
+
+  h1 {
+    font-size: 100px;
+  }
+}
+
+@media (min-width: 400px) {
+  body {
+    background-color: rgb(255, 0, 0);
+  }
+
+  h1 {
+    font-size: 150px;
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    background-color: rgb(255, 105, 105);
+  }
+  h1 {
+    font-size: 200px;
+  }
+}
