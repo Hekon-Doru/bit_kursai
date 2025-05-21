@@ -16,7 +16,8 @@ main {
 
 .box {
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   border: 1px solid white;
   width: 80%;
   height: auto;
@@ -29,20 +30,20 @@ main {
 }
 
 h1 {
-  font-size: 200%;
+  font-size: 200%;display: flex;
+  flex-wrap: wrap;
 }
 
 
 h2 {
-  font-size: 60px;
+  font-size: 60px;display: flex;
+  flex-wrap: wrap;
 }
 
 img {
-  display: inline-block;
+  display: flex;
   justify-content: center;
   align-content: center;
-  width: 100%;
-  max-width: 360px;
   vertical-align: center;
   padding: auto;
 }
@@ -55,18 +56,22 @@ img {
 .right {
   width: 60%;
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
 }
 
 .right span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   background-color: #141B41;
   color: aliceblue;
   width: 33.3333%;
   max-height: 200px;
   font-size: 20px;
   box-sizing: border-box;
-  display: inline-block;
   padding: 20px;
   border: 1px solid white;
   position: relative;
@@ -83,7 +88,7 @@ img {
   font-size: 20px;
   border: 1px solid white;
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
   padding: 20px;
   border: 1px solid white;
   position: relative;
@@ -91,6 +96,7 @@ img {
 }
 
 .expl {
+  flex-wrap: wrap;
   display: none;
   font-size: 16px;
   text-align: left;
@@ -113,7 +119,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-end;
-  
+
 
 }
 

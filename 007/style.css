@@ -1,0 +1,68 @@
+body {
+  background: url("hummingbird.png") no-repeat center fixed;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  height: 100%;
+  backdrop-filter: blur(4px);
+  background-color: #ffffff5e;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  transition: 0.3s;
+
+}
+
+.navbar a:hover {
+  text-decoration: none;
+  color: #4e012a;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.email {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.login {
+  background-color: #4e012a;
+  color: #ffffff;
+}

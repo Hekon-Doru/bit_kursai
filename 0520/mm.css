@@ -1,0 +1,76 @@
+:root {
+  --burger-width: 80px;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 120px;
+  margin: 0;
+  width: 100vw;
+
+}
+.burger {
+  display: flex;
+  height: 10px;
+  width: var(--burger-width);
+  background-color: black;
+  margin: 50px 0;
+  position: relative;
+  border-radius: 5px;
+}
+
+.burger::before {
+  content: '';
+  display: block;
+  height: 10px;
+  width: var(--burger-width);
+  position: absolute;
+  bottom: 15px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.burger::after {
+  content: '';
+  display: block;
+  height: 10px;
+  width: var(--burger-width);
+  position: absolute;
+  bottom: -15px;
+  background-color: black;
+  border-radius: 5px;
+}
+#app {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.menu {
+  position: absolute;
+  height: calc(100vh-90px);
+  top: 90px;
+  top: 0;
+  width: 100px;
+  background-color: blanchedalmond;
+  right: 0;
+  display: flex;
+  transition: all 150ms;
+}
+#mob-menu:checked + header + .menu {
+  right: 0;
+
+}
+
+#mob-menu:checked {
+  display: none;
+
+}
+#mob-menu:checked + header +.burger {
+  display: none;
+
+}
+
+

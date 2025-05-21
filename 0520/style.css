@@ -1,0 +1,57 @@
+:root {
+  --burger-width: 80px;
+}
+
+
+
+body {
+  font-size: 50px;
+}
+
+span.raudonas {
+  color: red;
+}
+
+span:not(.raudonas){
+  color: rgb(109, 93, 2);
+  font-size: 30px;
+}
+
+.geras {
+  color: black;
+}
+
+section:has(.nieko) i{
+  color: blue;
+}
+
+.burger {
+  display: flex;
+  height: 10px;
+  width: var(--burger-width);
+  background-color: black;
+  margin: 50px 0;
+  position: relative;
+  border-radius: 5px;
+}
+
+.burger::before {
+  content: '';
+  display: block;
+  height: 10px;
+  width: var(--burger-width);
+  position: absolute;
+  bottom: 15px;
+  background-color: black;
+  border-radius: 5px;
+}
+.burger::after {
+  content: '';
+  display: block;
+  height: 10px;
+  width: var(--burger-width);
+  position: absolute;
+  bottom: -15px;
+  background-color: black;
+  border-radius: 5px;
+}
