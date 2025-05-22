@@ -1,7 +1,12 @@
-:root {
+/* :root {
+  --button-width: 60px;
+}  */
 
-} 
-
+body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
 // <weight>: Use a value from 200 to 1000
 // <uniquifier>: Use a unique and descriptive class name
 
