@@ -17,7 +17,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10%;  font-size: 18px;
+  height: 10%;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -52,11 +53,19 @@ body {
 .action-button {
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 20px;
   cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  border-radius: 20px;
+  background-color: #4e012a;
+  color: #ffffff;
+  align-items: center;
+  height: 40px;
 }
 
 .email {
+  background-color: #ffffff;
+  color: #4e012a;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -65,4 +74,61 @@ body {
 .login {
   background-color: #4e012a;
   color: #ffffff;
+  margin-right: 7px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+}
+
+.headline {
+  font-size: 3rem;
+  color: #4e012a;
+  letter-spacing: 2px;
+  margin: 0 auto;
+}
+
+.subhead {
+  font-size: 1.3rem;
+  color: #272727;
+  font-weight: 100;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+
+
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 10px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  align-items: center;
+  width: 20%;
+}
+
+.action-button .secondary {
+  border: 1px solid #4e012a;
+  color: #4e012a;
+  background-color: none;
 }

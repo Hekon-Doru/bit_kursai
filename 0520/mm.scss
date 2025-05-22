@@ -112,7 +112,8 @@ body {
                 right: 0;
             }
             .burger {
-                background-color: transparent;
+                right: var(--burger-width);
+                /*  background-color: transparent; */
                 &::before {
                     transform: rotate(45deg);
                     bottom: unset;
