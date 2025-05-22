@@ -127,13 +127,27 @@ header {
 }
 
 section.hero {
+  position: absolute;
   width: 100%;
   height: calc(100vh - #{$header-height});
   display: flex;
   justify-content: center;
   align-items: center;
+
   & img {
     height: calc(100vh - #{$header-height});
     width: 100%;
+    position: relative;
+    
   }
+
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - #{$header-height});
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: $white;
 }
