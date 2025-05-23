@@ -1,18 +1,209 @@
-/* :root {
-  --button-width: 60px;
-}  */
+/* Colors: */
+$blue-light: #67C3F3;
+$blue-dark: #5A98F2;
+$blue: #458FF6;
+$black: #000000;
+$white: #FFFFFF;
+$grey: #7D7987;
+
+/* Fonts: */
+$main-font: "Mulish", sans-serif;
+
+$h1: 48px;
+$h2: 36px;
+$h3: 34px;
+$h4: 22px;
+
+$sh1: 18px;
+$sh2: 16px;
+
+
+/* Dimensions: */
+$xl: 1600px;
+$m: 1120px;
+$s: 350px;
+
+$gap-min: 34px;
+$gap-max: 40px;
+$header-height: 92px;
+
+/* Reset: */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $black;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: $main-font;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Code: */
 
 body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
-// <weight>: Use a value from 200 to 1000
-// <uniquifier>: Use a unique and descriptive class name
 
-/* .mulish-<uniquifier> {
-  font-family: "Mulish", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
+header {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: $xl;
+    padding: 0 $gap-max;
+
+    &__right {
+      nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $gap-max;
+
+        li a {
+          color: $grey;
+          font-size: $sh1;
+          font-weight: 400;
+          transition: all 0.3s easy;
+
+          &:hover {
+            color: $black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    &__left {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      color: $white;
+
+      svg {
+        width: 160px;
+        height: 41px;
+        stroke: none;
+      }
+    }
+  }
+}
+
+main {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  flex-wrap: wrap;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: $xl;
+    padding: 0 $gap-max;
+
+    &img {
+      width: 693px;
+      height: 598px;
+    }
+
+    &__text-block {
+      width: 445px;
+      height: 337px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & h1 {
+        font-size: $h1;
+      }
+
+      & p {
+        font-size: 21px;
+        color: $grey;
+        font-weight: 300;
+      }
+
+    }
+
+    &__btn {
+      width: 200px;
+      height: 56px;
+      background-color: $blue;
+      color: $white;
+      font-size: $sh1;
+      border-radius: 50px;
+      border: none;
+    }
+
+    &__content {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__card {
+      width: 350px;
+      height: 356px;
+      background-color: $white;
+      border-radius: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      &img {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+footer {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+}
