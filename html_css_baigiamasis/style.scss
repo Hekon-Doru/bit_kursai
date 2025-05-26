@@ -24,8 +24,11 @@ $m: 1120px;
 $s: 350px;
 
 $gap-min: 34px;
-$gap-max: 40px;
+$gap-mid: 40px;
+$gap-max: 72px;
 $header-height: 92px;
+$landing-height: 632px;
+
 
 /* Reset: */
 
@@ -72,6 +75,18 @@ body {
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
+
+}
+
+.btn {
+  width: 200px;
+  height: 56px;
+  background-color: $blue;
+  color: $white;
+  font-size: $sh1;
+  font-weight: bold;
+  border-radius: 50px;
+  border: none;
 }
 
 header {
@@ -134,6 +149,112 @@ main {
   background-color: $white;
   flex-wrap: wrap;
 
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: $xl;
+    padding: 0 $gap-max;
+
+    & img {
+      width: 693px;
+      height: 598px;
+    }
+
+    &__text-block {
+      width: 445px;
+      height: 337px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & h1 {
+        font-size: $h1;
+      }
+
+      & p {
+        font-size: 21px;
+        color: $grey;
+        font-weight: 300;
+      }
+
+    }
+
+    &__content {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .container {
+    width: $m;
+    display: flex;
+    justify-content: center;
+   
+    
+   &__bin {
+      width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+      &__card{
+        width: 350px;
+        height: 356px;
+        background-color: $white;
+        border-radius: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 5px 40px 50px 0px $grey;
+      }
+
+    }
+
+    &__divider {
+      background-color: #000000;
+      width: 56px;
+      height: 2px;
+    }
+
+    &__text-block {
+      width: 445px;
+      height: 337px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & h1 {
+        font-size: $h1;
+      }
+
+      & p {
+        font-size: 21px;
+        color: $grey;
+        font-weight: 300;
+      }
+
+    }
+  }
+
+}
+
+/* 
+main {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  flex-wrap: wrap;
+  
   .container {
     display: flex;
     justify-content: center;
@@ -198,7 +319,7 @@ main {
     }
 
   }
-}
+} */
 
 footer {
   width: 100%;
