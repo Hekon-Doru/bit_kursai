@@ -186,6 +186,7 @@ header {
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    flex-wrap: wrap;
 
     &__text-centered {
       width: 100%;
@@ -193,8 +194,9 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: row;
+      flex-direction: column;
       text-align: center;
+      margin-bottom: $gap-max;
 
       & h2 {
         font-size: $h2;
@@ -210,6 +212,7 @@ header {
     }
     &__bin {
       width: 100%;
+      max-width: 350px;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -218,13 +221,17 @@ header {
       padding: 0 $gap-min;
 
       &__card {
-        width: 100%;
         padding: $gap-max;
         max-width: 350px;
+        box-sizing: border-box;
         background-color: $white;
         border-radius: 20px;
+        box-shadow: 3px 3px 20px 0px $grey;
+        /* justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+        flex-direction: column; */
 
-        box-shadow: 5px 40px 50px 0px $grey;
       }
 
     }
@@ -233,6 +240,7 @@ header {
       background-color: #000000;
       width: 56px;
       height: 2px;
+      padding: $gap-min;
     }
 
     &__text-block {
