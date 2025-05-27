@@ -140,16 +140,7 @@ header {
   }
 }
 
-main {
-  width: 100%;
-  height: $header-height;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $white;
-  flex-wrap: wrap;
-
-  .hero {
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,27 +181,49 @@ main {
     }
   }
 
-  .container {
-    width: $m;
+.container {
+    width: 100%;
     display: flex;
     justify-content: center;
-   
-    
-   &__bin {
-      width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    margin-top: 100px;
 
-      &__card{
-        width: 350px;
-        height: 356px;
+    &__text-centered {
+      width: 100%;
+      min-width: $m;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      text-align: center;
+
+      & h2 {
+        font-size: $h2;
+        margin-bottom: $gap-min;
+      }
+
+      & p {
+        font-size: $sh2;
+        color: $grey;
+        font-weight: 300;
+        max-width: 600px;
+      }
+    }
+    &__bin {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: $m;
+      row-gap: $gap-min;
+      padding: 0 $gap-min;
+
+      &__card {
+        width: 100%;
+        padding: $gap-max;
+        max-width: 350px;
         background-color: $white;
         border-radius: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
+
         box-shadow: 5px 40px 50px 0px $grey;
       }
 
@@ -242,10 +255,6 @@ main {
 
     }
   }
-
-}
-
-/* 
 main {
   width: 100%;
   height: $header-height;
@@ -254,7 +263,23 @@ main {
   align-items: center;
   background-color: $white;
   flex-wrap: wrap;
-  
+
+
+
+
+
+}
+
+/*
+main {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  flex-wrap: wrap;
+
   .container {
     display: flex;
     justify-content: center;
