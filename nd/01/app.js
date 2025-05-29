@@ -43,7 +43,7 @@ if (R1 !== 0 && R1 > R2) {
   R3.innerText = R2 / R1;
 };
 
-if ( R1 == 0 || R2 == 0) {
+if (R1 == 0 || R2 == 0) {
   R3.innerText = 'Niutonas vartosi grabe';
 };
 // lygybes zenklas yra ==, o ne =, jei norim dar ir tip
@@ -52,4 +52,59 @@ if ( R1 == 0 || R2 == 0) {
 // tuomet gal nedėti jo priekyje nes jis ne didesnis
 // gal užtektų sumažinti iki R1 mažiau už R2 bet nelygus nuliui, nelygybes zenkas !== (Not lygus nuliui - is not ?)
 
-//
+// section 4
+
+const S41 = rand(50, 200);
+const S42 = rand(50, 200);
+const S43 = rand(50, 200);
+
+console.log(S41, S42, S43);
+
+/* if (S41 < S42 && S41 < S43 && S42 < S43) {
+  console.log(S41, S42, S43);
+} else if (S41 < S43 && S41 < S42 && S43 < S42) {
+  console.log(S41, S43, S42);
+} else if (S42 < S41 && S42 < S43 && S41 < S43) {
+  console.log(S42, S41, S43);
+} else if (S42 < S43 && S42 < S41 && S43 < S41) {
+  console.log(S42, S43, S41);
+} else if (S43 < S41 && S43 < S42 && S41 < S42) {
+  console.log(S43, S41, S42);
+} else if (S43 < S42 && S43 < S41 && S42 < S41) {
+  console.log(S43, S42, S41);
+}
+  sitoj vietoj galima viska trumpinti naudojant arrays ir sort funkcija,
+  */
+
+const sorted = [S41, S42, S43].sort((a, b) => a - b);
+
+// susisortinom eile dabar patargetinam divus ir supaisom
+
+let Circle1 = document.querySelector('#go4 div');
+let Circle2 = document.querySelector('#go4 div + div');
+let Circle3 = document.querySelector('#go4 div + div + div');
+
+Circle1.style.width = sorted[0] + 'px';
+Circle1.style.height = sorted[0] + 'px';
+Circle1.style.borderRadius = '50%';
+Circle1.style.backgroundColor = 'green';
+
+Circle2.style.width = sorted[1] + 'px';
+Circle2.style.height = sorted[1] + 'px';
+Circle2.style.borderRadius = '50%';
+Circle2.style.backgroundColor = 'green';
+
+Circle3.style.width = sorted[2] + 'px';
+Circle3.style.height = sorted[2] + 'px';
+Circle3.style.borderRadius = '50%';
+Circle3.style.backgroundColor = 'green'; 
+
+const lygiavimas = document.querySelector('#go4');
+
+lygiavimas.style.display = 'flex';
+lygiavimas.style.justifyContent = 'space-around';
+lygiavimas.style.alignItems = 'center'; 
+lygiavimas.style.width = '100%';
+
+
+
