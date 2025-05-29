@@ -191,8 +191,15 @@ document.querySelector('#go5 span').innerText = kintamasis;
 let visi = document.querySelectorAll('#go5 span');
 
 visi.forEach(span => {
-  span.innerText = rand(-10, 10);
-  
+  let ineris = rand(-10, 10);
+  if (+ineris === 0) {
+    span.style.color = 'green';
+  } else if (+ineris > 0) {
+    span.style.color = 'blue';
+  } else {
+    span.style.color = 'red';
+  }
+  span.innerText = ineris
 });
 
 // kiekvienam spanui randomizinam skaicius
