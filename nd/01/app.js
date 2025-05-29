@@ -3,6 +3,14 @@ viską bandau suprast on the go,
 nuo 5 užduotiesi išsijugniau Copiloto 
 suggestionus, nes nebesupratau ką darau pats :D */
 
+function rand(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+};
+
+/* kaip naudot dabar t1 funkcij1 ? :D */
+
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const h3 = document.querySelector('h3');
@@ -28,9 +36,9 @@ kvadratas2.style.height = '100px';
 kvadratas2.style.borderRadius = '50%';
 kvadratas2.style.backgroundColor = 'red';
 
-function rand(min, max) {
+/* function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+} */
 
 const R1 = rand(0, 4);
 const R2 = rand(0, 4);
@@ -163,13 +171,15 @@ console.log('...');
 let kintamasis = rand(-10, 10);
 
 if (kintamasis < 0) {
-  console.log('red')
+  console.log('red');
 } else if (kintamasis > 0) {
   console.log('blue')
 } else if (kintamasis == 0) {
   console.log('green')
 }
 console.log(kintamasis);
+
+console.log('...');
 
 //klausimas ar galim visa sita darytis 
 // kaip funkcija kuri pritaikoma kiekvienam
@@ -182,6 +192,7 @@ let visi = document.querySelectorAll('#go5 span');
 
 visi.forEach(span => {
   span.innerText = rand(-10, 10);
+  
 });
 
 // kiekvienam spanui randomizinam skaicius
@@ -192,12 +203,12 @@ visi.forEach(span => {
 }); */
 
 // jei bandau naudoti su kintamasis, visi tampa vienodi
-// vadinas reikia rand funkcija palikt viduj be kintamojo, 
+// vadinas reikia rand funkcija palikt viduj be kintamojo,
 // arba turet tris skirtingus kitnamus, bet td kodas bus desra.
 
-visi.forEach(span => {
+/* visi.forEach(span => {
   span.innerText = rand(-10, 10);
-});
+}); */
 
 /* pasiklaust destytojo dėl kodo logikos dydzio
 suprantu kad geriau daryti dabar taip kad  viskas veiktu ir paskui optimizuoti*/
@@ -209,6 +220,8 @@ tuomet reikia patikrinti spane rodomą skaičių ir atsižvelgiant į tai, jį a
 jei tekstas yra spane jis tampa tekstu, nebe skaičium, 
 gal geriau tuomet sukurti funkciją, kuri automatiškai nepriklausomai nuo skaičiaus 
 iškart rodytu kartu su spalva ? */
+
+
 
 
 

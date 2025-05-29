@@ -107,3 +107,5 @@ console.log('-----------------------------------');
 console.log('!true', !true);
 console.log('!false', !false);
 console.log('-----------------------------------');
+
+console.log('null NaN');
