@@ -1,3 +1,8 @@
+/* jei kas skaitys, sorry už betvarkę,
+viską bandau suprast on the go, 
+nuo 5 užduotiesi išsijugniau Copiloto 
+suggestionus, nes nebesupratau ką darau pats :D */
+
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const h3 = document.querySelector('h3');
@@ -166,17 +171,44 @@ if (kintamasis < 0) {
 }
 console.log(kintamasis);
 
-//klausimas ar galim visa sita darytis kaip funkcija kuri pritaikoma kiekvienam
+//klausimas ar galim visa sita darytis 
+// kaip funkcija kuri pritaikoma kiekvienam
 
+//pabandom išpushint į spaną
+document.querySelector('#go5 span').innerText = kintamasis;
+//pabandom pasitargetint visus spanus
 
+let visi = document.querySelectorAll('#go5 span');
 
-/* 
-document.querySelectorAll('#go5 span') */
-//pasitargetinam visus spanus
+visi.forEach(span => {
+  span.innerText = rand(-10, 10);
+});
 
+// kiekvienam spanui randomizinam skaicius
+// bandau apjungt viska
 
+/* visi.forEach(span => {
+  span.innerText = kintamasis;
+}); */
 
+// jei bandau naudoti su kintamasis, visi tampa vienodi
+// vadinas reikia rand funkcija palikt viduj be kintamojo, 
+// arba turet tris skirtingus kitnamus, bet td kodas bus desra.
 
+visi.forEach(span => {
+  span.innerText = rand(-10, 10);
+});
+
+/* pasiklaust destytojo dėl kodo logikos dydzio
+suprantu kad geriau daryti dabar taip kad  viskas veiktu ir paskui optimizuoti*/
+
+/* logikos pergalvojimas:
+man reikia suteikti random skaičius kuriuos spausdintu span'e
+tuomet reikia patikrinti spane rodomą skaičių ir atsižvelgiant į tai, jį atspausdinti.
+
+jei tekstas yra spane jis tampa tekstu, nebe skaičium, 
+gal geriau tuomet sukurti funkciją, kuri automatiškai nepriklausomai nuo skaičiaus 
+iškart rodytu kartu su spalva ? */
 
 
 
