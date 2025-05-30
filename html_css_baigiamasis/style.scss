@@ -212,6 +212,8 @@ header {
   justify-content: center;
   margin-top: 100px;
   flex-wrap: wrap;
+  position: relative;
+  max-width: $xxl;
 
   &__text-centered {
     width: 100%;
@@ -234,52 +236,6 @@ header {
       font-weight: 300;
       max-width: 600px;
     }
-  }
-
-  &__bin {
-    width: 100%;
-    max-width: 350px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: $m;
-    row-gap: $gap-min;
-    padding: 0 $gap-min;
-
-    &__card {
-      padding: $gap-mid;
-      max-width: 350px;
-      height: 354px;
-      box-sizing: border-box;
-      background-color: $white;
-      border-radius: 20px;
-      box-shadow: 10px 40px 50px 0px #E5E9F666;
-      background-color: $white;
-      justify-content: space-evenly;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      align-content: space-evenly;
-
-      div {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: left;
-      }
-
-      /* 
-      img {
-        height: 50%;
-        display: flex;
-        flex-direction: row;
-      } */
-
-
-    }
-
   }
 
   &__divider {
@@ -308,6 +264,84 @@ header {
     }
 
   }
+
+  &__bin {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: $m;
+    row-gap: $gap-min;
+    padding: 0 $gap-min;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      padding: $gap-mid;
+      max-width: 350px;
+      height: 354px;
+      box-sizing: border-box;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: 10px 40px 50px 0px #E5E9F666;
+      background-color: $white;
+      justify-content: space-between;
+
+      &__top {
+        height: 50%;
+        display: flex;
+        flex-direction: column; // stack contents vertically
+        justify-content: center; // center vertically within top half
+        align-items: flex-start; // align all contents to the left
+        width: 100%;
+
+        img {
+          display: block;
+          margin-left: 0;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+
+      &__bot {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // align left
+        justify-content: flex-start; // align to the top
+        width: 100%;
+
+        h1,
+        p {
+          margin: 0;
+        }
+      }
+
+
+
+
+    }
+
+  }
+
+  &__content {
+    position: absolute;
+    /* bottom: 50px; */
+    left: -257px;
+    z-index: -10;
+    width: 1119px;
+    height: 968px;
+  }
+
+  &__bg {
+    width: 132px;
+    height: 115px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
 }
 
 main {
