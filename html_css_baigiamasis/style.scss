@@ -19,6 +19,7 @@ $sh2: 16px;
 
 
 /* Dimensions: */
+$xxl: 1600px;
 $xl: 1220px;
 $m: 1120px;
 $s: 350px;
@@ -75,7 +76,9 @@ body {
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-
+  flex-direction: column;
+  /* max-width: $xxl; */
+  position: relative;
 }
 
 .btn {
@@ -113,6 +116,7 @@ header {
 
     &__right {
       nav ul {
+        width: 545px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -149,15 +153,29 @@ header {
 
 .hero {
   display: flex;
+  height: 598px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: $xl;
-  padding: 0 $gap-max;
+  margin: auto;
+  position: relative;
+  right: 0;
+  top: 54px;
 
-  & img {
+  &__bg {
+    width: 132px;
+    height: 115px;
+    position: absolute;
+    top: -17px;
+    left: -240px;
+  }
+
+  &__content {
     width: 693px;
     height: 598px;
+    position: absolute;
+    right: -27px;
   }
 
   &__text-block {
@@ -235,7 +253,8 @@ header {
       box-sizing: border-box;
       background-color: $white;
       border-radius: 20px;
-      box-shadow: 5px 5px 10px 2px $grey;
+      box-shadow: 10px 40px 50px 0px #E5E9F666;
+      background-color: $white;
       justify-content: space-evenly;
       align-items: center;
       display: flex;

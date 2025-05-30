@@ -40,10 +40,11 @@ kvadratas2.style.backgroundColor = 'red';
   return Math.floor(Math.random() * (max - min + 1)) + min;
 } */
 
-const R1 = rand(0, 4);
-const R2 = rand(0, 4);
 
 // trecia dalis
+
+const R1 = rand(0, 4);
+const R2 = rand(0, 4);
 
 document.querySelector('#go3 span').innerText = R1;
 document.querySelector('#go3 span + span').innerText = R2;
