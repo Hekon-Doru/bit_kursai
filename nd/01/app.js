@@ -274,10 +274,50 @@ if (kiekis >= 1000) {
   amount.innerText = kiekis;
   subtotal.innerText = kiekis * S6.kaina;
   discount.innerText = '0';
-  total.innerText= (kiekis * S6.kaina).toFixed(2);
-} 
+  total.innerText = (kiekis * S6.kaina).toFixed(2);
+}
+
+// section 7
+console.log('-----------------');
+console.log('7 uzduotis');
+console.log('-----------------');
+
+// Naudokite funkciją rand(). 
+// Parašykite skriptą, kuris atsitiktine tvarka generuotų 
+// ir iš section su  id=go7 esančio div tago padarytų apskritimą,
+// arba keturkampį arba trikampį.
+
+let tvarka = rand(1, 3);
+
+const S7 = document.querySelector('#go7 div');
+
+let trikampis = `style: div {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+};`;
 
 
-
-
+if (tvarka === 1) {
+  console.log('apskritimas');
+  S7.style.width = '20px';
+  S7.style.height = '20px';
+  S7.style.borderRadius = '50%';
+  S7.style.backgroundColor = 'green';
+} else if (tvarka === 2) {
+  console.log('keturkampis');
+  S7.style.width = '20px';
+  S7.style.height = '20px';
+  S7.style.backgroundColor = 'red';
+} else {
+  console.log('trikampis');
+  S7.trikampis;
+  S7.style.width = '0px';
+  S7.style.height = '0px';
+  S7.style.borderRight = '20px solid transparent';
+  S7.style.borderLeft = '20px solid transparent';
+  S7.style.borderBottom = '20px solid blue';
+}
 
