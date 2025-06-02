@@ -230,6 +230,53 @@ gal geriau tuomet sukurti funkciją, kuri automatiškai nepriklausomai nuo skai�
 iškart rodytu kartu su spalva ? */
 
 
+// section 6
+console.log('-----------------');
+console.log('6 uzduotis');
+console.log('-----------------');
+// Įmonė parduoda žvakes po 1 EUR. 
+// Perkant daugiau kaip 1000 EUR taikoma 3 % nuolaida,
+// daugiau kaip už 2000 EUR - 4 % nuolaida. 
+// Parašykite skriptą, kuris skaičiuos žvakių kainą
+// ir užpildykite formą easnčią section tage su id=go6. 
+// Žvakių kiekį generuokite ​rand() funkcija nuo 5 iki 3000.
+
+const S6 = {
+  kaina: 1,
+  nuolaida3: 3,
+  nuolaida4: 4,
+};
+
+let kiekis = rand(5, 3000);
+
+const amount = document.querySelector('#go6 p span');
+const subtotal = document.querySelector('#go6 p + p  span');
+const discount = document.querySelector('#go6 p + p + p span');
+const total = document.querySelector('#go6 p + p + p + p span');
+
+if (kiekis >= 1000) {
+  console.log(kiekis);
+  console.log('trys procentai')
+  console.log(((S6.kaina * kiekis) / 100 * (100 - S6.nuolaida3)).toFixed(2));
+  amount.innerText = kiekis;
+  subtotal.innerText = kiekis * S6.kaina;
+  discount.innerText = S6.nuolaida3;
+  total.innerText = ((S6.kaina * kiekis) / 100 * (100 - S6.nuolaida3)).toFixed(2);
+} else if (kiekis >= 2000) {
+  console.log(kiekis);
+  console.log('keturi procentai');
+  console.log(((S6.kaina * kiekis) / 100 * (100 - S6.nuolaida4)).toFixed(2));
+  amount.innerText = kiekis;
+  subtotal.innerText = kiekis * S6.kaina;
+  discount.innerText = S6.nuolaida4;
+  total.innerText = ((S6.kaina * kiekis) / 100 * (100 - S6.nuolaida4)).toFixed(2);
+} else {
+  amount.innerText = kiekis;
+  subtotal.innerText = kiekis * S6.kaina;
+  discount.innerText = '0';
+  total.innerText= (kiekis * S6.kaina).toFixed(2);
+} 
+
 
 
 
