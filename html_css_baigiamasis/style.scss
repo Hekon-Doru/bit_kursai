@@ -79,27 +79,30 @@ body {
   flex-direction: column;
   /* max-width: $xxl; */
   position: relative;
+
+
 }
 
-.btn {
+
+button:first-of-type {
   width: 200px;
   height: 56px;
-
   color: $blue;
   font-size: $sh1;
   font-weight: bold;
   border-radius: 50px;
   background-color: $white;
   border: 1px solid $blue;
+  margin-top: $gap-min;
+  margin-bottom: $gap-min;
 
-  &:not(:first-child) {
+  &:hover {
     background-color: $blue;
     color: $white;
   }
 }
 
 header {
-
   width: 100%;
   height: $header-height;
   display: flex;
@@ -209,11 +212,11 @@ header {
 .container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 100px;
   flex-wrap: wrap;
   position: relative;
-  max-width: $xxl;
+  max-width: $xl;
 
   &__text-centered {
     width: 100%;
@@ -223,7 +226,6 @@ header {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin-bottom: $gap-max;
 
     & h2 {
       font-size: $h2;
@@ -242,7 +244,8 @@ header {
     background-color: #000000;
     width: 56px;
     height: 2px;
-    margin: $gap-min;
+    margin-top: $gap-min;
+    margin-bottom: $gap-min;
   }
 
   &__text-block {
@@ -250,7 +253,7 @@ header {
     height: 337px;
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: left;
     flex-wrap: wrap;
 
     & h1 {
@@ -317,29 +320,152 @@ header {
           margin: 0;
         }
       }
+    }
 
+    &__card2 {
+      display: flex;
+      flex-direction: column;
+      padding: $gap-mid;
+      max-width: 350px;
+      height: 512px;
+      box-sizing: border-box;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: 10px 40px 50px 0px #E5E9F666;
+      background-color: $white;
+      justify-content: space-between;
 
+      &__top {
+        margin: 0px;
+        height: 50%;
+        display: flex;
+        flex-direction: column; // stack contents vertically
+        justify-content: center; // center vertically within top half
+        align-items: flex-start; // align all contents to the left
+        width: 100%;
 
+        img {
+          display: block;
+          margin-left: 0;
+          max-width: 100%;
+          max-height: 100%;
+          overflow: hidden;
+        }
+      }
 
+      &__bot {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // align left
+        justify-content: flex-start; // align to the top
+        width: 100%;
+
+        a {
+          font-weight: 600;
+          color: $blue;
+          text-align: center;
+          bottom: 0;
+        }
+
+        h1,
+        p {
+          margin: 0;
+        }
+      }
     }
 
   }
 
   &__content {
     position: absolute;
-    /* bottom: 50px; */
     left: -257px;
     z-index: -10;
     width: 1119px;
     height: 968px;
   }
 
-  &__bg {
+  &__content2 {
+    position: absolute;
+    right: -257px;
+    top: -250;
+    z-index: -10;
+    width: 1119px;
+    height: 968px;
+  }
+
+  /* 
+  &__content:nth-of-type(0) {
+    width: 1119px;
+    height: 968px;
+    position: absolute;
+    z-index: -10;
+    position: absolute;
+    left: -257px;
+  }
+
+  &__content:nth-of-type(1) {
+    width: 1119px;
+    height: 968px;
+    z-index: -10;
+    position: absolute;
+    right: -257px;
+    rotate: 180;
+  } */
+
+
+  /*   &__bg {
     width: 132px;
     height: 115px;
     position: absolute;
     top: 0;
     left: 0;
+  } */
+
+  &__bg {
+    width: 132px;
+    height: 115px;
+    // kodėl pozicija absolute turi būti nurodoma atskirai?
+
+    :nth-of-type(0) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    :nth-of-type(1) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    :nth-of-type(2) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    :nth-of-type(3) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    :nth-of-type(4) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    :nth-of-type(5) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    justify-content: center;
+    display: flex;
   }
 
 }
@@ -352,88 +478,81 @@ main {
   align-items: center;
   background-color: $white;
   flex-wrap: wrap;
-
-
-
-
-
 }
 
-/*
-main {
-  width: 100%;
-  height: $header-height;
+.testimony {
+  top: 54px;
+  background-image: linear-gradient(45deg, $blue-dark, $blue-light);
+  border-radius: 24px;
   display: flex;
+  flex-direction: column;
+  height: 425px;
   justify-content: center;
   align-items: center;
-  background-color: $white;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: $m;
+  position: relative;
+  color: $white;
 
-  .container {
+  &__text-centered {
+    width: 100%;
+    min-width: $m;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+  }
+
+  &__divider {
+    background-color: $white;
+    width: 56px;
+    height: 2px;
+    margin-top: $gap-min;
+    margin-bottom: $gap-min;
+  }
+
+  &__bin {
     width: 100%;
-    max-width: $xl;
-    padding: 0 $gap-max;
+    min-width: $m;
+    display: flex;
+    align-items: center;
 
-    &img {
-      width: 693px;
-      height: 598px;
-    }
-
-    &__text-block {
-      width: 445px;
-      height: 337px;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      flex-wrap: wrap;
-
-      & h1 {
-        font-size: $h1;
-      }
-
-      & p {
-        font-size: 21px;
-        color: $grey;
-        font-weight: 300;
-      }
-
-    }
-
-    &__btn {
-      width: 200px;
-      height: 56px;
-      background-color: $blue;
-      color: $white;
-      font-size: $sh1;
-      border-radius: 50px;
-      border: none;
-    }
-
-    &__content {
-      width: 50%;
+    &__left {
+      width: 100%;
       display: flex;
       justify-content: center;
+      text-align: center;
       align-items: center;
-    }
 
-    &__card {
-      width: 350px;
-      height: 356px;
-      background-color: $white;
-      border-radius: 20px;
-      display: flex;
-      flex-wrap: wrap;
+      &__photo {
+        margin: $gap-min;
+        border-radius: 50%;
+        border: $white solid 4px;
+        overflow: hidden;
+        width: 133px;
+        height: 133px;
+      }
 
-      &img {
-        width: 100%;
+      &__credentials {
+        text-align: left;
+
+        h3 {
+          font-size: $h4;
+        }
       }
     }
 
+    &__right {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: $gap-min;
+    }
   }
-} */
+
+
+}
+
 
 footer {
   width: 100%;
