@@ -291,13 +291,13 @@ let tvarka = rand(1, 3);
 
 const S7 = document.querySelector('#go7 div');
 
-let trikampis = `style: div {
+/* let trikampis = `style: div {
   width: 0; 
   height: 0; 
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid black;
-};`;
+};`; */
 
 
 if (tvarka === 1) {
@@ -321,3 +321,74 @@ if (tvarka === 1) {
   S7.style.borderBottom = '20px solid blue';
 }
 
+// section 8
+console.log('-----------------');
+console.log('8 uzduotis');
+console.log('-----------------');
+
+// Suskaičiuoti kiek kiekvienos spalvos 
+// apskritimų yra section su id=go8.
+// Rezultatus įrašyti į šalia tam skirtas vietas.
+const S8 = document.querySelectorAll('#go8 div');
+
+const g = document.querySelector('#go8 p span');
+const r = document.querySelector('#go8 p + p  span');
+const b = document.querySelector('#go8 p + p + p span');
+
+let colors = { red: 0, blue: 0, green: 0 };
+
+S8.forEach(div => {
+  const bg = getComputedStyle(div).backgroundColor;
+  if (bg === 'rgb(0, 128, 0)') {
+    console.log('green');
+    colors.green++;
+    /*  if (colors.green === 0) {
+      g.innerText = '0';
+      } else {
+        g.innerText = colors.green;
+    } */
+
+  } else if (bg === 'rgb(0, 0, 255)') {
+    colors.blue++;
+
+    /*  if (colors.blue == 0) {
+      b.innerText = '0';
+      } else {
+        b.innerText = colors.blue;
+    } */
+
+  } else if (bg == 'rgb(255, 0, 0)') {
+    console.log('red');
+    colors.red++;
+
+    /* if (colors.red == 0) {
+      r.innerText = '0';
+      } else {
+        r.innerText = colors.red;
+    } */
+  }
+}); 
+
+r.innerText = +colors.red;
+g.innerText = +colors.green;
+b.innerText = +colors.blue;
+
+
+
+
+
+// section 9
+console.log('-----------------');
+console.log('9 uzduotis');
+console.log('-----------------');
+
+//Užpildyti daugybos lentelę, 
+// esančią tage section su id=go9.
+
+// section 10
+console.log('-----------------');
+console.log('10 uzduotis');
+console.log('-----------------');
+
+//Keturkapius, esančius tage section su id=go10,
+// kurių plotas didesnis nei 10000 (px) nuspalvinkite raudonai.
