@@ -437,3 +437,20 @@ console.log('-----------------');
 
 //Keturkapius, esančius tage section su id=go10,
 // kurių plotas didesnis nei 10000 (px) nuspalvinkite raudonai.
+
+const s10div = document.querySelectorAll('#go10 div');
+
+
+s10div.forEach(div => {
+  /* const plotis = +div.style.width; */
+  const plotis = parseInt(div.style.width);
+  console.log('plotis');
+  console.log(plotis);
+  /* const aukstis = +div.style.height; neina šitaip*/
+  const aukstis = parseInt(div.style.height);
+  console.log('aukstis');
+  console.log(aukstis);
+  if (plotis * aukstis >= 10000) {
+    div.style.backgroundColor = 'red';
+  }
+});
