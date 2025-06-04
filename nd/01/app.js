@@ -349,6 +349,7 @@ S8.forEach(div => {
     } */
 
   } else if (bg === 'rgb(0, 0, 255)') {
+    console.log('blue');
     colors.blue++;
 
     /*  if (colors.blue == 0) {
@@ -367,11 +368,11 @@ S8.forEach(div => {
         r.innerText = colors.red;
     } */
   }
-}); 
+});
 
-r.innerText = +colors.red;
-g.innerText = +colors.green;
-b.innerText = +colors.blue;
+r.innerText = colors.red;
+g.innerText = colors.green;
+b.innerText = colors.blue;
 
 
 
@@ -384,6 +385,50 @@ console.log('-----------------');
 
 //Užpildyti daugybos lentelę, 
 // esančią tage section su id=go9.
+
+const s9n1 = document.querySelector('#go9 span').innerText;
+const s9n2 = document.querySelector('#go9 span + span').innerText;
+const sum = document.querySelector('#go9 span + span +span');
+console.log(s9n1, s9n2);
+sum.innerText = (+s9n1 * +s9n2);
+console.log('-----------------');
+
+const s9div = document.querySelectorAll('#go9 div');
+const s9span = document.querySelectorAll('#go9 span');
+
+console.log('-----------------');
+console.log('--ilgiai--');
+console.log(s9n1.length);
+console.log(s9div.length);
+console.log(s9span.length);
+console.log('-----------------');
+
+s9div.forEach(div => {
+  const span = div.querySelectorAll('span');
+  if (span.length === 3) {
+    let numeris1 = +(span[0].innerText);
+    console.log(numeris1);
+    console.log('-----------------');
+    console.log(span[0].innerText, span[1].innerText);
+    console.log('-----------------');
+    let numeris2 = +(span[1].innerText);
+    span[2].innerText = numeris1 * numeris2;
+    console.log(numeris1);
+  }
+});
+/* 
+const allLis = document.querySelectorAll('li');
+
+console.log(htmlIs); // irasome sukurta html i ul elementa
+
+for (let i = 0; i < allLis.length; i++) {
+  const li = allLis[i];
+  if(i % 2) {
+    li.style.color = 'green';
+  } else {
+    li.style.color = 'crimson';
+  }
+} */
 
 // section 10
 console.log('-----------------');
