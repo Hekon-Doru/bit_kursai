@@ -1,0 +1,15 @@
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border: 2px solid crimson;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+section {
+  display: flex;
+  row-gap: 20px;
+}
