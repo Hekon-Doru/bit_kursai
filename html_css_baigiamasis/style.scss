@@ -5,6 +5,7 @@ $blue: #458FF6;
 $black: #000000;
 $white: #FFFFFF;
 $grey: #7D7987;
+$gradient: linear-gradient(45deg, $blue-dark, $blue-light);
 
 /* Fonts: */
 $main-font: "Mulish", sans-serif;
@@ -75,13 +76,20 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   /* max-width: $xxl; */
   position: relative;
-
-
+  overflow-x: hidden;
 }
+
+/* 
+#app {
+  max-width: $xxl;
+  overflow:visible;
+  justify-content: center;
+} */
 
 
 button:first-of-type {
@@ -217,6 +225,60 @@ header {
   flex-wrap: wrap;
   position: relative;
   max-width: $xl;
+  z-index: 1;
+  
+  
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 200px;
+    align-self: center;
+    justify-content: space-evenly;
+
+    &__left {
+      width: 391px;
+      /* height: 201px; */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-self: center;
+      gap: $gap-min;
+    }
+
+    &__right {
+      align-self: center;
+      color: $white;
+      display: flex;
+      flex-wrap: wrap;
+      width: 638px;
+      height: inherit;
+      justify-content: space-evenly;
+      gap: $gap-min;
+
+      a {
+        color: $white;
+        text-align: center;
+        bottom: 0;
+
+        img {
+          column-gap: $gap-min;
+        }
+
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      &__bin {
+        display: flex;
+        flex-wrap: wrap;
+        width: 120px;
+      }
+    }
+  }
 
   &__text-centered {
     width: 100%;
@@ -226,6 +288,7 @@ header {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    z-index: 2;
 
     & h2 {
       font-size: $h2;
@@ -240,12 +303,14 @@ header {
     }
   }
 
+
   &__divider {
     background-color: #000000;
     width: 56px;
     height: 2px;
     margin-top: $gap-min;
     margin-bottom: $gap-min;
+    z-index: 2;
   }
 
   &__text-block {
@@ -271,15 +336,17 @@ header {
   &__bin {
     width: 100%;
     max-width: 350px;
+    margin-top: 80px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: $m;
     row-gap: $gap-min;
     padding: 0 $gap-min;
+    z-index: 1;
 
     &__card {
-      display: flex;
+            display: flex;
       flex-direction: column;
       padding: $gap-mid;
       max-width: 350px;
@@ -325,7 +392,6 @@ header {
     &__card2 {
       display: flex;
       flex-direction: column;
-      padding: $gap-mid;
       max-width: 350px;
       height: 512px;
       box-sizing: border-box;
@@ -339,9 +405,9 @@ header {
         margin: 0px;
         height: 50%;
         display: flex;
-        flex-direction: column; // stack contents vertically
-        justify-content: center; // center vertically within top half
-        align-items: flex-start; // align all contents to the left
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         width: 100%;
 
         img {
@@ -350,23 +416,34 @@ header {
           max-width: 100%;
           max-height: 100%;
           overflow: hidden;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
         }
       }
 
       &__bot {
+        padding: $gap-mid;
         height: 50%;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start; // align left
-        justify-content: flex-start; // align to the top
-        width: 100%;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: flex-start;
+        width: 80%;
 
         a {
           font-weight: 600;
           color: $blue;
           text-align: center;
           bottom: 0;
+          
+
+          img {
+            margin-left: 15px;
+          }
+
         }
+
 
         h1,
         p {
@@ -375,12 +452,13 @@ header {
       }
     }
 
+
   }
 
   &__content {
     position: absolute;
     left: -257px;
-    z-index: -10;
+    z-index: 0;
     width: 1119px;
     height: 968px;
   }
@@ -388,11 +466,12 @@ header {
   &__content2 {
     position: absolute;
     right: -257px;
-    top: +200;
-    z-index: -10;
+    top: -200px;
+    z-index: -1;
     width: 1119px;
     height: 968px;
-  }
+    rotate: 180deg;
+ }
 
   /* 
   &__content:nth-of-type(0) {
@@ -450,11 +529,13 @@ header {
       top: 0;
       right: 0;
     }
+
     :nth-of-type(4) {
       position: absolute;
       top: 0;
       right: 0;
     }
+
     :nth-of-type(5) {
       position: absolute;
       top: 0;
@@ -472,17 +553,17 @@ header {
 
 main {
   width: 100%;
-  height: $header-height;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $white;
   flex-wrap: wrap;
+  
 }
 
 .testimony {
   top: 54px;
-  background-image: linear-gradient(45deg, $blue-dark, $blue-light);
+  background-image: $gradient;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -493,6 +574,7 @@ main {
   max-width: $m;
   position: relative;
   color: $white;
+  z-index: 2;
 
   &__text-centered {
     width: 100%;
@@ -556,8 +638,11 @@ main {
 
 footer {
   width: 100%;
-  height: $header-height;
+  height: 432px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color: $white;
+  background-image: $gradient;
+  color: $white;
+  align-items: center;
 }
