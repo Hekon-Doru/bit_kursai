@@ -26,8 +26,8 @@ $m: 1120px;
 $s: 350px;
 
 $gap-min: 34px;
-$gap-mid: 40px;
-$gap-max: 92px;
+$gap-mid: 42px;
+$gap-max: 72px;
 $header-height: 92px;
 $landing-height: 632px;
 
@@ -84,12 +84,13 @@ body {
   overflow-x: hidden;
 }
 
-/* 
+
 #app {
   max-width: $xxl;
-  overflow:visible;
+  overflow: visible;
   justify-content: center;
-} */
+  column-gap: $gap-max;
+}
 
 
 button:first-of-type {
@@ -101,8 +102,8 @@ button:first-of-type {
   border-radius: 50px;
   background-color: $white;
   border: 1px solid $blue;
-  margin-top: $gap-min;
-  margin-bottom: $gap-min;
+  margin-top: $gap-max;
+  /* margin-bottom: $gap-max; */
 
   &:hover {
     background-color: $blue;
@@ -116,6 +117,7 @@ header {
   display: flex;
   justify-content: center;
   background-color: $white;
+  margin-bottom: 100px;
 
   .menu {
     display: flex;
@@ -171,8 +173,8 @@ header {
   max-width: $xl;
   margin: auto;
   position: relative;
-  right: 0;
-  top: 54px;
+  /* right: 0;
+  top: 54px; */
 
   &__bg {
     width: 132px;
@@ -218,16 +220,17 @@ header {
 }
 
 .container {
+  margin: auto;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 100px;
+  justify-self: center;
   flex-wrap: wrap;
   position: relative;
   max-width: $xl;
   z-index: 1;
-  
-  
+
+
   &__footer {
     display: flex;
     flex-wrap: wrap;
@@ -276,6 +279,12 @@ header {
         display: flex;
         flex-wrap: wrap;
         width: 120px;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+        }
       }
     }
   }
@@ -289,6 +298,7 @@ header {
     flex-direction: column;
     text-align: center;
     z-index: 2;
+    justify-self: inherit;
 
     & h2 {
       font-size: $h2;
@@ -305,12 +315,18 @@ header {
 
 
   &__divider {
-    background-color: #000000;
-    width: 56px;
-    height: 2px;
+    width: 100%;
     margin-top: $gap-min;
     margin-bottom: $gap-min;
     z-index: 2;
+    justify-self: inherit;
+
+    div {
+      justify-self: inherit;
+      background-color: #000000;
+      width: 56px;
+      height: 2px;
+    }
   }
 
   &__text-block {
@@ -335,18 +351,19 @@ header {
 
   &__bin {
     width: 100%;
-    max-width: 350px;
+    /* max-width: 350px; */
     margin-top: 80px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: $m;
     row-gap: $gap-min;
-    padding: 0 $gap-min;
+    /* padding: 0 $gap-min; */
     z-index: 1;
+    column-gap: $gap-min;
 
     &__card {
-            display: flex;
+      display: flex;
       flex-direction: column;
       padding: $gap-mid;
       max-width: 350px;
@@ -436,7 +453,7 @@ header {
           color: $blue;
           text-align: center;
           bottom: 0;
-          
+
 
           img {
             margin-left: 15px;
@@ -465,82 +482,41 @@ header {
 
   &__content2 {
     position: absolute;
-    right: -257px;
-    top: -200px;
+    /* right: -1176px; */
+    right: -614px;
+    top: -60px;
     z-index: -1;
     width: 1119px;
     height: 968px;
     rotate: 180deg;
- }
-
-  /* 
-  &__content:nth-of-type(0) {
-    width: 1119px;
-    height: 968px;
-    position: absolute;
-    z-index: -10;
-    position: absolute;
-    left: -257px;
+    scale: 0.8;
   }
 
-  &__content:nth-of-type(1) {
-    width: 1119px;
-    height: 968px;
-    z-index: -10;
+  &__bg1 {
     position: absolute;
-    right: -257px;
-    rotate: 180;
-  } */
-
-
-  /*   &__bg {
-    width: 132px;
-    height: 115px;
+    top: 556px;  
+    right: 0;
+  }
+  &__bg2 {
     position: absolute;
-    top: 0;
+    top: -156px;  
+    right: -241px;
+  }
+  &__bg3 {
+    position: absolute;
+    top: 156px;  
     left: 0;
-  } */
-
-  &__bg {
-    width: 132px;
-    height: 115px;
-    // kodėl pozicija absolute turi būti nurodoma atskirai?
-
-    :nth-of-type(0) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    :nth-of-type(1) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    :nth-of-type(2) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    :nth-of-type(3) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    :nth-of-type(4) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    :nth-of-type(5) {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+  }
+  &__bg4 {
+    position: absolute;
+    bottom: -250px;  
+    right: -147px;
+  }
+  &__bg5 {
+    position: absolute;
+    top: -400px;
+    left: 0;
+    z-index: -999;
   }
 
   &__btn {
@@ -558,11 +534,10 @@ main {
   align-items: center;
   background-color: $white;
   flex-wrap: wrap;
-  
+  gap: 200px;
 }
 
 .testimony {
-  top: 54px;
   background-image: $gradient;
   border-radius: 24px;
   display: flex;
@@ -575,6 +550,16 @@ main {
   position: relative;
   color: $white;
   z-index: 2;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    color: $white;
+    filter: brightness(9);
+    top: 0px;
+    right: -45px;
+    scale: 1.2;
+  }
 
   &__text-centered {
     width: 100%;
@@ -598,8 +583,11 @@ main {
     min-width: $m;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 
     &__left {
+      margin-left: $gap-max;
+      margin-right: $gap-min;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -607,7 +595,7 @@ main {
       align-items: center;
 
       &__photo {
-        margin: $gap-min;
+        /* margin: $gap-min; */
         border-radius: 50%;
         border: $white solid 4px;
         overflow: hidden;
@@ -616,6 +604,7 @@ main {
       }
 
       &__credentials {
+        padding-left: $gap-min;
         text-align: left;
 
         h3 {
@@ -625,10 +614,23 @@ main {
     }
 
     &__right {
+      margin-left: $gap-min;
+      margin-right: $gap-max;
       width: 100%;
+      /* width: 422px; */
       display: flex;
       justify-content: center;
-      margin: $gap-min;
+      text-align: left;
+      align-items: center;
+
+      /* justify-content: center; */
+      /* margin: $gap-min;
+      padding-right: 20px; */
+      p {
+        max-width: 422px;
+        font-size: 19px;
+        font-weight: 300;
+      }
     }
   }
 
@@ -637,6 +639,7 @@ main {
 
 
 footer {
+  margin-top: 200px;
   width: 100%;
   height: 432px;
   display: flex;
@@ -645,4 +648,5 @@ footer {
   background-image: $gradient;
   color: $white;
   align-items: center;
+  align-self: center;
 }
