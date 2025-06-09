@@ -149,7 +149,7 @@ uzduotis3.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignI
 
 
 /* -------------------------------- 4 uzduotis -------------------------------- */
-// Naršyklėje nupieškite 14 mėlynų apskritimų, išdėliotų eilute.
+// Naršyklėje nupieškite 4 mėlynus ir 4 raudonus apskritimus, išdėliotus eilute  “zebru”. (raudonas, mėlynas, raudonas…).
 console.log(allSections);
 console.log('-----------------------------------')
 section('u' + (1 +allSections.length));
@@ -173,3 +173,74 @@ for (let i = 0; i < 8; i++) {
   }
 }
 uzduotis4.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';
+
+/* -------------------------------- 4 uzduotis -------------------------------- */
+// Naršyklėje nupieškite daygybos lentelę 4 dauginant iš skaičių nuo 4 iki 14.
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis5 = document.querySelector('#u5')
+
+console.log(uzduotis5);
+
+
+/* const eile = document.createElement('p');
+allSections.uzduotis5.appendChild(eile); */
+/* uzduotis5.createElement('h1'); */
+// 4 x i++ print  result ? su for ?
+
+for (i = 0; i < 14; i++) {
+  let A = 4;
+  let B = i;
+  let C = A * B;
+  let tekstas = uzduotis5.appendChild(document.createElement('div'));
+  tekstas.innerText = (A + 'x' + B + '=' + C); 
+  tekstas.style.border = "1px solid blue";
+  tekstas.style.maxWidth = "90px";
+
+  /* console.log(A * B); */;
+/*   C.push(A * B);
+  console.log(C); */
+/*   const eile = uzduotis5.createElement('h1');
+  eile.innerText = (A + 'x' + B + '=' C); */
+}
+
+
+/* const section = function (myId) { 
+  const body = document.querySelector('body');
+  const section = document.createElement('section');
+  body.appendChild(section);
+  allSections.push(section);
+  
+  const elementas = myId;
+  section.id = elementas;
+  
+}
+
+ */
+/* 
+const s9div = document.querySelectorAll('#go9 div');
+const s9span = document.querySelectorAll('#go9 span');
+
+console.log('-----------------');
+console.log('--ilgiai--');
+console.log(s9n1.length);
+console.log(s9div.length);
+console.log(s9span.length);
+console.log('-----------------');
+
+s9div.forEach(div => {
+  const span = div.querySelectorAll('span');
+  if (span.length === 3) {
+    let numeris1 = +(span[0].innerText);
+    console.log(numeris1);
+    console.log('-----------------');
+    console.log(span[0].innerText, span[1].innerText);
+    console.log('-----------------');
+    let numeris2 = +(span[1].innerText);
+    span[2].innerText = numeris1 * numeris2;
+    console.log(numeris1);
+  }
+}); */
