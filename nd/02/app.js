@@ -4,34 +4,73 @@ function rand(min, max) {
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 };
 
+
+const allSections = [];
+
+const section = function (myId/* ,uzduotis */) { //anonimine funkcija
+  const body = document.querySelector('body');
+  const section = document.createElement('section');
+  body.appendChild(section);
+  allSections.push(section);
+  /* let naujaSekcija = allSections[uzduotis]; */
+  const elementas = myId;
+  section.id = elementas;
+  /* naujaSekcija.appendChild(elementas) */
+}
+/* 
+createElement() */
+/* const hVienas = function (tekstas, spalva = 'crimson') { //anonimine funkcija
+const section = document.querySelector('section');
+const h1 = document.createElement('div');
+h1.style.color = spalva;
+h1.innerText = tekstas;
+section.appendChild(h1);
+};
+
+hVienas('Bebras','blue');
+hVienas('Bober');
+hVienas('Beriedis');
+hVienas('Bsadasd');
+hVienas('asasd');
+ */
+/* for (let i = 0; i < section.length; i++) {
+  const h4 = document.createElement('h4');
+  body.appendChild(h4);
+  h4.innerText = sk2;
+  } */
+
 /* -------------------------------- 1 uzduotis -------------------------------- */
 /* Naršyklėje įdėkite 14 h1 tagų su skaičiumi 4 ir 14 h4 tagų su skaičiumi 1. 
 Visi tagai turi rikiuotis į vieną eilutę. */
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
 
-
+const uzduotis1 = document.querySelector('#u1')
 const body = document.querySelector('body');
 
 const sk1 = '4';
 const sk2 = '1';
 
 
-
 const h1 = document.createElement('h1');
 const h4 = document.createElement('h4');
 
-body.appendChild(h1);
-body.appendChild(h4);
+uzduotis1.appendChild(h1);
+uzduotis1.appendChild(h4);
 
 for (let i = 0; i < 14; i++) {
   const h1 = document.createElement('h1');
-  body.appendChild(h1);
+  uzduotis1.appendChild(h1);
   h1.innerText = sk1;
 }
 
 
 for (let i = 0; i < 14; i++) {
   const h4 = document.createElement('h4');
-  body.appendChild(h4);
+  uzduotis1.appendChild(h4);
   h4.innerText = sk2;
 }
 
@@ -47,21 +86,26 @@ for (let i = 0; i < h1All.length; i++) {
 } */
 
 console.log(h1All);
-body.style = 'display:flex;justifyContent:spaceEvenly;alignItems:center;';
+uzduotis1.style = 'display:flex;justifyContent:spaceEvenly;alignItems:center;';
 
 /* -------------------------------- 2 uzduotis -------------------------------- */
 /* Naudodamiesi funkcija rand() naršyklėje eilute (tarp skaičių turi būti tarpai) 
 surašykite 44 atsitiktinius skaičius nuo 14 iki 44.
 Skaičius, kurie iš 4 dalinasi be liekanos nuspalvinkite raudonai, o kitus mėlynai. */
 
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
 
-
+const uzduotis2 = document.querySelector('#u2')
 
 for (let i = 0; i < 44; i++) {
   let sk3 = rand(14, 44);
   let tarpas = ' ';
   const h1 = document.createElement('h1');
-  body.appendChild(h1);
+  uzduotis2.appendChild(h1);
   h1.innerText = sk3;
   if (sk3 % 4 === 0) {
     h1.style.color = 'red';
@@ -72,7 +116,7 @@ for (let i = 0; i < 44; i++) {
 }
 
 /* body.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;'; */
-body.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';
+uzduotis2.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';
 /* body.innerHTML = `style {
   flex-wrap: wrap;
   display: flex;
@@ -84,6 +128,12 @@ body.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:
 
 /* -------------------------------- 3 uzduotis -------------------------------- */
 // Naršyklėje nupieškite 14 mėlynų apskritimų, išdėliotų eilute.
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis3 = document.querySelector('#u3')
 
 const ballStyle = 'width:20px;height:20px;border-radius:50%;background-color:blue;';
 
@@ -91,6 +141,35 @@ const ballDiv = document.createElement('div');
 
 for (let i = 0; i < 14; i++) {
   const ballDiv = document.createElement('div');
-  body.appendChild(ballDiv);
+  uzduotis3.appendChild(ballDiv);
   ballDiv.style = ballStyle;
 }
+
+uzduotis3.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';
+
+
+/* -------------------------------- 4 uzduotis -------------------------------- */
+// Naršyklėje nupieškite 14 mėlynų apskritimų, išdėliotų eilute.
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis4 = document.querySelector('#u4')
+
+const ballStyleRed = 'width:20px;height:20px;border-radius:50%;background-color:red;';
+const ballStyleBlue = 'width:20px;height:20px;border-radius:50%;background-color:blue;';
+const ballDiv4 = document.createElement('div');
+
+for (let i = 0; i < 8; i++) {
+  if (i % 2) {
+    const ballDiv4 = document.createElement('div');
+    uzduotis4.appendChild(ballDiv4);
+    ballDiv4.style = ballStyleRed;
+  } else {
+    const ballDiv4 = document.createElement('div');
+    uzduotis4.appendChild(ballDiv4);
+    ballDiv4.style = ballStyleBlue;
+  }
+}
+uzduotis4.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';

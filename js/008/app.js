@@ -115,6 +115,8 @@ const hVienas = function (tekstas, spalva = 'crimson') { //anonimine funkcija
 hVienas('Bebras','blue');
 hVienas('Bober');
 hVienas('Beriedis');
+hVienas('Bsadasd');
+hVienas('asasd');
 
 //2nd darbui labai gerai
 
