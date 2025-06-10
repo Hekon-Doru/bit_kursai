@@ -512,6 +512,7 @@ header {
     position: absolute;
     bottom: -250px;  
     right: -147px;
+    z-index: -999;
   }
   &__bg5 {
     position: absolute;
@@ -650,4 +651,14 @@ footer {
   color: $white;
   align-items: center;
   align-self: center;
+}
+
+.footerbg {
+  position: absolute;
+  background-image: $gradient;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 432px;
+
 }

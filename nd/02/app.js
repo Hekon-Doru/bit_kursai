@@ -208,39 +208,3 @@ for (i = 0; i < 14; i++) {
 }
 
 
-/* const section = function (myId) { 
-  const body = document.querySelector('body');
-  const section = document.createElement('section');
-  body.appendChild(section);
-  allSections.push(section);
-  
-  const elementas = myId;
-  section.id = elementas;
-  
-}
-
- */
-/* 
-const s9div = document.querySelectorAll('#go9 div');
-const s9span = document.querySelectorAll('#go9 span');
-
-console.log('-----------------');
-console.log('--ilgiai--');
-console.log(s9n1.length);
-console.log(s9div.length);
-console.log(s9span.length);
-console.log('-----------------');
-
-s9div.forEach(div => {
-  const span = div.querySelectorAll('span');
-  if (span.length === 3) {
-    let numeris1 = +(span[0].innerText);
-    console.log(numeris1);
-    console.log('-----------------');
-    console.log(span[0].innerText, span[1].innerText);
-    console.log('-----------------');
-    let numeris2 = +(span[1].innerText);
-    span[2].innerText = numeris1 * numeris2;
-    console.log(numeris1);
-  }
-}); */
