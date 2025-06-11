@@ -1,0 +1,19 @@
+div.tevas {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border: 3px solid orangered;
+    cursor: pointer;
+}
+ 
+div.vaikas {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border: 3px solid darkblue;
+    top: 100px;
+    cursor: pointer;
+    bottom: -200px;
+    right: -200px;
+}
+ 

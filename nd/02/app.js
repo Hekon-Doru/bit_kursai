@@ -174,7 +174,7 @@ for (let i = 0; i < 8; i++) {
 }
 uzduotis4.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignItems:center;gap:5px;';
 
-/* -------------------------------- 4 uzduotis -------------------------------- */
+/* -------------------------------- 5 uzduotis -------------------------------- */
 // Naršyklėje nupieškite daygybos lentelę 4 dauginant iš skaičių nuo 4 iki 14.
 console.log(allSections);
 console.log('-----------------------------------')
@@ -207,4 +207,21 @@ for (i = 0; i < 14; i++) {
   eile.innerText = (A + 'x' + B + '=' C); */
 }
 
+/* -------------------------------- 6 uzduotis -------------------------------- */
+/* Naršyklėje nupieškite linija iš 444 “*” 
+(tarp žvaigždučių tarpų nėra). Programiškai “suskaldykite” 
+(naudodami tagus atskirom žvaigždučių grupėm)
+žvaigždutes taip, kad vienoje eilutėje nebūtų daugiau nei 44 “*”. */
 
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 +allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis6 = document.querySelector('#u6')
+
+console.log(uzduotis5);
+
+for (let i = 0; i < 44; i++) {
+
+}
