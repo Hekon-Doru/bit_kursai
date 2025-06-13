@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #333;
+  color: gold;
+}
+
+.container>* {
+  border: 2px solid gold;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* GRID */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px repeat(5, 300px) 150px;
+  gap: 20px;
+  margin: 20px;
+
+  grid-template-areas:
+    "head head head"
+    "hero hero hero"
+    "sec1 sec2 sec2"
+    "sec3 sec3 sec4"
+    "sec5 sec6 sec6"
+    "prom prom prom"
+    "foot foot foot";
+}
+
+header {
+  grid-area: head;
+}
+
+.hero {
+  grid-area: hero;
+}
+
+.sec1 {
+  grid-area: sec1;
+}
+
+.sec2 {
+  grid-area: sec2;
+}
+
+.sec3 {
+  grid-area: sec3;
+}
+
+.sec4 {
+  grid-area: sec4;
+}
+
+.sec5 {
+  grid-area: sec5;
+}
+
+.sec6 {
+  grid-area: sec6;
+}
+
+.promo {
+  grid-area: prom
+}
+
+footer {
+  grid-area: foot;
+}

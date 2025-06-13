@@ -5,6 +5,12 @@ function rand(min, max) {
 };
 
 
+function randomColor() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16).padEnd(6, '0');
+}
+
+
+
 const allSections = [];
 
 const section = function (myId/* ,uzduotis */) { //anonimine funkcija
@@ -44,7 +50,7 @@ hVienas('asasd');
 Visi tagai turi rikiuotis į vieną eilutę. */
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 
@@ -95,7 +101,7 @@ Skaičius, kurie iš 4 dalinasi be liekanos nuspalvinkite raudonai, o kitus mėl
 
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 
@@ -130,7 +136,7 @@ uzduotis2.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignI
 // Naršyklėje nupieškite 14 mėlynų apskritimų, išdėliotų eilute.
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 const uzduotis3 = document.querySelector('#u3')
@@ -152,7 +158,7 @@ uzduotis3.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignI
 // Naršyklėje nupieškite 4 mėlynus ir 4 raudonus apskritimus, išdėliotus eilute  “zebru”. (raudonas, mėlynas, raudonas…).
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 const uzduotis4 = document.querySelector('#u4')
@@ -178,7 +184,7 @@ uzduotis4.style = 'flex-wrap:wrap;display:flex;justifyContent:spaceEvenly;alignI
 // Naršyklėje nupieškite daygybos lentelę 4 dauginant iš skaičių nuo 4 iki 14.
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 const uzduotis5 = document.querySelector('#u5')
@@ -191,20 +197,20 @@ allSections.uzduotis5.appendChild(eile); */
 /* uzduotis5.createElement('h1'); */
 // 4 x i++ print  result ? su for ?
 
-for (i = 0; i < 14; i++) {
+for (i = 0; i <= 14; i++) {
   let A = 4;
   let B = i;
   let C = A * B;
   let tekstas = uzduotis5.appendChild(document.createElement('div'));
-  tekstas.innerText = (A + 'x' + B + '=' + C); 
+  tekstas.innerText = (A + 'x' + B + '=' + C);
   tekstas.style.border = "1px solid blue";
   tekstas.style.maxWidth = "90px";
 
   /* console.log(A * B); */;
-/*   C.push(A * B);
-  console.log(C); */
-/*   const eile = uzduotis5.createElement('h1');
-  eile.innerText = (A + 'x' + B + '=' C); */
+  /*   C.push(A * B);
+    console.log(C); */
+  /*   const eile = uzduotis5.createElement('h1');
+    eile.innerText = (A + 'x' + B + '=' C); */
 }
 
 /* -------------------------------- 6 uzduotis -------------------------------- */
@@ -215,13 +221,132 @@ for (i = 0; i < 14; i++) {
 
 console.log(allSections);
 console.log('-----------------------------------')
-section('u' + (1 +allSections.length));
+section('u' + (1 + allSections.length));
 console.log('uzduotis' + ' ' + allSections.length);
 console.log('-----------------------------------')
 const uzduotis6 = document.querySelector('#u6')
 
-console.log(uzduotis5);
+console.log(uzduotis6);
+//PRISTARINA
+let stars = '*'.repeat(444);
+uzduotis6.innerText = stars;
+//PAKEICIA STARSUS I REGEXIUKA
+const regex = /[*]{1,44}/gm;
+stars = stars.match(regex);
 
-for (let i = 0; i < 44; i++) {
-
+for (let i = 0; i < stars.length; i++) {
+  let starLine = document.createElement('p');
+  starLine.innerText = stars[i];//duuuuuhh
+  uzduotis6.appendChild(starLine);
 }
+
+// regexas 
+
+
+/* -------------------------------- 7 uzduotis -------------------------------- */
+/* Naršyklėje nupieškite 14 atsitiktinių spalvų kvadratų esančių 
+vienas kitame (“matrioška”).#pamastykKaip */
+
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 + allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis7 = document.querySelector('#u7')
+
+const square = 'width:400px;height:400px;';
+const innerSq = 'width:80%;height:80%;padding:10%;';
+
+const squareNum = [];
+
+console.log(squareNum); //loginam squareNum
+
+const parentDiv = document.createElement('div');
+uzduotis7.appendChild(parentDiv);
+// sukuriam parentDiv elementa 'div'
+console.log(squareNum);
+
+parentDiv.style = square;
+parentDiv.style.backgroundColor = randomColor();
+
+squareNum.push(parentDiv);
+for (let i = 0; i < 14; i++) {
+  const newDiv = document.createElement('div');
+  let parentDiv = squareNum[i];
+  newDiv.style = innerSq;
+  newDiv.style.backgroundColor = randomColor();
+  parentDiv.appendChild(newDiv);
+  squareNum.push(newDiv);
+}
+
+console.log(squareNum);
+
+/* -------------------------------- 8 uzduotis -------------------------------- */
+/* Iš simbolio &#9632; (kopijuoti visą žalią tekstą su kabliataškiu) 
+sudėliokite žalią kvadratą turintį 41x41 šių simbolių. 
+Kad kvadratas atrodytų “kvadratiškai” panaudokite css stilių 
+ir papildomus tagus. #ciklasCikle*/
+
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 + allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis8 = document.querySelector('#u8')
+/* ---------------------------------------------------------------------------- */
+
+// sukurti tokius pat kaip 6 uzduotis su zvagzdutem,
+// simbolis inner html'as
+
+/* const u8Divs = []; */
+/* console.log(u8Divs); */
+/* const u8s = ('<div>' + '&#9632;' + '</div>'); */
+/* uzduotis8.innerHTML = u8s; */
+
+const u8s = '&#9632;';
+const parentDiv8 = document.createElement('div');
+uzduotis8.appendChild(parentDiv8);
+
+parentDiv8.style.display = 'flex';
+
+for (let i = 0; i < 41; i++) {
+  let innerRow = document.createElement('div');
+  parentDiv8.appendChild(innerRow);
+  
+  for (let i = 0; i < 41; i++) {
+    let innerDiv = document.createElement('div');
+    innerRow.appendChild(innerDiv);
+    innerDiv.innerHTML = u8s;
+    innerDiv.style.width = '7px';
+    innerDiv.style.height = '7px';
+    innerDiv.style.color = 'green';
+  };
+}
+
+// kintamasis u8s
+// append child div'ą  į section'ą
+// į div'ą įdėti innerText u8s;
+// visą šitą reikia kartoti 41 kartą ir tuomet įdėti į dar vieną div'ą
+// tuomet kartoti dar 41 kartą
+// tuomet turėčiau gauti kvadratą iš 41x41 simbolio
+
+/* -------------------------------- 9 uzduotis -------------------------------- */
+/* Iš simbolio &#9632; (kopijuoti visą žalią tekstą su kabliataškiu) 
+sudėliokite žalią kvadratą turintį 41x41 šių simbolių. 
+Kad kvadratas atrodytų “kvadratiškai” panaudokite css stilių 
+ir papildomus tagus. #ciklasCikle*/
+
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 + allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis9 = document.querySelector('#u9')
+/* ---------------------------------------------------------------------------- */
+
+//Uždavinyje prieš tai nupieštam kvadratui nupieškite geltonas istrižaides 
+// (geltonai nudažykite atitinkamus simbolius). #ciklasCikle
+
+// tai reikia imt su regex'u ir array' spėju
+// pasiimti pirmą elementą, tuomet prie regex'o dėt kintamaji kad kitam kartui pridėtu 1 prie selecto
+// ir su kitu tą pati tik iš kito galo ? i guess ?
