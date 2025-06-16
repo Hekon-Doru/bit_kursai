@@ -31,4 +31,3 @@ for (let i = 0; i < 444; i++) {
   aDiv.style.backgroundColor = randomColor() + '80';
   aDiv.style.display = 'flex';
 }
-
