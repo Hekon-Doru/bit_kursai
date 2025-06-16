@@ -134,8 +134,8 @@ const sec1 = document.querySelector('section');
 sec1.style.display = 'flex';
 sec1.style.flexWrap = 'wrap';
 
-const createDiv = function(text, color, ilgis) {
-  let newDiv = document.createElement('div');
+const createDiv = function (text, color, type, ilgis) {
+  let newDiv = document.createElement(type);
   sec1.appendChild(newDiv);
   newDiv.style.width = '100px';
   newDiv.style.height = '100px';
@@ -146,7 +146,7 @@ const createDiv = function(text, color, ilgis) {
   newDiv.style.alignItems = 'center';
   newDiv.style.textAlign = 'center';
   newDiv.style.color = 'white';
-  if(ilgis !== undefined) {
+  if (ilgis !== undefined) {
     newDiv.innerText = text + ' ' + ilgis;
   } else {
     newDiv.innerText = text;
@@ -154,7 +154,7 @@ const createDiv = function(text, color, ilgis) {
 }
 
 A.forEach(element => {
-  createDiv(element, 'blue');
+  createDiv(element, 'blue', 'div');
 });
 
 
@@ -165,7 +165,7 @@ kurie yra raudoni apskritimai su centre centre užrašytais iš masyvo B nuskait
 ir tų gyvūnų raidžių skaičiumi.
  */
 console.log('-----------------------------------')
-console.log('uzduotis 4');
+console.log('uzduotis 5');
 console.log('-----------------------------------')
 
 const sec2 = document.querySelector('section + section');
@@ -174,7 +174,49 @@ sec2.style.flexWrap = 'wrap';
 
 
 B.forEach(element => {
-  createDiv(element, 'red', element.length);
+  createDiv(element, 'red', 'div', element.length);
 });
 
 /* newDiv.style.backgroundColor = 'red'; */
+/* -------------------------------- 6 uzduotis -------------------------------- */
+/*Html faile sukurkite section tagą (tiesiogiai).
+Į sukurtą tagą, su JS, sudėkite div tagus, 
+kurie yra žali apskritimai su centre užrašytais gyvūnais,
+nuskaityto iš masyvo A. 
+Dėkite tik tuos gyvūnus, kurie savo pavadinime turi tik vieną žodį.
+ */
+console.log('-----------------------------------')
+console.log('uzduotis 6');
+console.log('-----------------------------------')
+
+A.forEach(element => {
+  if (element.trim().split(/\s+/).length !== 2) {
+    createDiv(element, 'green');
+  }
+});
+
+/* -------------------------------- 7 uzduotis -------------------------------- */
+/*Html faile sukurkite section tagą (tiesiogiai).
+Į sukurtą tagą, su JS, sudėkite span tagus, kurie yra geltoni apskritimai
+su centre užrašytais iš masyvo B nuskaitytų gyvūnų pavadinimų raidėm.
+Kiekvienas span tagas- atskira raidė. 
+(visų gyvūnų visos raidės atskiruose span taguose).#ciklasCikle
+ */
+console.log('-----------------------------------')
+console.log('uzduotis 7');
+console.log('-----------------------------------')
+
+regex = /[\w]{1}/gm
+
+B.forEach(element => {
+  let el = [];
+  const found = element.match(regex);
+  el.push(found);
+  console.log(element);
+  console.log(found)
+  console.log(element);
+  console.log(el);
+  el.forEach(element => {
+    createDiv(element[0], 'yellow', 'span');
+  });
+});
