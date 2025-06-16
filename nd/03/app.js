@@ -131,22 +131,50 @@ console.log('uzduotis 4');
 console.log('-----------------------------------')
 
 const sec1 = document.querySelector('section');
+sec1.style.display = 'flex';
+sec1.style.flexWrap = 'wrap';
 
-const createDiv = function(text) {
+const createDiv = function(text, color, ilgis) {
   let newDiv = document.createElement('div');
   sec1.appendChild(newDiv);
-  newDiv.innerText = text;
   newDiv.style.width = '100px';
   newDiv.style.height = '100px';
   newDiv.style.borderRadius = '50%';
-  newDiv.style.backgroundColor = 'blue';
+  newDiv.style.backgroundColor = color;
   newDiv.style.display = 'flex';
   newDiv.style.justifyContent = 'center';
   newDiv.style.alignItems = 'center';
+  newDiv.style.textAlign = 'center';
   newDiv.style.color = 'white';
+  if(ilgis !== undefined) {
+    newDiv.innerText = text + ' ' + ilgis;
+  } else {
+    newDiv.innerText = text;
+  }
 }
 
 A.forEach(element => {
-  createDiv(element);
+  createDiv(element, 'blue');
 });
 
+
+/* -------------------------------- 5 uzduotis -------------------------------- */
+/*Html faile sukurkite section tagą (tiesiogiai).
+Į sukurtą tagą, su JS, sudėkite div tagus, 
+kurie yra raudoni apskritimai su centre centre užrašytais iš masyvo B nuskaitytais gyvūnais
+ir tų gyvūnų raidžių skaičiumi.
+ */
+console.log('-----------------------------------')
+console.log('uzduotis 4');
+console.log('-----------------------------------')
+
+const sec2 = document.querySelector('section + section');
+sec2.style.display = 'flex';
+sec2.style.flexWrap = 'wrap';
+
+
+B.forEach(element => {
+  createDiv(element, 'red', element.length);
+});
+
+/* newDiv.style.backgroundColor = 'red'; */
