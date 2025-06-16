@@ -312,7 +312,7 @@ parentDiv8.style.display = 'flex';
 for (let i = 0; i < 41; i++) {
   let innerRow = document.createElement('div');
   parentDiv8.appendChild(innerRow);
-  
+
   for (let i = 0; i < 41; i++) {
     let innerDiv = document.createElement('div');
     innerRow.appendChild(innerDiv);
@@ -347,6 +347,32 @@ const uzduotis9 = document.querySelector('#u9')
 //Uždavinyje prieš tai nupieštam kvadratui nupieškite geltonas istrižaides 
 // (geltonai nudažykite atitinkamus simbolius). #ciklasCikle
 
-// tai reikia imt su regex'u ir array' spėju
-// pasiimti pirmą elementą, tuomet prie regex'o dėt kintamaji kad kitam kartui pridėtu 1 prie selecto
-// ir su kitu tą pati tik iš kito galo ? i guess ?
+for (let i = 0; i < 41; i++) {
+  const row = parentDiv8.children[i];
+  const istr1 = row.children[i];
+  const istr2 = row.children[40 - i];
+  istr1.style.color = 'yellow';
+  istr2.style.color = 'yellow';
+}
+
+
+/* -------------------------------- 10 uzduotis -------------------------------- */
+/* Iš simbolio &#9632; (kopijuoti visą žalią tekstą su kabliataškiu) 
+sudėliokite žalią kvadratą turintį 41x41 šių simbolių. 
+Kad kvadratas atrodytų “kvadratiškai” panaudokite css stilių 
+ir papildomus tagus. #ciklasCikle*/
+
+console.log(allSections);
+console.log('-----------------------------------')
+section('u' + (1 + allSections.length));
+console.log('uzduotis' + ' ' + allSections.length);
+console.log('-----------------------------------')
+const uzduotis10 = document.querySelector('#u10')
+/* ---------------------------------------------------------------------------- */
+
+/* Uždavinį atlikite atskirame html faile.
+Visame ekrane atsitiktine tvarka “išmėtykite“ 444 pusiau permatomus 
+atsitiktinės spalvos ir atsitiktinio skersmens nuo 44 iki 144 (px) apskritimus. 
+Apskritimai turi tolygiai (pagal funkciją rand()) dengti visą ekraną.#fun 
+
+pos*/
