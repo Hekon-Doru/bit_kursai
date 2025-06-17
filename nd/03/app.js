@@ -232,25 +232,99 @@ console.log('-----------------------------------')
 console.log('uzduotis 8');
 console.log('-----------------------------------')
 
-const ul4 = document.querySelector('ul + ul + ul + ul');
-
-const createDiv2 = function (text, type) {
-  let add = document.createElement(type);
-  ul4.appendChild(add);
-  newDiv.innerText = text;
-}
-
-regex = /[\w]{6}/gm
-
-
-C.forEach(element => {
-  createDiv(element, 'li');
-});
+/* regex2 = /^\p{L}{1,6}$/u */
 
 /* 
-for (let i = 0; i < C.length; i++) {
-  let newLi = document.createElement('li');
-  ul4.appendChild(newLi);
-  console.log(C[i]);
-  newLi.innerText = C[i];
+C.forEach(element => {
+  createDiv2(element, 'li');
+}); */
+
+/* C.forEach(element => {
+  let el = [];
+  const found = element.match(regex2);
+  el.push(found);
+  console.log(el[0], element);
+  
+    el.forEach(element => {
+    createDiv2(element[0], 'li');
+  });
+}); */
+
+const ul41 = document.querySelector('#ul41');
+const ul42 = document.querySelector('#ul42');
+C.forEach(element => {
+  if (element.length <= 6) {
+    let add = document.createElement('li');
+    ul41.appendChild(add);
+    add.innerText = element;
+  } else {
+    let add = document.createElement('li');
+    ul42.appendChild(add);
+    add.innerText = element;
+  }
+});
+
+/* -------------------------------- 9 uzduotis -------------------------------- */
+/*
+Html faile sukurkite ul tagą (tiesiogiai). 
+Į sukurtą tagą, su JS, sudėkite li tagus su iš masyvo 
+B nuskaitytais gyvūnais. 
+Išfiltruokite ir nedėkite šunų.
+ */
+console.log('-----------------------------------')
+console.log('uzduotis 9');
+console.log('-----------------------------------')
+
+
+const ul5 = document.querySelector('#ul5');
+
+regex3 = /[šŠuUoO]{3}/u
+
+let mapC = C.filter(el => el.innerText == el.match(regex3));
+
+console.log(C);
+console.log(C.filter(el => el.innerText == el.match(regex3)));
+console.log(C);
+console.log(mapC);
+
+mapC.forEach(el => {
+  const li = document.createElement('li')
+  ul5.appendChild(li);
+  li.innerText = el;
+})
+/* const createDiv5 = function (text, type) {
+  let add = document.createElement(type);
+  ul4.appendChild(add);
+  add.innerText = text;
 } */
+
+/* 
+B.forEach(kint => {
+  console.log(kint);
+  const masyv = [];
+  console.log(masyv);
+  const sukurtiLi = document.createElement('li');
+  const found = kint.match(regex3);
+  console.log(found);
+  masyv.push(found);
+  ul5.appendChild(sukurtiLi);
+  sukurtiLi.innerText = masyv[0];
+  }); */
+
+
+
+
+
+
+/* 
+
+  let el = [];
+  const found = element.match(regex);
+  el.push(found);
+  console.log(element);
+  console.log(found)
+  console.log(element);
+  console.log(el);
+  el.forEach(element => {
+    createDiv(element[0], 'yellow', 'span');
+  }); */

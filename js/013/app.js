@@ -75,7 +75,7 @@ const cartByTitleLocal = cart.toSorted((a, b) => a.title.localeCompare(b.title, 
 console.log(cartByTitleLocal);
 
 
-console.clear()
+console.clear();
 
 fetch('https://jsonplaceholder.typicode.com/todos')
   .then(response => response.json())
