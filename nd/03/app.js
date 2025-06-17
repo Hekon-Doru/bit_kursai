@@ -206,7 +206,7 @@ console.log('-----------------------------------')
 console.log('uzduotis 7');
 console.log('-----------------------------------')
 
-regex = /[\w]{1}/gm
+regex = /[\w|ąčęėįšųūžĄČĘĖĮŠŲŪŽ]{1}/gm
 
 B.forEach(element => {
   let el = [];
@@ -220,3 +220,37 @@ B.forEach(element => {
     createDiv(element[0], 'yellow', 'span');
   });
 });
+
+/* -------------------------------- 8 uzduotis -------------------------------- */
+/*
+Html faile sukurkite du ul tagus (tiesiogiai). 
+Į  vieną sukurtą tagą, su JS, sudėkite li tagus 
+su iš masyvo C nuskaitytais gyvūnais, 
+kurių pavadinimas ne ilgesnis kaip 6 raidės, į kitą likusius.
+ */
+console.log('-----------------------------------')
+console.log('uzduotis 8');
+console.log('-----------------------------------')
+
+const ul4 = document.querySelector('ul + ul + ul + ul');
+
+const createDiv2 = function (text, type) {
+  let add = document.createElement(type);
+  ul4.appendChild(add);
+  newDiv.innerText = text;
+}
+
+regex = /[\w]{6}/gm
+
+
+C.forEach(element => {
+  createDiv(element, 'li');
+});
+
+/* 
+for (let i = 0; i < C.length; i++) {
+  let newLi = document.createElement('li');
+  ul4.appendChild(newLi);
+  console.log(C[i]);
+  newLi.innerText = C[i];
+} */
