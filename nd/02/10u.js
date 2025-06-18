@@ -15,11 +15,10 @@ atsitiktinės spalvos ir atsitiktinio skersmens nuo 44 iki 144 (px) apskritimus.
 Apskritimai turi tolygiai (pagal funkciją rand()) dengti visą ekraną.#fun 
 */
 
+// rand pozicija, dėlioti, top | left
 
 let body = document.querySelector('body');
-body.style.display = 'flex';
-body.style.flexWrap = 'wrap';
-body.style.justifyContent = 'space-evenly';
+body.style.position = 'relative';
 
 for (let i = 0; i < 444; i++) {
   let aDim = rand(44, 144);
@@ -29,5 +28,7 @@ for (let i = 0; i < 444; i++) {
   aDiv.style.height = aDim + 'px';
   aDiv.style.borderRadius = '50%';
   aDiv.style.backgroundColor = randomColor() + '80';
-  aDiv.style.display = 'flex';
+  aDiv.style.position = 'absolute';
+  aDiv.style.top = rand(0, 100) + 'vh';
+  aDiv.style.left = rand(0, 100) + 'vw';
 }

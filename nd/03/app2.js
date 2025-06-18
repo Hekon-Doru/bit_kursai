@@ -49,9 +49,7 @@ Pavadinimai turi tolygiai (pagal funkciją rand()) dengti visą ekraną
 
 
 let body = document.querySelector('body');
-body.style.display = 'flex';
-body.style.flexWrap = 'wrap';
-body.style.justifyContent = 'space-evenly';
+body.style.position = 'relative';
 
 /* let D = [...C]* 10; */
 /* .repeat(10); */
@@ -70,6 +68,9 @@ for (let i = 0; i < C.length; i++) {
     aDiv.innerText = el;
     aDiv.style.color = randomColor();
     aDiv.style.fontSize = tSize + 'pt';
+    aDiv.style.position = 'absolute';
+    aDiv.style.top = rand(0, 100) + 'vh';
+    aDiv.style.left = rand(0, 100) + 'vw';
   })
 };
 
