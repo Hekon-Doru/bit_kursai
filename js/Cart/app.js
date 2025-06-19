@@ -59,6 +59,8 @@ const products = [
   }
 ];
 
+const cart = [];
+
 const renderProducts = (sort = 'default') => {
   const productsHtmlBin = document.querySelector('[data-products]');
   const productTemplate = document.querySelector('[data-product-template]');
@@ -76,7 +78,6 @@ const renderProducts = (sort = 'default') => {
     console.error('Bad sort type');
   }
 
-
   sortedProducts.forEach(product => {
     const clone = productTemplate.content.cloneNode(true);
 
@@ -85,23 +86,61 @@ const renderProducts = (sort = 'default') => {
     clone.querySelector('[data-price]').textContent = product.price;
     clone.querySelector('[data-add-amount]').setAttribute('max', product.max);
     clone.querySelector('[data-add-button]').dataset.id = product.id; // prideda tagui atributa kuris yra data-id ="45"
+    
     productsHtmlBin.appendChild(clone);
+  });
+  addButtonsInit();
+}
+
+const addButtonsInit = _ => {
+  const buttons = document.querySelectorAll('[data-add-button]');
+  buttons.forEach(b => {
+    b.addEventListener('click', _ => {
+      const id = parseInt(b.dataset.id);
+      const input = b.closest('[data-product]').querySelector('[data-add-amount]');
+      const amount = parseInt(input.value);
+      console.log(id, amount);
+    });
   })
 }
+// closest data product suranda buttono data product teva
 
 const doSort = _ => {
   const selector = document.querySelector('[data-sort-selector]');
   selector.addEventListener('change', _ => {
     console.log('pasikeitė', selector.value);
     renderProducts(selector.value);
-
   })
 }
 
+const cartIconInit = _ => {
+  const icon = document.querySelector('[data-cart-icon]');
+  icon.dataset.show = 'hide';
+  icon.addEventListener('click', _ => {
+    if (icon.dataset.show == 'hide') {
+      icon.dataset.show = 'show';
+      showCartContent();
+    } else {
+      icon.dataset.show = 'hide';
+      hideCartContent();
+    }
+  })
+}
+
+const showCartContent = _ => {
+  const list = document.querySelector('[data-cart-content]');
+  list.style.display = null;
+}
+
+const hideCartContent = _ => {
+  const list = document.querySelector('[data-cart-content]');
+  list.style.display = 'none';
+}
 
 const initShop = _ => {
   renderProducts();
   doSort();
+  cartIconInit();
 }
 
 if (document.querySelector('[data-shop]')) {
