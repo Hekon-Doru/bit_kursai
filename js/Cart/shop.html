@@ -59,7 +59,7 @@
         </div>
         <div class="menu__right">
           <div class="cart">
-            <div class="count"><span>5</span></div>
+            <div class="count"><span data-cart-count></span></div>
             <div class="icon" data-cart-icon>
               <svg height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg">
                 <g fill="rgb(255,255,255)">
@@ -87,7 +87,7 @@
               </svg>
             </div>
             <div class="cart-content" data-cart-content style="display: none;">
-              <div class="cart-content__line">
+              <!-- <div class="cart-content__line">
                 <div class="cart-content__img">
                   <img src="http://127.0.0.1:5500/js/cart/assets/01.jpg">
                 </div>
@@ -103,12 +103,12 @@
                 <div class="cart-content__remove">
                   <span>x</span>
                 </div>
-              </div>
-              <div class="cart-content__total">
+              </div> -->
+            <!--   <div class="cart-content__total">
                 <span class="text">viso</span>
                 <span class="value">12</span>
                 <span class="text">Eur</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -150,6 +150,34 @@
       </div>
     </div>
   </div>
+</template>
+
+<template data-cart-product-template>
+                <div class="cart-content__line">
+                <div class="cart-content__img">
+                  <img src=""data-image>
+                </div>
+                <div class="cart-content__title" data-title>
+                  Plastikines eko samanos
+                </div>
+                <div class="cart-content__price" data-price>
+                  121.2
+                </div>
+                <div class="cart-content__amount" data-amount>
+                  2
+                </div>
+                <div class="cart-content__remove" >
+                  <span data-remove>x</span>
+                </div>
+              </div>
+</template>
+
+<template data-cart-total-template>
+    <div class="cart-content__total">
+                <span class="text">viso</span>
+                <span class="value" data-value>12</span>
+                <span class="text">Eur</span>
+              </div>
 </template>
 
 </html>

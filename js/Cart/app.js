@@ -59,7 +59,7 @@ const products = [
   }
 ];
 
-const cart = [];
+/* let cart = []; */
 
 const renderProducts = (sort = 'default') => {
   const productsHtmlBin = document.querySelector('[data-products]');
@@ -86,7 +86,7 @@ const renderProducts = (sort = 'default') => {
     clone.querySelector('[data-price]').textContent = product.price;
     clone.querySelector('[data-add-amount]').setAttribute('max', product.max);
     clone.querySelector('[data-add-button]').dataset.id = product.id; // prideda tagui atributa kuris yra data-id ="45"
-    
+
     productsHtmlBin.appendChild(clone);
   });
   addButtonsInit();
@@ -99,11 +99,76 @@ const addButtonsInit = _ => {
       const id = parseInt(b.dataset.id);
       const input = b.closest('[data-product]').querySelector('[data-add-amount]');
       const amount = parseInt(input.value);
-      console.log(id, amount);
+      addToCart(id, amount);
+      renderCart();
+      showCartContent();
     });
   })
 }
 // closest data product suranda buttono data product teva
+
+const renderCart = _ => {
+  const cartHtmlBin = document.querySelector('[data-cart-content]');
+  const cartProductTemplate = document.querySelector('[data-cart-product-template]');
+  const cartTotalTemplate = document.querySelector('[data-cart-total-template]');
+  const cartAmountBin = document.querySelector('[data-cart-count]');
+  cartHtmlBin.innerHTML = '';
+  let total = 0;
+
+  if (!cart.length) {
+    const li = document.createElement('li');
+    li.classList.add('cart-content__empty');
+    li.innerText = 'Krepšelis yra tuščias';
+    cartHtmlBin.appendChild(li);
+    cartAmountBin.innerText = 0;
+    return;
+  }
+
+  cart.forEach(cartProduct => {
+    const product = products.find(p => p.id == cartProduct.id);
+    const clone = cartProductTemplate.content.cloneNode(true);
+
+    clone.querySelector('[data-title]').textContent = product.title;
+    clone.querySelector('[data-image]').setAttribute('src', product.image);
+    clone.querySelector('[data-price]').textContent = product.price;
+    clone.querySelector('[data-amount]').textContent = cartProduct.amount;
+    clone.querySelector('[data-remove]').dataset.id = product.id;
+
+    total += product.price * cartProduct.amount;
+
+    clone.querySelector('[data-remove]').addEventListener('click', e => {
+      e.stopPropagation();
+      removeFromCart(parseInt(e.target.dataset.id));
+      renderCart();
+      showCartContent();
+    });
+
+    cartHtmlBin.appendChild(clone);
+
+  });
+
+  const clone = cartTotalTemplate.content.cloneNode(true);
+  clone.querySelector('[data-value]').textContent = total.toFixed(2);
+  cartHtmlBin.appendChild(clone);
+  cartAmountBin.innerText = cart.reduce((acc, product) => acc + product.amount, 0);
+}
+
+const addToCart = (id, amount) => {
+  const productInCart = cart.find(p => p.id == id);
+  if (productInCart) {
+    productInCart.amount += amount;
+  } else {
+    // cart.unshift({id: id, amount: amount}); //apacioj tas pats
+    cart.unshift({ id, amount });
+  }
+  writeLocalStorage();
+}
+
+const removeFromCart = id => {
+  cart = cart.filter(p => p.id != id);
+
+  writeLocalStorage();
+}
 
 const doSort = _ => {
   const selector = document.querySelector('[data-sort-selector]');
@@ -137,10 +202,25 @@ const hideCartContent = _ => {
   list.style.display = 'none';
 }
 
+const readLocalStorage = _ => {
+  cart = localStorage.getItem('bebroShopCart');
+  if (cart === null) {
+    cart = [];
+  } else {
+    cart = JSON.parse(cart);
+  }
+}
+
+const writeLocalStorage = _ => {
+  localStorage.setItem('bebroShopCart', JSON.stringify(cart));
+}
+
 const initShop = _ => {
+  readLocalStorage();
   renderProducts();
   doSort();
   cartIconInit();
+  renderCart();
 }
 
 if (document.querySelector('[data-shop]')) {
