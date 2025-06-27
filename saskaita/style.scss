@@ -130,8 +130,8 @@ li {
       display: flex;
       flex-direction: column;
       align-items: self-end;
-      
-      
+
+
       .p2 {
         display: flex;
         align-items: left;
@@ -140,8 +140,8 @@ li {
         min-width: 30%;
         height: 40px;
       }
-      
-    
+
+
     }
 
     &__description {
@@ -153,11 +153,9 @@ li {
       width: 100%;
       margin-top: $gap-min;
       justify-content: space-evenly;
+      border-bottom: 2px solid rgb(0, 0, 0);
 
-      p {
-        border: 1px solid rgb(214, 214, 214);
-        height: 80px;
-      }
+    
     }
 
     &__line {
@@ -166,13 +164,13 @@ li {
       align-items: left;
       flex-direction: row;
       width: 100%;
-      margin-bottom: $gap-min;
       justify-content: space-evenly;
+      border-bottom: 1px solid rgb(214, 214, 214);
 
       p {
-        border: 1px solid rgb(214, 214, 214);
-        height: 60px;
+        /* height: 40px; */
         font-size: 15px;
+
       }
     }
   }

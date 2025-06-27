@@ -16,4 +16,10 @@ const parse = data =>  {
   invNumber.innerText = data.number;
 
 
+  data.items.forEach(p => {
+    console.log(p);
+    const liTemplate = ''
+    const li = document.createElement('li');
+
+  });
 }

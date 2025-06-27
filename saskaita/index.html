@@ -49,17 +49,10 @@
             <p class="p2">PVM %</p>
             <p class="p2">Suma su PVM, Eur</p>
           </div>
-          <!-- <div class="container__table__line" data-item-table>
-            <p class="p1"><span data-item-description>Bebro iškamša 100cm</span></p>
-            <p class="p2"><span data-item-quantity>5</span></p>
-            <p class="p2"><span data-item-price>450.99 Eur</span></p>
-            <p class="p2"><span data-item-discount>0</span></p>
-            <p class="p2"><span data-item-discounted-price>Kaina po nuolaidos</span></p>
-            <p class="p2"><span data-item-taxes>PVM %</span></p>
-            <p class="p2"><span data-item-total>Suma su PVM, Eur</span></p>
-          </div> -->
+          <div data-item-table>
+          </div>
           <div class="container__table__total" data-item-table-total>
-            <p class="p2">Siuntimas:<span data-item-shipping>1000000.000 Eur</span></p>
+            <p class="p2">Siuntimas:<span data-item-shipping></span></p>
             <p class="p2">Viso:<span data-item-total-sum>1000 Eur</span></p>
             <p class="p2">PVM:<span data-item-total-tax>1000 Eur</span></p>
             <p class="p2"><b>Iš viso:</b><b><span data-item-total-w-tax>1000 Eur</span></b></p>
@@ -72,15 +65,15 @@
     </footer>
   </div>
 </body>
-<template>
-  <div class="container__table__line" data-item-table>
-    <p class="p1"><span data-item-description></span></p>
-    <p class="p2"><span data-item-quantity></span></p>
-    <p class="p2"><span data-item-price></span></p>
-    <p class="p2"><span data-item-discount></span></p>
-    <p class="p2"><span data-item-discounted-price></span></p>
-    <p class="p2"><span data-item-taxes></span></p>
-    <p class="p2"><span data-item-total></span></p>
+<template data-table-template>
+  <div class="container__table__line">
+    <p class="p1"><span data-item-description>-</span></p>
+    <p class="p2"><span data-item-quantity>-</span></p>
+    <p class="p2"><span data-item-price>-</span></p>
+    <p class="p2"><span data-item-discount>-</span></p>
+    <p class="p2"><span data-item-discounted-price>-</span></p>
+    <p class="p2"><span data-item-taxes>-</span></p>
+    <p class="p2"><span data-item-total>-</span></p>
   </div>
 </template>
 
