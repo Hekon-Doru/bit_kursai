@@ -123,6 +123,26 @@ li {
     width: 100%;
     margin-top: $gap-max;
     margin-bottom: $gap-min;
+    position: relative;
+
+    &__total {
+      justify-content: right;
+      display: flex;
+      flex-direction: column;
+      align-items: self-end;
+      
+      
+      .p2 {
+        display: flex;
+        align-items: left;
+        justify-content: space-between;
+        border-bottom: 1px solid rgb(214, 214, 214);
+        min-width: 30%;
+        height: 40px;
+      }
+      
+    
+    }
 
     &__description {
       font-weight: bold;

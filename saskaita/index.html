@@ -14,9 +14,9 @@
     <header>
       <div class="header">
         <h1>Sąskaita faktūra</h1>
-        <h1>Nr <span data-number>AB-20039845</span></h1>
-        <p>Data <span data-date>2025-06-18</span></p>
-        <p>Apmokėti iki: <span data-due-date>2025-06-28</span></p>
+        <h1>Nr <span data-number></span></h1>
+        <p>Data <span data-date></span></p>
+        <p>Apmokėti iki: <span data-due-date></span></p>
       </div>
     </header>
     <main>
@@ -34,7 +34,7 @@
           <h2>Pirkėjas</h2>
           <p data-buyer-name>AB Paulauskas ir Vasiliauskas</p>
           <p data-buyer-address>Kauno g. 51, Jonava</p>
-          <p data-buyer-code>85177905"</p>
+          <p data-buyer-code>85177905</p>
           <p data-buyer-vat>LT962251418</p>
           <p data-buyer-phone>+37046348969</p>
           <p data-buyer-email>ovasiliauskaite@vilma.lt</p>
@@ -49,7 +49,7 @@
             <p class="p2">PVM %</p>
             <p class="p2">Suma su PVM, Eur</p>
           </div>
-          <div class="container__table__line" data-item-table>
+          <!-- <div class="container__table__line" data-item-table>
             <p class="p1"><span data-item-description>Bebro iškamša 100cm</span></p>
             <p class="p2"><span data-item-quantity>5</span></p>
             <p class="p2"><span data-item-price>450.99 Eur</span></p>
@@ -57,6 +57,12 @@
             <p class="p2"><span data-item-discounted-price>Kaina po nuolaidos</span></p>
             <p class="p2"><span data-item-taxes>PVM %</span></p>
             <p class="p2"><span data-item-total>Suma su PVM, Eur</span></p>
+          </div> -->
+          <div class="container__table__total" data-item-table-total>
+            <p class="p2">Siuntimas:<span data-item-shipping>1000000.000 Eur</span></p>
+            <p class="p2">Viso:<span data-item-total-sum>1000 Eur</span></p>
+            <p class="p2">PVM:<span data-item-total-tax>1000 Eur</span></p>
+            <p class="p2"><b>Iš viso:</b><b><span data-item-total-w-tax>1000 Eur</span></b></p>
           </div>
         </div>
       </div>
@@ -68,13 +74,13 @@
 </body>
 <template>
   <div class="container__table__line" data-item-table>
-    <p class="p1"><span data-item-description>Bebro iškamša 100cm</span></p>
-    <p class="p2"><span data-item-quantity>5</span></p>
-    <p class="p2"><span data-item-price>450.99 Eur</span></p>
-    <p class="p2"><span data-item-discount>0</span></p>
-    <p class="p2"><span data-item-discounted-price>Kaina po nuolaidos</span></p>
-    <p class="p2"><span data-item-taxes>PVM %</span></p>
-    <p class="p2"><span data-item-total>Suma su PVM, Eur</span></p>
+    <p class="p1"><span data-item-description></span></p>
+    <p class="p2"><span data-item-quantity></span></p>
+    <p class="p2"><span data-item-price></span></p>
+    <p class="p2"><span data-item-discount></span></p>
+    <p class="p2"><span data-item-discounted-price></span></p>
+    <p class="p2"><span data-item-taxes></span></p>
+    <p class="p2"><span data-item-total></span></p>
   </div>
 </template>
 

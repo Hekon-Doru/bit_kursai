@@ -8,15 +8,12 @@ fetch('https://in3.dev/inv/')
     parse(json);
   });
 
+
+
 const parse = data =>  {
   // numeris
-  const invNumber = document.querySelector('data-number');
+  const invNumber = document.querySelector('[data-number]');
   invNumber.innerText = data.number;
 
-  data.items.forEach(p => {
-    console.log(p);
-    const liTemplate = ''
-    const li = document.createElement('li');
 
-  });
 }

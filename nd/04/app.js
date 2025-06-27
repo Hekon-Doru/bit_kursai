@@ -27,7 +27,8 @@ class Kibiras1 {
  return this.akmenuKiekis++;
   }
   pridetiDaugAkmenu(kiekis){
-    return this.akmenuKiekis = this.akmenuKiekis + kiekis;
+    /* return this.akmenuKiekis = this.akmenuKiekis + kiekis; */
+    return this.akmenuKiekis += kiekis;
   };
   kiekPririnktaAkmenu() {
     console.log(this.akmenuKiekis);
@@ -35,6 +36,7 @@ class Kibiras1 {
 }
 
 const kibiroObjektas1 = new Kibiras1();
+const kibiroObjektas2 = new Kibiras1();
 console.log('-----------');
 kibiroObjektas1.kiekPririnktaAkmenu();
 console.log('-----------');
