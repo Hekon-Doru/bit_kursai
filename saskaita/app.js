@@ -72,7 +72,7 @@ const parse = data => {
       <p class="p2"><span data-item-taxes>-</span></p>
       <p class="p2"><span data-item-total*/
 
-    let totalSum = (item.price * item.quantity);
+    let totalSum = (item.price);
     console.log('Total sum is:', totalSum);
     let discount = item.discount.value;
     console.log('Discount is:', discount);
@@ -96,20 +96,20 @@ const parse = data => {
     clone.querySelector('[data-item-taxes]').textContent = taxesAfter.toFixed(2);
     let totalWithTax = discountedSum + taxesAfter;
     clone.querySelector('[data-item-total]').textContent = parseFloat(totalWithTax).toFixed(2);
-    
+
     productsHtmlBin.appendChild(clone);
-    
-    console.log(viso += discountedSum);
-    console.log(pvm += taxesAfter);
-    console.log(isViso += totalWithTax);
-    
+
     viso += discountedSum;
     pvm += taxesAfter;
     isViso += totalWithTax;
+    
+    console.log('Viso:', viso);
+    console.log('PVM:', pvm);
+    console.log('Iš viso:',isViso);
 
     document.querySelector('[data-item-shipping]').textContent = parseFloat(data.shippingPrice).toFixed(2);
-    document.querySelector('[data-item-total-sum]').textContent = parseFloat(viso).toFixed(2);
-    document.querySelector('[data-item-total-tax]').textContent = parseFloat(pvm).toFixed(2);
+    document.querySelector('[data-item-total-sum]').textContent = viso.toFixed(2);
+    document.querySelector('[data-item-total-tax]').textContent = pvm.toFixed(2);
     document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(isViso) + parseFloat(data.shippingPrice)).toFixed(2);
   });
 
