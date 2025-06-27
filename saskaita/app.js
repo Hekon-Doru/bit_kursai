@@ -47,6 +47,10 @@ const parse = data => {
   const itemTable = document.querySelector('[data-table-template]');
   productsHtmlBin.innerHTML = '';
 
+  let viso = 0;
+  let pvm = 0;
+  let isViso = 0;
+
   console.log(data.items)
   data.items.forEach(item => {
     const clone = itemTable.content.cloneNode(true);
@@ -92,13 +96,25 @@ const parse = data => {
     clone.querySelector('[data-item-taxes]').textContent = taxesAfter.toFixed(2);
     let totalWithTax = discountedSum + taxesAfter;
     clone.querySelector('[data-item-total]').textContent = parseFloat(totalWithTax).toFixed(2);
-
+    
     productsHtmlBin.appendChild(clone);
-  });
-  document.querySelector('[data-item-shipping]').textContent = data.shippingPrice;
+    
+    console.log(viso += discountedSum);
+    console.log(pvm += taxesAfter);
+    console.log(isViso += totalWithTax);
+    
+    viso += discountedSum;
+    pvm += taxesAfter;
+    isViso += totalWithTax;
 
-  /*<p class="p2">Siuntimas:<span data-item-shipping></span></p>
-            <p class="p2">Viso:<span data-item-total-sum>1000 Eur</span></p>
-            <p class="p2">PVM:<span data-item-total-tax>1000 Eur</span></p>
-            <p class="p2"><b>Iš viso:</b><b><span data-item-total-w-tax>1000 Eur</span></b></p>*/
+    document.querySelector('[data-item-shipping]').textContent = parseFloat(data.shippingPrice).toFixed(2);
+    document.querySelector('[data-item-total-sum]').textContent = parseFloat(viso).toFixed(2);
+    document.querySelector('[data-item-total-tax]').textContent = parseFloat(pvm).toFixed(2);
+    document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(isViso) + parseFloat(data.shippingPrice)).toFixed(2);
+  });
+
+  /*data-item-shipping
+    data-item-total-sum
+    data-item-total-tax
+    data-item-total-w-tax*/
 }
