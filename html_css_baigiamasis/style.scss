@@ -494,26 +494,31 @@ header {
 
   &__bg1 {
     position: absolute;
-    top: 556px;  
+    top: 556px;
     right: 0;
   }
+
   &__bg2 {
     position: absolute;
-    top: -156px;  
+    top: -156px;
     right: -241px;
   }
+
   &__bg3 {
     position: absolute;
-    top: 156px;  
+    top: 156px;
     left: 0;
     z-index: -3;
   }
+
   &__bg4 {
+    overflow: hidden;
     position: absolute;
-    bottom: -250px;  
+    bottom: -250px;
     right: -147px;
-    z-index: -999;
+    z-index: 0;
   }
+
   &__bg5 {
     position: absolute;
     top: -400px;
@@ -552,7 +557,20 @@ main {
   position: relative;
   color: $white;
   z-index: 2;
-  overflow: hidden;
+  /* overflow: hidden; */
+
+  &__nav {
+    position: absolute;
+    bottom: -62px;
+    flex-direction: row;
+    display: flex;
+    width: 334px;
+    justify-content: space-between;
+
+    &__left {
+      rotate: 180deg;
+    }
+  }
 
   &__bg {
     position: absolute;
@@ -641,6 +659,7 @@ main {
 
 
 footer {
+  z-index: 2;
   margin-top: 200px;
   width: 100%;
   height: 432px;
@@ -654,11 +673,292 @@ footer {
 }
 
 .footerbg {
+  z-index: 1;
   position: absolute;
   background-image: $gradient;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 432px;
+
+}
+.container2 {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  justify-self: center;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: $xl;
+  z-index: 2;
+
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 200px;
+    align-self: center;
+    justify-content: space-evenly;
+
+    &__left {
+      width: 391px;
+      /* height: 201px; */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-self: center;
+      gap: $gap-min;
+    }
+
+    &__right {
+      align-self: center;
+      color: $white;
+      display: flex;
+      flex-wrap: wrap;
+      width: 638px;
+      height: inherit;
+      justify-content: space-evenly;
+      gap: $gap-min;
+
+      a {
+        color: $white;
+        text-align: center;
+        bottom: 0;
+
+        img {
+          column-gap: $gap-min;
+        }
+
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      &__bin {
+        display: flex;
+        flex-wrap: wrap;
+        width: 120px;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+        }
+      }
+    }
+  }
+
+  &__text-centered {
+    width: 100%;
+    min-width: $m;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 2;
+    justify-self: inherit;
+
+    & h2 {
+      font-size: $h2;
+      margin-bottom: $gap-min;
+    }
+
+    & p {
+      font-size: $sh2;
+      color: $grey;
+      font-weight: 300;
+      max-width: 600px;
+    }
+  }
+
+
+  &__divider {
+    width: 100%;
+    margin-top: $gap-min;
+    margin-bottom: $gap-min;
+    z-index: 2;
+    justify-self: inherit;
+
+    div {
+      justify-self: inherit;
+      background-color: #000000;
+      width: 56px;
+      height: 2px;
+    }
+  }
+
+  &__text-block {
+    width: 445px;
+    height: 337px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-wrap: wrap;
+
+    & h1 {
+      font-size: $h1;
+    }
+
+    & p {
+      font-size: 21px;
+      color: $grey;
+      font-weight: 300;
+    }
+
+  }
+
+  &__bin {
+    width: 100%;
+    /* max-width: 350px; */
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: $m;
+    row-gap: $gap-min;
+    /* padding: 0 $gap-min; */
+    z-index: 1;
+    column-gap: $gap-min;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      padding: $gap-mid;
+      max-width: 350px;
+      height: 354px;
+      box-sizing: border-box;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: 10px 40px 50px 0px #E5E9F666;
+      background-color: $white;
+      justify-content: space-between;
+
+      &__top {
+        height: 50%;
+        display: flex;
+        flex-direction: column; // stack contents vertically
+        justify-content: center; // center vertically within top half
+        align-items: flex-start; // align all contents to the left
+        width: 100%;
+
+        img {
+          display: block;
+          margin-left: 0;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+
+      &__bot {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // align left
+        justify-content: flex-start; // align to the top
+        width: 100%;
+
+        h1,
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    &__card2 {
+      display: flex;
+      flex-direction: column;
+      max-width: 350px;
+      height: 512px;
+      box-sizing: border-box;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: 10px 40px 50px 0px #E5E9F666;
+      background-color: $white;
+      justify-content: space-between;
+
+      &__top {
+        margin: 0px;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+
+        img {
+          display: block;
+          margin-left: 0;
+          max-width: 100%;
+          max-height: 100%;
+          overflow: hidden;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+        }
+      }
+
+      &__bot {
+        padding: $gap-mid;
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: flex-start;
+        width: 80%;
+
+        a {
+          font-weight: 600;
+          color: $blue;
+          text-align: center;
+          bottom: 0;
+
+
+          img {
+            margin-left: 15px;
+          }
+
+        }
+
+
+        h1,
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+
+  }
+
+  &__content {
+    position: absolute;
+    left: -257px;
+    z-index: 0;
+    width: 1119px;
+    height: 968px;
+  }
+
+  &__content2 {
+    position: absolute;
+    /* right: -1176px; */
+    right: -614px;
+    top: -60px;
+    z-index: -1;
+    width: 1119px;
+    height: 968px;
+    rotate: 180deg;
+    scale: 0.8;
+  }
+
+  &__btn {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
 
 }
