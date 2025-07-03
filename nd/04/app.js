@@ -43,7 +43,7 @@ class Kibiras1 {
     console.log(`Kibire yra ${this.akmenuKiekis}`);
   }
 
-  akmenuSkVisuoseKibiruose(){
+  akmenuSkVisuoseKibiruose() {
     console.log(`Visuose kibiruose yra ${this.constructor.visiAkemnys} akmenys.`)
   }
 }
@@ -115,12 +115,12 @@ class Pinigine {
     console.log('Piniginėje yra metalinių pinigų:', this.metaliniaiPinigai)
     console.log('Piniginėje yra popierinių pinigų:', this.popieriniaiPinigai)
     console.log('Bendrai piniginėje yra:', this.popieriniaiPinigai + this.metaliniaiPinigai);
-    }
- 
+  }
+
   monetos() {
     console.log(`Piniginėje yra ${this.centukai} monetos.`);
   }
-  
+
   banknotai() {
     console.log(`Piniginėje yra ${this.kupiuros} kupiuros.`);
   }
@@ -214,38 +214,38 @@ console.log('Pirkiniai');
 console.log('-------------------------------');
 
 class PirkiniuKrepselis {
-  
-  constructor(){
+
+  constructor() {
     this.turinys = new Map();
   }
 
-ideti(preke,kiekis){
-  if (this.turinys.has(preke)){
-    this.turinys.set(preke, this.turinys,get(preke) + kiekis);
+  ideti(preke, kiekis) {
+    if (this.turinys.has(preke)) {
+      this.turinys.set(preke, this.turinys, get(preke) + kiekis);
+    }
+    this.turinys.set(preke, kiekis);
   }
-  this.turinys.set(preke, kiekis);
-}
 
-/* idetiSureli(kiekis){
-  this.turinys.set('Sureliai:', kiekis);
-  console.log(`Į krepšelį idėta ${kiekis} sūreliai`);
-}
-idetiPieno(kiekis){
-  this.turinys.set('Pienas:', kiekis);
-  console.log(`Į krepšelį idėta ${kiekis} pienas`);
-}
-idetiDuonos(kiekis){
-  this.turinys.set('Duonos:', kiekis);
-  console.log(`Į krepšelį idėta ${kiekis} duona`);
-} */
+  /* idetiSureli(kiekis){
+    this.turinys.set('Sureliai:', kiekis);
+    console.log(`Į krepšelį idėta ${kiekis} sūreliai`);
+  }
+  idetiPieno(kiekis){
+    this.turinys.set('Pienas:', kiekis);
+    console.log(`Į krepšelį idėta ${kiekis} pienas`);
+  }
+  idetiDuonos(kiekis){
+    this.turinys.set('Duonos:', kiekis);
+    console.log(`Į krepšelį idėta ${kiekis} duona`);
+  } */
 
-krepselioTurinys(){
-  this.turinys.forEach((kiek, kas) => console.log(`Turime ${kas} ${kiek} vienetu.`))
+  krepselioTurinys() {
+    this.turinys.forEach((kiek, kas) => console.log(`Turime ${kas} ${kiek} vienetu.`))
   }
 }
 
 const norfa = new PirkiniuKrepselis();
-norfa.ideti('Duonos',2);
+norfa.ideti('Duonos', 2);
 norfa.ideti('Surelis', 5);
 norfa.krepselioTurinys();
 
@@ -294,3 +294,87 @@ const s100 = new Stikline(100);
 
 s100.ipilti(s150.ipilti(s200.ipilti(180).ispilti()).ispilti());
 console.log(s200, s150, s100);
+
+console.clear();
+
+console.log('-------------------------------');
+console.log('Grybaujam');
+console.log('-------------------------------');
+
+
+function rand(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+const trueFalse = function () {
+
+  let sk = rand(0, 1);
+  /* console.log(sk);
+  console.log('-------------------------------'); */
+  if (sk == '1') {
+    /* console.log('true'); */
+    return true;
+  } else {
+    /* console.log('false'); */
+    return false;
+  }
+}
+
+trueFalse();
+
+class Grybas {
+
+  constructor() {
+    this.valgomas = trueFalse() ? 'Valgomas' : 'Nevalgomas';
+    this.sukirmijes = trueFalse() ? 'Sveikas' : 'Sukirmijes';
+    this.svoris = rand(5, 45);
+  }
+
+}
+
+class Krepsys {
+
+  constructor() {
+    this.dydis = 500;
+    this.svoris = 0;
+  }
+
+  deti(svoris) {
+    this.svoris = this.svoris + svoris;
+    this.svoris = Math.min(this.dydis, this.svoris);
+    return this;
+  }
+}
+
+const krepsi = new Krepsys();
+
+do {
+  const randamGryba = new Grybas();
+  console.log(randamGryba);
+  if (randamGryba.valgomas == 'Valgomas') {
+    console.log('Radom valgomą,')
+    if (randamGryba.sukirmijes == 'Sveikas'){
+      krepsi.svoris += randamGryba.svoris;
+      console.log('ir sveiką grybą,')
+      console.log('tai dedam į krepšą')
+      console.log('-------------------------------');
+    }
+      } else {
+    console.log('Ieškom grybų');
+    console.log('-------------------------------');
+  }  
+  
+} while (krepsi.svoris < krepsi.dydis)
+  console.log(krepsi);
+
+
+/*  while (stasys < 200) {
+ const uzdarbis = rand(20, 80);
+ stasys += uzdarbis;
+ console.log(stasys);
+} */
+/* 
+  const randamGryba = new Grybas();
+  console.log(randamGryba); */
