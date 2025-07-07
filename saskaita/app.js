@@ -1,6 +1,3 @@
-console.log('labas bebrai');
-
-
 fetch('https://in3.dev/inv/')
   .then(response => response.json())
   .then(json => {
@@ -66,12 +63,6 @@ const parse = data => {
     }
     clone.querySelector('[data-item-discount]').textContent = discountText;
 
-    /*
-      <p class="p2"><span data-item-discount>-</span></p>
-      <p class="p2"><span data-item-discounted-price>-</span></p>
-      <p class="p2"><span data-item-taxes>-</span></p>
-      <p class="p2"><span data-item-total*/
-
     let totalSum = (item.price);
     console.log('Total sum is:', totalSum);
     let discount = item.discount.value;
@@ -113,8 +104,4 @@ const parse = data => {
     document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(isViso) + parseFloat(data.shippingPrice)).toFixed(2);
   });
 
-  /*data-item-shipping
-    data-item-total-sum
-    data-item-total-tax
-    data-item-total-w-tax*/
-}
+ }
