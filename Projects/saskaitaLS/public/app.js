@@ -157,22 +157,67 @@ var Invoice = /*#__PURE__*/function () {
   return _createClass(Invoice, [{
     key: "renderDisplay",
     value: function renderDisplay(container) {
+      var _this = this;
       var div = document.createElement('div');
       div.className = 'invoice-card';
       var data = this.data;
-      div.innerHTML = "\n      <h2>S\u0105skaita #<span>".concat(data.number, "</span></h2>\n      <p>I\u0161ra\u0161yta: <span>").concat(data.date, "</span></p>\n      <p>Apmok\u0117ti iki: <span>").concat(data.due_date, "</span></p>\n      <div class=\"seller-buyer-wrapper\">\n        <div class=\"seller-buyer-block\">\n          <h3>Pardav\u0117jas</h3>\n          <p>").concat(data.company.seller.name, "</p>\n          <p>Kodas: ").concat(data.company.seller.code, "</p>\n          <p>PVM: ").concat(data.company.seller.vat, "</p>\n          <p>Adresas: ").concat(data.company.seller.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.seller.email, "</p>\n          <p>Tel: ").concat(data.company.seller.phone, "</p>\n        </div>\n        <div class=\"seller-buyer-block\">\n          <h3>Pirk\u0117jas</h3>\n          <p>").concat(data.company.buyer.name, "</p>\n          <p>Kodas: ").concat(data.company.buyer.code, "</p>\n          <p>PVM: ").concat(data.company.buyer.vat, "</p>\n          <p>Adresas: ").concat(data.company.buyer.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.buyer.email, "</p>\n          <p>Tel: ").concat(data.company.buyer.phone, "</p>\n        </div>\n      </div>\n      <h3>Prek\u0117s</h3>\n      <div class=\"products-table-wrapper\"></div>\n      <div class=\"invoice-totals\"></div>\n    ");
+      div.innerHTML = "\n      <h2>S\u0105skaita #<span>".concat(data.number, "</span></h2>\n      <p>I\u0161ra\u0161yta: <span>").concat(data.date, "</span></p>\n      <p>Apmok\u0117ti iki: <span>").concat(data.due_date, "</span></p>\n      <div class=\"seller-buyer-wrapper\">\n        <div class=\"seller-buyer-block\">\n          <h3>Pardav\u0117jas</h3>\n          <p>").concat(data.company.seller.name, "</p>\n          <p>Kodas: ").concat(data.company.seller.code, "</p>\n          <p>PVM: ").concat(data.company.seller.vat, "</p>\n          <p>Adresas: ").concat(data.company.seller.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.seller.email, "</p>\n          <p>Tel: ").concat(data.company.seller.phone, "</p>\n        </div>\n        <div class=\"seller-buyer-block\">\n          <h3>Pirk\u0117jas</h3>\n          <p>").concat(data.company.buyer.name, "</p>\n          <p>Kodas: ").concat(data.company.buyer.code, "</p>\n          <p>PVM: ").concat(data.company.buyer.vat, "</p>\n          <p>Adresas: ").concat(data.company.buyer.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.buyer.email, "</p>\n          <p>Tel: ").concat(data.company.buyer.phone, "</p>\n        </div>\n      </div>\n      <h3>Prek\u0117s</h3>\n      <div class=\"products-table-wrapper\"></div>\n      <div class=\"invoice-totals\"></div>\n      <button class=\"edit-invoice-btn\">Redaguoti</button>\n    ");
+
+      // Pridedame produkto lentelę
       var productsTable = this.renderProductsTable(data.items);
       div.querySelector('.products-table-wrapper').appendChild(productsTable);
 
-      // Sukuriame totals div atskirai nuo lentelės
+      // Pridėti totals su pristatymu
       var totalsDiv = div.querySelector('.invoice-totals');
-      var _this$calculateTotals = this.calculateTotals(data.items, data.shippingPrice),
-        viso = _this$calculateTotals.viso,
-        pvm = _this$calculateTotals.pvm,
-        isViso = _this$calculateTotals.isViso;
-      totalsDiv.innerHTML = "\n      <p>Pristatymas: \u20AC".concat(parseFloat(data.shippingPrice).toFixed(2), "</p>\n      <p>Preki\u0173 suma: \u20AC").concat(viso.toFixed(2), "</p>\n      <p>PVM suma: \u20AC").concat(pvm.toFixed(2), "</p>\n      <p>I\u0161 viso: \u20AC").concat((isViso + parseFloat(data.shippingPrice)).toFixed(2), "</p>\n    ");
+      totalsDiv.innerHTML = "\n      <p>Pristatymas: \u20AC".concat(parseFloat(data.shippingPrice).toFixed(2), "</p>\n      <p>Viso: \u20AC").concat(this.getTotalWithoutTax().toFixed(2), "</p>\n      <p>PVM: \u20AC").concat(this.getTotalTax().toFixed(2), "</p>\n      <p>I\u0161 viso su PVM ir pristatymu: \u20AC").concat(this.getTotalWithTaxAndShipping().toFixed(2), "</p>\n    ");
+
+      // Mygtuko paspaudimo įvykis
+      div.querySelector('.edit-invoice-btn').addEventListener('click', function () {
+        _this.app.editInvoice(_this.index);
+      });
       container.innerHTML = '';
       container.appendChild(div);
+    }
+
+    // Apskaičiuoja sumą be PVM ir pristatymo
+  }, {
+    key: "getTotalWithoutTax",
+    value: function getTotalWithoutTax() {
+      return this.data.items.reduce(function (sum, item) {
+        var price = parseFloat(item.price);
+        var discount = item.discount ? item.discount.value : 0;
+        if (item.discount && item.discount.type === "percentage") {
+          price -= price * (discount / 100);
+        } else if (item.discount && item.discount.type === "fixed") {
+          price -= discount;
+        }
+        return sum + price;
+      }, 0);
+    }
+
+    // Apskaičiuoja bendrą PVM sumą
+  }, {
+    key: "getTotalTax",
+    value: function getTotalTax() {
+      return this.data.items.reduce(function (sum, item) {
+        var price = parseFloat(item.price);
+        var discount = item.discount ? item.discount.value : 0;
+        var discountedPrice = price;
+        if (item.discount && item.discount.type === "percentage") {
+          discountedPrice = price - price * (discount / 100);
+        } else if (item.discount && item.discount.type === "fixed") {
+          discountedPrice = price - discount;
+        }
+        var tax = discountedPrice * 0.21;
+        return sum + tax;
+      }, 0);
+    }
+
+    // Apskaičiuoja galutinę sumą su PVM ir pristatymu
+  }, {
+    key: "getTotalWithTaxAndShipping",
+    value: function getTotalWithTaxAndShipping() {
+      return this.getTotalWithoutTax() + this.getTotalTax() + parseFloat(this.data.shippingPrice);
     }
   }, {
     key: "renderProductsTable",
@@ -205,33 +250,6 @@ var Invoice = /*#__PURE__*/function () {
       });
       table.appendChild(tbody);
       return table;
-    }
-  }, {
-    key: "calculateTotals",
-    value: function calculateTotals(items, shippingPrice) {
-      var viso = 0;
-      var pvm = 0;
-      var isViso = 0;
-      items.forEach(function (item) {
-        var totalSum = parseFloat(item.price);
-        var discount = item.discount ? item.discount.value : 0;
-        var discountedSum = totalSum;
-        if (item.discount && item.discount.type === "percentage") {
-          discountedSum = totalSum - totalSum * (discount / 100);
-        } else if (item.discount && item.discount.type === "fixed") {
-          discountedSum = totalSum - discount;
-        }
-        var taxesAfter = discountedSum * 0.21;
-        var totalWithTax = discountedSum + taxesAfter;
-        viso += discountedSum;
-        pvm += taxesAfter;
-        isViso += totalWithTax;
-      });
-      return {
-        viso: viso,
-        pvm: pvm,
-        isViso: isViso
-      };
     }
   }]);
 }();

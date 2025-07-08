@@ -39,24 +39,64 @@ export default class Invoice {
       <h3>Prekės</h3>
       <div class="products-table-wrapper"></div>
       <div class="invoice-totals"></div>
+      <button class="edit-invoice-btn">Redaguoti</button>
     `;
 
+    // Pridedame produkto lentelę
     const productsTable = this.renderProductsTable(data.items);
     div.querySelector('.products-table-wrapper').appendChild(productsTable);
 
-    // Sukuriame totals div atskirai nuo lentelės
+    // Pridėti totals su pristatymu
     const totalsDiv = div.querySelector('.invoice-totals');
-    const { viso, pvm, isViso } = this.calculateTotals(data.items, data.shippingPrice);
-
     totalsDiv.innerHTML = `
       <p>Pristatymas: €${parseFloat(data.shippingPrice).toFixed(2)}</p>
-      <p>Prekių suma: €${viso.toFixed(2)}</p>
-      <p>PVM suma: €${pvm.toFixed(2)}</p>
-      <p>Iš viso: €${(isViso + parseFloat(data.shippingPrice)).toFixed(2)}</p>
+      <p>Viso: €${this.getTotalWithoutTax().toFixed(2)}</p>
+      <p>PVM: €${this.getTotalTax().toFixed(2)}</p>
+      <p>Iš viso su PVM ir pristatymu: €${this.getTotalWithTaxAndShipping().toFixed(2)}</p>
     `;
+
+    // Mygtuko paspaudimo įvykis
+    div.querySelector('.edit-invoice-btn').addEventListener('click', () => {
+      this.app.editInvoice(this.index);
+    });
 
     container.innerHTML = '';
     container.appendChild(div);
+  }
+
+  // Apskaičiuoja sumą be PVM ir pristatymo
+  getTotalWithoutTax() {
+    return this.data.items.reduce((sum, item) => {
+      let price = parseFloat(item.price);
+      let discount = item.discount ? item.discount.value : 0;
+      if (item.discount && item.discount.type === "percentage") {
+        price -= price * (discount / 100);
+      } else if (item.discount && item.discount.type === "fixed") {
+        price -= discount;
+      }
+      return sum + price;
+    }, 0);
+  }
+
+  // Apskaičiuoja bendrą PVM sumą
+  getTotalTax() {
+    return this.data.items.reduce((sum, item) => {
+      let price = parseFloat(item.price);
+      let discount = item.discount ? item.discount.value : 0;
+      let discountedPrice = price;
+      if (item.discount && item.discount.type === "percentage") {
+        discountedPrice = price - price * (discount / 100);
+      } else if (item.discount && item.discount.type === "fixed") {
+        discountedPrice = price - discount;
+      }
+      let tax = discountedPrice * 0.21;
+      return sum + tax;
+    }, 0);
+  }
+
+  // Apskaičiuoja galutinę sumą su PVM ir pristatymu
+  getTotalWithTaxAndShipping() {
+    return this.getTotalWithoutTax() + this.getTotalTax() + parseFloat(this.data.shippingPrice);
   }
 
   renderProductsTable(items) {
@@ -116,32 +156,5 @@ export default class Invoice {
     table.appendChild(tbody);
 
     return table;
-  }
-
-  calculateTotals(items, shippingPrice) {
-    let viso = 0;
-    let pvm = 0;
-    let isViso = 0;
-
-    items.forEach(item => {
-      let totalSum = parseFloat(item.price);
-      let discount = item.discount ? item.discount.value : 0;
-      let discountedSum = totalSum;
-
-      if (item.discount && item.discount.type === "percentage") {
-        discountedSum = totalSum - (totalSum * (discount / 100));
-      } else if (item.discount && item.discount.type === "fixed") {
-        discountedSum = totalSum - discount;
-      }
-
-      let taxesAfter = discountedSum * 0.21;
-      let totalWithTax = discountedSum + taxesAfter;
-
-      viso += discountedSum;
-      pvm += taxesAfter;
-      isViso += totalWithTax;
-    });
-
-    return { viso, pvm, isViso };
   }
 }
