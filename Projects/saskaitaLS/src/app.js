@@ -1,13 +1,32 @@
+/**
+ * Funkcija fetchInvoiceFromAPI
+ * ----------------------------
+ * Asinchroniškai užklausia API (https://in3.dev/inv/)
+ * ir grąžina gautą sąskaitos objektą JSON formatu.
+ */
 async function fetchInvoiceFromAPI() {
   const response = await fetch('https://in3.dev/inv/');
   const data = await response.json();
   return data;
 }
 
+/**
+ * Funkcija saveInvoicesToLocalStorage
+ * -----------------------------------
+ * Išsaugo visas sąskaitas į naršyklės localStorage
+ * JSON string formatu su raktu 'invoices'.
+ */
 function saveInvoicesToLocalStorage(invoices) {
   localStorage.setItem('invoices', JSON.stringify(invoices));
 }
 
+/**
+ * Funkcija renderSidebar
+ * ----------------------
+ * Atvaizduoja šoninės juostos (sidebar) mygtukų sąrašą pagal perduotas sąskaitas.
+ * Leidžia pasirinkti aktyvią sąskaitą arba ištrinti ją.
+ * activeIndex nurodo, kuri sąskaita šiuo metu yra pažymėta aktyvia.
+ */
 function renderSidebar(invoices, activeIndex = 0) {
   const list = document.getElementById('invoice-list');
   list.innerHTML = '';
@@ -48,6 +67,14 @@ function renderSidebar(invoices, activeIndex = 0) {
   });
 }
 
+/**
+ * Funkcija renderInvoice
+ * ----------------------
+ * Atvaizduoja pasirinktą sąskaitą pagrindinėje puslapio dalyje (invoice display).
+ * Nuskaito duomenis iš localStorage pagal perduotą index, sugeneruoja
+ * HTML struktūrą su pardavėjo, pirkėjo ir prekių informacija bei
+ * apskaičiuoja bendras sumas su PVM ir pristatymu.
+ */
 function renderInvoice(_, invoiceIndex = 0) {
   let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
   let data = invoices[invoiceIndex];
@@ -253,10 +280,16 @@ function renderInvoice(_, invoiceIndex = 0) {
   div.querySelector('[data-item-total-tax]').innerText = pvm.toFixed(2);
   div.querySelector('[data-item-total-w-tax]').innerText = (isViso + parseFloat(data.shippingPrice)).toFixed(2);
 
-  container.appendChild(div);
+ container.appendChild(div);
 }
 
-// Redaguojamas langelis su žalia varnele
+/**
+ * Funkcija makeCellEditable
+ * -------------------------
+ * Paverčia lentelės langelį (td) redaguojamu įvedimo lauku su ✔ mygtuku.
+ * Paspaudus Enter arba ✔ įvykdomas išsaugojimas (onSave) ir puslapio
+ * perpiešimas (onSaveAndRerender).
+ */
 function makeCellEditable(td, value, onSave, onSaveAndRerender) {
   const input = document.createElement('input');
   input.type = 'text';
@@ -296,6 +329,14 @@ function makeCellEditable(td, value, onSave, onSaveAndRerender) {
   }
 }
 
+/**
+ * window.onload
+ * -------------
+ * Įvykdomas, kai puslapis pilnai užkrautas. Inicializuoja mygtuko
+ * 'fetch-invoices-btn' veikimą (parsisiunčia naują sąskaitą), atvaizduoja
+ * sidebar su visomis išsaugotomis sąskaitomis ir pirmą sąskaitą pagrindinėje
+ * display zonoje, jei sąskaitų yra.
+ */
 window.onload = () => {
   const btn = document.getElementById('fetch-invoices-btn');
   let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
