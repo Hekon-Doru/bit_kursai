@@ -302,52 +302,70 @@ console.log('Grybaujam');
 console.log('-------------------------------');
 
 
-function rand(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
-}
-
-const trueFalse = function () {
-
-  let sk = rand(0, 1);
-  /* console.log(sk);
-  console.log('-------------------------------'); */
-  if (sk == '1') {
-    /* console.log('true'); */
-    return true;
-  } else {
-    /* console.log('false'); */
-    return false;
-  }
-}
-
-trueFalse();
 
 class Grybas {
 
+  #valgomas;
+  #sukirmijes;
+  #svoris;
+
   constructor() {
-    this.valgomas = trueFalse() ? 'Valgomas' : 'Nevalgomas';
-    this.sukirmijes = trueFalse() ? 'Sveikas' : 'Sukirmijes';
-    this.svoris = rand(5, 45);
+    this.#valgomas = !this.#rand(0, 1);
+    this.#sukirmijes = !this.#rand(0, 1);
+    this.#svoris = this.#rand(5, 45);
+  }
+
+  get valgomas(){
+    return this.#valgomas;
+  }
+  get sukirmijes(){
+    return this.#sukirmijes;
+  }
+  get svoris(){
+    return this.#svoris;
+  }
+
+  #rand(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
   }
 
 }
 
 class Krepsys {
 
+#dydis;
+#prikrauta;
+
   constructor() {
-    this.dydis = 500;
-    this.svoris = 0;
+    this.#dydis = 500;
+    this.#prikrauta = 0;
   }
 
-  deti(svoris) {
-    this.svoris = this.svoris + svoris;
+  deti(grybas) {
+    if (grybas.valgomas && !grybas.sukirmijes) {
+      this.#prikrauta += grybas.svoris;
+      console.log(this.#prikrauta);
+    }
+    return this.#prikrauta < this.#dydis;
+    /* 
+    this.svoris = this.svoris + grybas;
     this.svoris = Math.min(this.dydis, this.svoris);
-    return this;
+    return this; */
   }
+
+
+
 }
 
+
+const krepsis2 = new Krepsys() ;
+
+do { }while(krepsis2.deti(new Grybas));
+
+console.log(krepsis2);
+/* 
 const krepsi = new Krepsys();
 
 do {
@@ -355,19 +373,19 @@ do {
   console.log(randamGryba);
   if (randamGryba.valgomas == 'Valgomas') {
     console.log('Radom valgomą,')
-    if (randamGryba.sukirmijes == 'Sveikas'){
+    if (randamGryba.sukirmijes == 'Sveikas') {
       krepsi.svoris += randamGryba.svoris;
       console.log('ir sveiką grybą,')
       console.log('tai dedam į krepšą')
       console.log('-------------------------------');
     }
-      } else {
+  } else {
     console.log('Ieškom grybų');
     console.log('-------------------------------');
-  }  
-  
-} while (krepsi.svoris < krepsi.dydis)
-  console.log(krepsi);
+  }
+
+} while (krepsi.svoris < krepsi.dydis) */
+/* console.log(krepsi); */
 
 
 /*  while (stasys < 200) {

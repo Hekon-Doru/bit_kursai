@@ -104,17 +104,20 @@ do {
   while (generatedNum < 12) {
     generatedNum = rand(10, 25);
     console.log(generatedNum);
+
     if (generatedNum < 18) {
       generatedNumSum += generatedNum;
     } else {
       skippedNumSum += generatedNum;
       skippedNumCount++;
     }
+
     if (generatedNum % 2 === 0) {
       lygNumCount++;
     } else {
       nelygNumCount++;
     }
+    
     cycleCount++
     //B 
     //Suskaičiuokite kiek iteracijų padarėte ir jų kiekį

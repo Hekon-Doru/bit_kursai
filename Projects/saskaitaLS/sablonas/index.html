@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sąskaitų šablonas</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <h1>Sąskaitos</h1>
-  <div id="invoice-container"></div>
+
+  <div class="container">
+    <div id="invoice-sidebar" class="sidebar">
+      <button id="fetch-invoices-btn" class="fetch-btn">Gauti sąskaitą</button>
+      <div id="invoice-list"></div>  <!-- Dinaminis sąrašas -->
+    </div>
+
+    <div id="invoice-display"></div>
+  </div>
 
   <!-- Produktų lentelės šablonas -->
   <template data-table-template>

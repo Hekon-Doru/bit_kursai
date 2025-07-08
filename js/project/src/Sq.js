@@ -1,39 +1,50 @@
 export default class Sq {
 
-  #x;
-  #y;
+
   #color;
   #gate = false;
   #activeColor;
   #el;
-  #size;
 
   constructor(x, y, size, color = 'transparent') {
-    this.#x = x;
-    this.#y = y;
-    this.#size = size;
     this.#color = color;
     this.#el = document.createElement('div');
-    this.#el.style.left = this.#x + 'px';
-    this.#el.style.top = this.#y + 'px';
-    this.#el.style.width = this.#size + 'px';
-    this.#el.style.height = this.#size + 'px';
+    this.#el.style.left = x + 'px';
+    this.#el.style.top = y + 'px';
+    this.#el.style.width = size + 'px';
+    this.#el.style.height = size + 'px';
     this.#el.style.backgroundColor = this.#color;
+    this.#el.style.position = 'absolute';
   }
-
-
-  addTo(parent) {
+  
+  
+  addTo(parent, mode = 'view') {
     parent.appendChild(this.#el);
+    if (mode == 'view') {
+      return;
+    }
     this.#el.addEventListener('mouseover', _ => {
-      console.log('OK');
+      if (this.#gate) {
+        this.#color = this.#activeColor;
+        this.#el.style.backgroundColor = this.#color;
+        
+      }
     })
   }
 
   open(gate) {
     this.#gate = gate;
   }
-
+  /**
+    *@param {string} color
+  */
   set activeColor(color) {
     this.#activeColor = color;
   }
+
+  reset() {
+    this.#color = 'transparent';
+    this.#el.style.backgroundColor = this.#color;
+  }
+
 }
