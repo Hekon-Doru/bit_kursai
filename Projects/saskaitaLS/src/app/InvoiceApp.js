@@ -3,11 +3,17 @@
 import Invoice from '../classes/Invoice.js';
 import Sidebar from '../classes/Sidebar.js';
 
+import InvoiceEditor from '../classes/InvoiceEditor.js';
+
+
 export default class InvoiceApp {
   constructor() {
     this.invoices = JSON.parse(localStorage.getItem('invoices')) || [];
     this.sidebar = new Sidebar(this);
     this.container = document.getElementById('invoice-display');
+
+    this.invoiceEditor = new InvoiceEditor(this);
+
 
     this.init();
   }
@@ -56,4 +62,16 @@ export default class InvoiceApp {
   saveInvoicesToLocalStorage() {
     localStorage.setItem('invoices', JSON.stringify(this.invoices));
   }
+
+  editInvoice(index) {
+    const invoice = this.invoices[index];
+    this.invoiceEditor.render(invoice, index);
+  }
+
+  saveInvoiceChanges(index, updatedInvoice) {
+    this.invoices[index] = updatedInvoice;
+    this.renderSidebar(index);
+    this.renderInvoice(index);
+  }
+
 }
