@@ -317,13 +317,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
 
 var LS = /*#__PURE__*/function () {
   function LS() {
@@ -335,25 +340,28 @@ var LS = /*#__PURE__*/function () {
       this.key = settings.key;
     }
   }, {
+    key: "read",
+    value: function read() {
+      var storedData = localStorage.getItem(this.key);
+      if (null === storedData) {
+        return [];
+      }
+      return JSON.parse(storedData);
+    }
+  }, {
+    key: "write",
+    value: function write(data) {
+      localStorage.setItem(this.key, JSON.stringify(data));
+    }
+  }, {
     key: "store",
     value: function store(data) {
       var id = (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])();
       data.id = id;
-      _assertClassBrand(LS, this, _write).call(this, _assertClassBrand(LS, this, _read).call(this).push(data));
+      this.write([].concat(_toConsumableArray(this.read()), [data]));
     }
   }]);
 }();
-function _read() {
-  var storedData = localStorage.getItem(this.key);
-  if (null === storedData) {
-    return [];
-  } else {
-    return JSON.parse(storedData);
-  }
-}
-function _write(data) {
-  localStorage.setItem(this.key, data);
-}
 _defineProperty(LS, "key", void 0);
 
 
@@ -400,7 +408,24 @@ var Main = /*#__PURE__*/function (_LS) {
       });
       if (document.querySelector('[data-create]')) {
         this.initCreate();
+      } else if (document.querySelector('[data-read]')) {
+        this.initRead();
       }
+    }
+  }, {
+    key: "initRead",
+    value: function initRead() {
+      var frames = this.read();
+      var template = document.querySelector('template');
+      var listEl = document.querySelector('[data-list]');
+      frames.forEach(function (activeFrame) {
+        var clone = template.content.cloneNode(true);
+        clone.querySelector('[data-title]').textContent = activeFrame.title;
+        var f = clone.querySelector('[data-frame]');
+        var frame = new _Frame__WEBPACK_IMPORTED_MODULE_0__["default"](3, activeFrame.frame, f, 'view');
+        frame.addBorders('gray', 1);
+        listEl.appendChild(clone);
+      });
     }
   }, {
     key: "initCreate",
@@ -426,6 +451,9 @@ var Main = /*#__PURE__*/function (_LS) {
           frame: frame["export"](),
           title: titleInput.value
         });
+        colorInput.value = '#000000';
+        frame.reset();
+        titleInput.value = '';
       });
     }
   }]);
