@@ -32,6 +32,10 @@ export default class Sq {
     })
   }
 
+  get color() {
+    return this.#color; 
+  }
+
   open(gate) {
     this.#gate = gate;
   }

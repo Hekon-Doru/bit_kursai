@@ -62,6 +62,12 @@ export default class Frame {
     this.#sqs.forEach(sq => sq.activeColor = color);
   }
 
+  export() {
+    const colors = [];
+    this.#sqs.forEach(sq => colors.push(sq.color));
+    return colors;
+  }
+
   addBorders(color, borderSize) {
     this.#frameHolderElement.style.border = `${borderSize}px solid ${color}`;
     const elSize = this.#frameSize * this.#size + 2 * borderSize;

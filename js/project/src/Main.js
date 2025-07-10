@@ -7,22 +7,22 @@ export default class Main extends LS {
 
   static init() {
 
-    this.storateInit({
+    this.storageInit({
       key: 'niceArt'
     });
 
     if (document.querySelector('[data-create]')) {
       this.initCreate();
     }
-    
+
   }
 
   static initCreate() {
     const f = document.querySelector('[data-create-frame]');
     const colorInput = document.querySelector('[type="color"]');
-    
+
     const titleInput = document.querySelector('input[data-title]');
-    
+
     const saveButton = document.querySelector('button[data-save]');
     const clear = document.querySelector('button[data-clear]');
 
@@ -43,12 +43,12 @@ export default class Main extends LS {
 
     saveButton.addEventListener('click', _ => {
       this.store({
-        frame,
+        frame: frame.export(),
         title: titleInput.value
       });
     });
 
-   
+
   }
 
 

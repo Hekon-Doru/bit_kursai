@@ -1,14 +1,30 @@
+import { v4 } from 'uuid';
+
 export default class LS {
 
-static key;
+    static key;
+
+    static storageInit(settings) {
+        this.key = settings.key;
+    }
 
 
-static storateInit(settings){
-this.key = settings
+    static #read() {
+        const storedData = localStorage.getItem(this.key);
+        if (null === storedData) {
+            return [];
+        } else {
+            return JSON.parse(storedData);
+        }
+    }
+
+    static #write(data) {
+        localStorage.setItem(this.key, data);
+    }
+
+    static store(data) {
+        const id = v4();
+        data.id = id;
+        this.#write(this.#read().push(data));
+    }
 }
-
-static store(data) {
-  
-}
-
-};
