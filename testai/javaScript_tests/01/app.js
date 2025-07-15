@@ -78,13 +78,14 @@ let karviuValtiesTalpa = 15;
 let atejoKatinu = rand(0, 30);
 let atejoKarviu = rand(0, 30);
 
-if (atejoKarviu > karviuValtiesTalpa && atejoKatinu > katinuValtiesTalpa) {
-  console.log(`Atejo karviu: ${atejoKarviu}. Atejo katinu ${atejoKatinu}. Nieks netelpa į valtį.`);
-} else if (atejoKarviu <= karviuValtiesTalpa && atejoKatinu <= katinuValtiesTalpa) {
-  console.log(`Atejo karviu: ${atejoKarviu}. Atejo katinu ${atejoKatinu}. Visi sutilpo.`);
-} else {
-  console.log(`Atejo karviu: ${atejoKarviu}. Atejo katinu ${atejoKatinu}. Netelpa`);
-};
+console.log(`Atejo karviu: ${atejoKarviu}. Atejo katinu ${atejoKatinu}.`);
+
+if (atejoKarviu > karviuValtiesTalpa || atejoKatinu > katinuValtiesTalpa) {
+  console.log(`Nieks netelpa į valtį.`);
+} else { 
+  console.log(`Visi sutilpo.`);
+
+} 
 
 // Antanas nusipirko naują butą ir pinigų jam liko nedaug.
 // Dabar jis niekaip negali apsispręsti ką pirmiausiai pirkti:
