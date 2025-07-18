@@ -11,35 +11,91 @@
 
 <body>
 
-    <div class="container" data-create>
+    <div class="container">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">             
+            <div class="col-2 flex-column">
+              <div class="card mt-5">
+                <a href="read.html"></a><button data-save class="btn btn-light">Visos sąskaitos</button></a>
+                <button data-save class="btn btn-success">Gauti naują sąskaitą</button>
+                </div>
+            </div>
+            <div class="col-10 flex-column" data-create>             
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h1>Create new art</h1>
-                        <a href="read.html">All ART</a>
+                        <h1>Sąskaita Nr. <span data-number></span></h1>
+                        <p>Data: <span data-date></span></p>
+                        <p>Apmokėti iki: <span data-due-date></span></p>
+                        <div class="row">
+                          <div class="col-6">
+                            <h2>Pardavėjas</h2>
+                        <p data-seller-name>UAB Stankevičius</p>
+                        <p data-seller-address>Didžioji gatvė 37-90, Tauragė</p>
+                        <p data-seller-code>34056599</p>  
+                        <p data-seller-vat>LT466309211</p>
+                        <p data-seller-phone>+37063569609</p>
+                        <p data-seller-email>
+                          <a href="mailto:info@stankevicius.lt">info@stankevicius.lt</a>
+                        </p>
+                      </div>
+                          <div class="col-6">
+                            <h2>Pirkėjas</h2>
+                        <p data-buyer-name>AB Paulauskas ir Vasiliauskas</p>
+                        <p data-buyer-address>Kauno g. 51, Jonava</p>
+                        <p data-buyer-code>85177905</p>     
+                        <p data-buyer-vat>LT962251418</p>
+                        <p data-buyer-phone>+37046348969</p>
+                        <p data-buyer-email>
+                          <a href="mailto:info@paulauskas.lt">info@paulauskas.lt</a>
+                        </p>
+
+                          </div>
+                        </div>
+                        
+                        
+
+                      
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Art title</label>
-                            <input type="text" data-title class="form-control">
-                        </div>
-                        <div class="frame" data-create-frame></div>
-                        <div class="mt-2">
-                            <input type="color" class="form-control form-control-color" value="#000000"
-                                title="Choose your color">
-                        </div>
+                    
+                      <div class="row">
+                        <p class="col-5"><strong>Prekė</strong></p>
+                        <p class="col">Kiekis</p>
+                        <p class="col">Kaina</p>
+                        <p class="col">Nuolaida</p>
+                        <p class="col">Kaina su nuolaida</p>
+                        <p class="col">PVM</p>
+                        <p class="col">Iš viso su PVM:</p>
+                      </div>
+                      
+                      <div class="prekiu-lentele" data-create-saskaita></div>
+                      <div class="row">
+                        <p class="col-5"><span data-item-description>-</span></p>
+                        <p class="col"><span data-item-quantity>-</span></p>
+                        <p class="col"><span data-item-price>-</span></p>
+                        <p class="col"><span data-item-discount>-</span></p>
+                        <p class="col"><span data-item-discounted-price>-</span></p>
+                        <p class="col"><span data-item-taxes>-</span></p>
+                        <p class="col"><span data-item-total>-</span></p>
+                      </div>
 
+                      <div class="row totals">
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                          <p class="col">Siuntimas: <span data-item-shipping>0</span> Eur</p>
+                        <p class="col">Viso: <span data-item-total-sum>0</span> Eur</p>
+                        <p class="col">PVM: <span data-item-total-tax>0</span> Eur</p>
+                        <p class="col"><b>Iš viso:</b><b><span data-item-total-w-tax>0</span> Eur</b></p>
+
+                      </div>
                         <div class="mt-5">
-                            <button data-save class="btn btn-primary">Save art</button>
-                            <button data-ai class="btn btn-primary">AI</button>
-                            <button data-clear class="btn btn-secondary">Clear</button>
+                            <button data-save class="btn btn-primary">Išsaugoti</button>
+                            <button data-ai class="btn btn-primary">Redaguoti</button>
+                            <button data-clear class="btn btn-secondary">Ištrinti</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-1"></div>
+            
         </div>
     </div>
 
@@ -48,5 +104,16 @@
 
 
 </body>
+<template> 
+  <div class="row">
+    <p class="col-5"><span data-item-description>-</span></p>
+    <p class="col"><span data-item-quantity>-</span></p>
+    <p class="col"><span data-item-price>-</span></p>
+    <p class="col"><span data-item-discount>-</span></p>
+    <p class="col"><span data-item-discounted-price>-</span></p>
+    <p class="col"><span data-item-taxes>-</span></p>
+    <p class="col"><span data-item-total>-</span></p>
+  </div>
 
+</template>
 </html>
