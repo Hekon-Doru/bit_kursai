@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sąskaitų valdymas</title>
+  <link href="style.css" rel="stylesheet" />
+  <script src="app.js" defer></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body class="bg-light">
+  <div class="container-fluid">
+    <div class="row vh-100">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar shadow-sm p-3">
+        <button id="fetchInvoice" class="btn btn-primary mb-3 w-100">Gauti sąskaitą</button>
+        <ul id="invoiceList" class="list-group"></ul>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 col-lg-10 ms-sm-auto px-4 py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h1>Sąskaita faktūra <span data-number></span></h1>
+          <div>
+            <button id="editInvoice" class="btn btn-warning me-2">Koreguoti</button>
+            <button id="deleteInvoice" class="btn btn-danger">Ištrinti</button>
+          </div>
+        </div>
+        <p>Data: <span data-date></span></p>
+        <p>Apmokėti iki: <span data-due-date></span></p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Pardavėjas</h4>
+            <p data-seller-name></p>
+            <p data-seller-address></p>
+            <p data-seller-code></p>
+            <p data-seller-vat></p>
+            <p data-seller-phone></p>
+            <p data-seller-email></p>
+          </div>
+          <div class="col-md-6">
+            <h4>Pirkėjas</h4>
+            <p data-buyer-name></p>
+            <p data-buyer-address></p>
+            <p data-buyer-code></p>
+            <p data-buyer-vat></p>
+            <p data-buyer-phone></p>
+            <p data-buyer-email></p>
+          </div>
+        </div>
+
+        <h4 class="mt-4">Prekės</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Aprašymas</th>
+                <th>Kiekis</th>
+                <th>Kaina</th>
+                <th>Nuolaida</th>
+                <th>Kaina su nuolaida</th>
+                <th>PVM (21%)</th>
+                <th>Viso</th>
+              </tr>
+            </thead>
+            <tbody data-item-table></tbody>
+          </table>
+        </div>
+
+        <div class="text-end">
+          <p>Siuntimas: €<span data-item-shipping></span></p>
+          <p>Viso: €<span data-item-total-sum></span></p>
+          <p>PVM: €<span data-item-total-tax></span></p>
+          <h5>Iš viso: €<span data-item-total-w-tax></span></h5>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Confirmation modal -->
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Patvirtinti trynimą</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Ar tikrai norite ištrinti šią sąskaitą?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Atšaukti</button>
+          <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Ištrinti</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

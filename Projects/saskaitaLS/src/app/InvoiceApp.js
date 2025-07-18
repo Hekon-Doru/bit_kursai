@@ -7,6 +7,7 @@ import InvoiceEditor from '../classes/InvoiceEditor.js';
 
 
 export default class InvoiceApp {
+  
   constructor() {
     this.invoices = JSON.parse(localStorage.getItem('invoices')) || [];
     this.sidebar = new Sidebar(this);
