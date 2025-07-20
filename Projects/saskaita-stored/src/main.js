@@ -38,7 +38,8 @@ export default class localStorage {
     }
 } */
 
-/* export default class Main extends localStorage {
+export default class Main extends localStorage {
+ 
   static init() {
     this.storageInit({
       key: 'invoices'
@@ -131,7 +132,7 @@ export default class localStorage {
     });
   }
 }
- */
+
 
 
 InvoiceAPI.fetchInvoice().then(invoice => {

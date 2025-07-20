@@ -362,7 +362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.js */ "./src/main.js");
 console.log('Labas Projektai');
 
-_main_js__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+_main_js__WEBPACK_IMPORTED_MODULE_0__.main.init();
 
 /***/ }),
 
@@ -453,10 +453,26 @@ _defineProperty(localStorage, "key", void 0);
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */ });
 /* harmony import */ var _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvoiceAPI.js */ "./src/InvoiceAPI.js");
 /* harmony import */ var _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvoiceRenderer.js */ "./src/InvoiceRenderer.js");
 /* harmony import */ var _sidebar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidebar.js */ "./src/sidebar.js");
 /* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./localStorage.js */ "./src/localStorage.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 
 
 
@@ -496,101 +512,115 @@ export default class localStorage {
         this.write(this.read().map(f => f.id == id ? { ...f, ...data, id } : f));
     }
 } */
-
-/* export default class Main extends localStorage {
-  static init() {
-    this.storageInit({
-      key: 'invoices'
-    });
-
-    if (document.querySelector('[data-create]')) {
-      this.initCreate();
-    } else if (document.querySelector('[data-read]')) {
-      this.initRead();
-    } else if (document.querySelector('[data-delete]')) {
-      this.initDelete();
-    } else if (document.querySelector('[data-edit]')) {
-      this.initEdit();
-    } else if (document.querySelector('[data-show]')) {
-      this.initShow();
+var Main = /*#__PURE__*/function (_localStorage) {
+  function Main() {
+    _classCallCheck(this, Main);
+    return _callSuper(this, Main, arguments);
+  }
+  _inherits(Main, _localStorage);
+  return _createClass(Main, null, [{
+    key: "init",
+    value: function init() {
+      this.storageInit({
+        key: 'invoices'
+      });
+      if (document.querySelector('[data-create]')) {
+        this.initCreate();
+      } else if (document.querySelector('[data-read]')) {
+        this.initRead();
+      } else if (document.querySelector('[data-delete]')) {
+        this.initDelete();
+      } else if (document.querySelector('[data-edit]')) {
+        this.initEdit();
+      } else if (document.querySelector('[data-show]')) {
+        this.initShow();
+      }
     }
-  }
-
-  static initShow() {
-    const invoices = this.read();
-    const id = window.location.hash.slice(1); // id paemimas is hastago
-    const invoiceToShow = invoices.find(inv => inv.id == id);
-    if (!invoiceToShow) {
-      window.location.href = 'read.html'; // puslapio redirectas
+  }, {
+    key: "initShow",
+    value: function initShow() {
+      var invoices = this.read();
+      var id = window.location.hash.slice(1); // id paemimas is hastago
+      var invoiceToShow = invoices.find(function (inv) {
+        return inv.id == id;
+      });
+      if (!invoiceToShow) {
+        window.location.href = 'read.html'; // puslapio redirectas
+      }
+      var saskaita = document.querySelector('[data-frame]');
+      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoiceToShow);
+      renderer.render(saskaita, 'view');
     }
-    const saskaita = document.querySelector('[data-frame]');
-    const renderer = new InvoiceRenderer(invoiceToShow);
-    renderer.render(saskaita, 'view');
-  }
- 
-  static initDelete() {
-    const invoices = this.read();
-    const id = window.location.hash.slice(1); // id paemimas is hastago
-    const invoice = invoices.find(inv => inv.id == id);
-    if (!invoice) {
-      window.location.href = 'read.html'; // puslapio redirectas
+  }, {
+    key: "initDelete",
+    value: function initDelete() {
+      var _this = this;
+      var invoices = this.read();
+      var id = window.location.hash.slice(1); // id paemimas is hastago
+      var invoice = invoices.find(function (inv) {
+        return inv.id == id;
+      });
+      if (!invoice) {
+        window.location.href = 'read.html'; // puslapio redirectas
+      }
+      document.querySelector('[data-art-title]').innerText = invoice.number;
+      var destroyButton = document.querySelector('[data-destroy]');
+      destroyButton.addEventListener('click', function (_) {
+        _this.destroy(invoice.id);
+        window.location.href = 'read.html';
+      });
     }
-    document.querySelector('[data-art-title]').innerText = invoice.number;
-    const destroyButton = document.querySelector('[data-destroy]');
-
-    destroyButton.addEventListener('click', _ => {
-      this.destroy(invoice.id);
-      window.location.href = 'read.html';
-    });
-  }
-
-  static initRead() {
-    const invoices = this.read();
-    const template = document.querySelector('template');
-    const listEl = document.querySelector('[data-list]');
-
-    invoices.forEach(activeInvoice => {
-      const clone = template.content.cloneNode(true);
-      clone.querySelector('[data-number]').textContent = activeInvoice.number;
-      clone.querySelector('[data-date]').textContent = activeInvoice.date;
-      clone.querySelector('[data-id]').textContent = activeInvoice.id;
-
-      clone.querySelector('[data-show]').href = `show.html#${activeInvoice.id}`;
-      clone.querySelector('[data-edit]').href = `edit.html#${activeInvoice.id}`;
-      clone.querySelector('[data-delete]').href = `delete.html#${activeInvoice.id}`;
-
-      listEl.appendChild(clone);
-    });
-  }
-
-  static initCreate() {
-    const createButton = document.querySelector('[data-create]');
-    createButton.addEventListener('click', () => {
-      const invoice = InvoiceAPI.createInvoice();
-      this.store(invoice);
-      window.location.href = 'read.html';
-    });
-  }
-
-  static initEdit() {
-    const invoices = this.read();
-    const id = window.location.hash.slice(1); // id paemimas is hastago
-    const invoice = invoices.find(inv => inv.id == id);
-    if (!invoice) {
-      window.location.href = 'read.html'; // puslapio redirectas
+  }, {
+    key: "initRead",
+    value: function initRead() {
+      var invoices = this.read();
+      var template = document.querySelector('template');
+      var listEl = document.querySelector('[data-list]');
+      invoices.forEach(function (activeInvoice) {
+        var clone = template.content.cloneNode(true);
+        clone.querySelector('[data-number]').textContent = activeInvoice.number;
+        clone.querySelector('[data-date]').textContent = activeInvoice.date;
+        clone.querySelector('[data-id]').textContent = activeInvoice.id;
+        clone.querySelector('[data-show]').href = "show.html#".concat(activeInvoice.id);
+        clone.querySelector('[data-edit]').href = "edit.html#".concat(activeInvoice.id);
+        clone.querySelector('[data-delete]').href = "delete.html#".concat(activeInvoice.id);
+        listEl.appendChild(clone);
+      });
     }
-    const saskaita = document.querySelector('[data-frame]');
-    const renderer = new InvoiceRenderer(invoice);
-    renderer.render(saskaita, 'edit');
-
-    const saveButton = document.querySelector('[data-save]');
-    saveButton.addEventListener('click', () => {
-      this.update(invoice.id, renderer.invoice);
-      window.location.href = 'read.html';
-    });
-  }
-}
- */
+  }, {
+    key: "initCreate",
+    value: function initCreate() {
+      var _this2 = this;
+      var createButton = document.querySelector('[data-create]');
+      createButton.addEventListener('click', function () {
+        var invoice = _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.createInvoice();
+        _this2.store(invoice);
+        window.location.href = 'read.html';
+      });
+    }
+  }, {
+    key: "initEdit",
+    value: function initEdit() {
+      var _this3 = this;
+      var invoices = this.read();
+      var id = window.location.hash.slice(1); // id paemimas is hastago
+      var invoice = invoices.find(function (inv) {
+        return inv.id == id;
+      });
+      if (!invoice) {
+        window.location.href = 'read.html'; // puslapio redirectas
+      }
+      var saskaita = document.querySelector('[data-frame]');
+      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);
+      renderer.render(saskaita, 'edit');
+      var saveButton = document.querySelector('[data-save]');
+      saveButton.addEventListener('click', function () {
+        _this3.update(invoice.id, renderer.invoice);
+        window.location.href = 'read.html';
+      });
+    }
+  }]);
+}(_localStorage_js__WEBPACK_IMPORTED_MODULE_3__.localStorage);
 
 _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.fetchInvoice().then(function (invoice) {
   var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);

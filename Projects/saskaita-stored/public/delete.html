@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Saskaitos su db LS</title>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <div class="mt-5">
+
+          <button data-get class="btn btn-primary mb-2 col-12">Gauti naują sąskaitą</button>
+          <button data-edit class="btn btn-secondary mb-2 col-12">Redaguoti</button>
+          <button data-clear class="btn btn-secondary mb-2 col-12">Ištrinti</button>
+          <button href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</button>
+
+
+        </div>
+      </div>
+      <div class="col-10" data-delete>
+        
+        <div class="mt-5">
+          <div data-alert class="toast-container card ">
+            <div class="card-body">
+              <p class="card-text">Ar tikrai norite ištrinti <span data-number></span>?</p>
+              <a href="#" class="btn btn-danger">Ištrinti</a>
+              <a href="#" class="btn btn-secondary">Atšaukti</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+<template data-table-template>
+  <div class="row">
+    <p class="col-6"><span data-item-description>-</span></p>
+    <p class="col"><span data-item-quantity>-</span></p>
+    <p class="col"><span data-item-price>-</span></p>
+    <p class="col"><span data-item-discount>-</span></p>
+    <p class="col"><span data-item-discounted-price>-</span></p>
+    <p class="col"><span data-item-taxes>-</span></p>
+    <p class="col"><span data-item-total>-</span></p>
+  </div>
+</template>
+
+<template data-sidebar-template>
+  <li data-item-list class="list-group-item active" aria-current="true">AB-35857146</li>
+  <li data-item-list class="list-group-item">AB-35857147</li>
+</template>
+
+</html>
