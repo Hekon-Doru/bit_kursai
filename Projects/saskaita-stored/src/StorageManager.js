@@ -6,7 +6,6 @@ export default class StorageManager {
 
     static storageInit(settings) {
         this.key = settings.key;
-        
     }
 
     static read() {
