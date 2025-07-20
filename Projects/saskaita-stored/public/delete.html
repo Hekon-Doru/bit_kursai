@@ -16,23 +16,17 @@
     <div class="row">
       <div class="col-2">
         <div class="mt-5">
-
           <button data-get class="btn btn-primary mb-2 col-12">Gauti naują sąskaitą</button>
-          <button data-edit class="btn btn-secondary mb-2 col-12">Redaguoti</button>
-          <button data-clear class="btn btn-secondary mb-2 col-12">Ištrinti</button>
-          <button href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</button>
-
-
+          <a href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
         </div>
       </div>
       <div class="col-10" data-delete>
-        
         <div class="mt-5">
           <div data-alert class="toast-container card ">
             <div class="card-body">
               <p class="card-text">Ar tikrai norite ištrinti <span data-number></span>?</p>
-              <a href="#" class="btn btn-danger">Ištrinti</a>
-              <a href="#" class="btn btn-secondary">Atšaukti</a>
+              <a data-destroy href="#" class="btn btn-danger">Ištrinti</a>
+              <a data-cancel href="#" class="btn btn-secondary">Atšaukti</a>
             </div>
           </div>
         </div>

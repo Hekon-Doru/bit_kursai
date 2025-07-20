@@ -1,11 +1,12 @@
 import { v4 } from 'uuid';
 
-export default class localStorage {
+export default class StorageManager {
 
     static key;
 
     static storageInit(settings) {
         this.key = settings.key;
+        
     }
 
     static read() {
@@ -25,10 +26,11 @@ export default class localStorage {
     }
 
     static destroy(id) {
-        this.write(this.read().filter(f => f.id != id));
+        this.write(this.read().filter(invoices => invoices.id != id));
     }
 
     static update(id, data) {
-        this.write(this.read().map(f => f.id == id ? { ...f, ...data, id } : f));
+        this.write(this.read().map(invoices => invoices.id == id ? { ...invoices, ...data, id } : invoices));
     }
+
 }

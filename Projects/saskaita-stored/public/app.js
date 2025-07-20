@@ -352,24 +352,10 @@ var InvoiceRenderer = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.js */ "./src/main.js");
-console.log('Labas Projektai');
-
-_main_js__WEBPACK_IMPORTED_MODULE_0__.main.init();
-
-/***/ }),
-
-/***/ "./src/localStorage.js":
-/*!*****************************!*\
-  !*** ./src/localStorage.js ***!
-  \*****************************/
+/***/ "./src/StorageManager.js":
+/*!*******************************!*\
+  !*** ./src/StorageManager.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -426,23 +412,38 @@ var localStorage = /*#__PURE__*/function () {
   }, {
     key: "destroy",
     value: function destroy(id) {
-      this.write(this.read().filter(function (f) {
-        return f.id != id;
+      this.write(this.read().filter(function (invoices) {
+        return invoices.id != id;
       }));
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      this.write(this.read().map(function (f) {
-        return f.id == id ? _objectSpread(_objectSpread(_objectSpread({}, f), data), {}, {
+      this.write(this.read().map(function (invoices) {
+        return invoices.id == id ? _objectSpread(_objectSpread(_objectSpread({}, invoices), data), {}, {
           id: id
-        }) : f;
+        }) : invoices;
       }));
     }
   }]);
 }();
 _defineProperty(localStorage, "key", void 0);
 
+
+/***/ }),
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.js */ "./src/main.js");
+console.log('Labas Projektai');
+
+_main_js__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+_main_js__WEBPACK_IMPORTED_MODULE_0__["default"].initCreate();
 
 /***/ }),
 
@@ -454,12 +455,11 @@ _defineProperty(localStorage, "key", void 0);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */   "default": () => (/* binding */ main)
 /* harmony export */ });
 /* harmony import */ var _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvoiceAPI.js */ "./src/InvoiceAPI.js");
 /* harmony import */ var _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvoiceRenderer.js */ "./src/InvoiceRenderer.js");
-/* harmony import */ var _sidebar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidebar.js */ "./src/sidebar.js");
-/* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./localStorage.js */ "./src/localStorage.js");
+/* harmony import */ var _StorageManager_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StorageManager.js */ "./src/StorageManager.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -476,57 +476,19 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 
 
 
-
-/* 
-import { v4 } from 'uuid';
-
-export default class localStorage {
-
-    static key;
-
-    static storageInit(settings) {
-        this.key = settings.key;
-    }
-
-    static read() {
-        const storedData = localStorage.getItem(this.key);
-        if (null === storedData) {
-            return [];
-        }
-        return JSON.parse(storedData);
-    }
-
-    static write(data) {
-        localStorage.setItem(this.key, JSON.stringify(data));
-    }
-
-    static store(data) {
-        this.write([...this.read(), { ...data, id: v4() }]);
-    }
-
-    static destroy(id) {
-        this.write(this.read().filter(f => f.id != id));
-    }
-
-    static update(id, data) {
-        this.write(this.read().map(f => f.id == id ? { ...f, ...data, id } : f));
-    }
-} */
-var Main = /*#__PURE__*/function (_localStorage) {
-  function Main() {
-    _classCallCheck(this, Main);
-    return _callSuper(this, Main, arguments);
+var main = /*#__PURE__*/function (_StorageManager) {
+  function main() {
+    _classCallCheck(this, main);
+    return _callSuper(this, main, arguments);
   }
-  _inherits(Main, _localStorage);
-  return _createClass(Main, null, [{
+  _inherits(main, _StorageManager);
+  return _createClass(main, null, [{
     key: "init",
     value: function init() {
       this.storageInit({
         key: 'invoices'
       });
-      if (document.querySelector('[data-create]')) {
-        this.initCreate();
-      } else if (document.querySelector('[data-read]')) {
+      if (document.querySelector('[data-read]')) {
         this.initRead();
       } else if (document.querySelector('[data-delete]')) {
         this.initDelete();
@@ -591,8 +553,9 @@ var Main = /*#__PURE__*/function (_localStorage) {
     key: "initCreate",
     value: function initCreate() {
       var _this2 = this;
-      var createButton = document.querySelector('[data-create]');
+      var createButton = document.querySelector('[data-get]');
       createButton.addEventListener('click', function () {
+        console.log('Creating new invoice');
         var invoice = _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.createInvoice();
         _this2.store(invoice);
         window.location.href = 'read.html';
@@ -620,52 +583,8 @@ var Main = /*#__PURE__*/function (_localStorage) {
       });
     }
   }]);
-}(_localStorage_js__WEBPACK_IMPORTED_MODULE_3__.localStorage);
+}(_StorageManager_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
-_InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.fetchInvoice().then(function (invoice) {
-  var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);
-  renderer.render();
-  (0,_sidebar_js__WEBPACK_IMPORTED_MODULE_2__.renderSidebar)([invoice]);
-});
-
-// Šis failas yra pagrindinis įrašas, kuris inicijuoja programą
-// ir atvaizduoja sąskaitą. Jis naudoja InvoiceAPI, kad gautų
-// sąskaitos duomenis, o InvoiceRenderer, kad atvaizduotų
-// sąskaitą HTML puslapyje. Taip pat jis naudoja renderSidebar
-// funkciją, kad atvaizduotų sąskaitų sąrašą šoninėje juostoje.
-
-document.addEventListener('click', function (event) {
-  if (event.target.matches('[data-save]')) {
-    _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.fetchInvoice().then(function (invoice) {
-      var invoices = JSON.parse(_localStorage_js__WEBPACK_IMPORTED_MODULE_3__.localStorage.getItem('invoices')) || [];
-      invoices.push(invoice);
-      _localStorage_js__WEBPACK_IMPORTED_MODULE_3__.localStorage.setItem('invoices', JSON.stringify(invoices));
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./src/sidebar.js":
-/*!************************!*\
-  !*** ./src/sidebar.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   renderSidebar: () => (/* binding */ renderSidebar)
-/* harmony export */ });
-function renderSidebar(invoices) {
-  var sidebar = document.querySelector('[data-sidebar]');
-  sidebar.innerHTML = '';
-  invoices.forEach(function (inv) {
-    var li = document.createElement('li');
-    li.className = 'list-group-item';
-    li.textContent = inv.number;
-    sidebar.appendChild(li);
-  });
-}
 
 /***/ }),
 

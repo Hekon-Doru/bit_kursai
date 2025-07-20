@@ -12,29 +12,10 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-4"></div>
-      <div class="col-4">
-        <!-- <div data-alert class="toast-container card ">
-          <div class="card-body">
-          <p class="card-text">Ar tikrai norite ištrinti <span data-number></span>?</p>
-          <a href="#" class="btn btn-danger">Ištrinti</a>
-          <a href="#" class="btn btn-secondary">Atšaukti</a>
-        </div>
-      </div> -->
-      </div>
-      <div class="col-4"></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
       <div class="col-2">
         <div class="mt-5">
           <button data-get class="btn btn-primary mb-2 col-12">Gauti naują sąskaitą</button>
-          <button data-edit class="btn btn-secondary mb-2 col-12">Redaguoti</button>
-          <button data-clear class="btn btn-secondary mb-2 col-12">Ištrinti</button>
-          <button href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</button>
-
-
+          <a href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
         </div>
       </div>
       <div class="col-10" data-read>
@@ -45,44 +26,34 @@
 
           <div class="card-body">
             <li class="list-group-item">
-              <div class="item">
+              <ul class="list-group list-group-flush" data-list>
 
-                <div class="data">
-                  <div class="title" data-number></div>
-                </div>
-
-                <div class="buttons">
-                  <a data-edit class="btn btn-success">Redaguoti</a>
-                  <a data-show class="btn btn-info">Rodyti</a>
-                  <a data-delete class="btn btn-danger">Ištrinti</a>
-                </div>
-
-              </div>
-            </li> 
-            
-            <template>
-              <li class="list-group-item">
-                <div class="item">
-
-                  <div class="data">
-                    <div class="title" data-number></div>
-                  </div>
-
-                  <div class="buttons">
-                    <a data-edit class="btn btn-success">Edit</a>
-                    <a data-show class="btn btn-info">Show</a>
-                    <a data-delete class="btn btn-danger">Delete</a>
-                  </div>
-
-                </div>
-              </li>
-            </template>
-
+              </ul>
           </div>
-
         </div>
+        <template>
+          <li class="list-group-item">
+            <div class="item">
+
+              <div class="data">
+                <div class="title" data-number></div>
+              </div>
+
+              <div class="buttons">
+                <a data-edit class="btn btn-success">Edit</a>
+                <a data-show class="btn btn-info">Show</a>
+                <a data-delete class="btn btn-danger">Delete</a>
+              </div>
+
+            </div>
+          </li>
+        </template>
+
       </div>
+
     </div>
+  </div>
+  </div>
 
   </div>
   </div>
