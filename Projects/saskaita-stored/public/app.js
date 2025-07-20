@@ -360,7 +360,7 @@ var InvoiceRenderer = /*#__PURE__*/function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ localStorage)
+/* harmony export */   "default": () => (/* binding */ StorageManager)
 /* harmony export */ });
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -379,11 +379,11 @@ function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
-var localStorage = /*#__PURE__*/function () {
-  function localStorage() {
-    _classCallCheck(this, localStorage);
+var StorageManager = /*#__PURE__*/function () {
+  function StorageManager() {
+    _classCallCheck(this, StorageManager);
   }
-  return _createClass(localStorage, null, [{
+  return _createClass(StorageManager, null, [{
     key: "storageInit",
     value: function storageInit(settings) {
       this.key = settings.key;
@@ -427,7 +427,7 @@ var localStorage = /*#__PURE__*/function () {
     }
   }]);
 }();
-_defineProperty(localStorage, "key", void 0);
+_defineProperty(StorageManager, "key", void 0);
 
 
 /***/ }),
@@ -443,7 +443,6 @@ __webpack_require__.r(__webpack_exports__);
 console.log('Labas Projektai');
 
 _main_js__WEBPACK_IMPORTED_MODULE_0__["default"].init();
-_main_js__WEBPACK_IMPORTED_MODULE_0__["default"].initCreate();
 
 /***/ }),
 
