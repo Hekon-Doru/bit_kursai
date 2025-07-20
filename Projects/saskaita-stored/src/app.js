@@ -1,5 +1,5 @@
 console.log('Labas Projektai');
 
-import Main from "./main.js";
+import main from "./main.js";
 
-Main.init();
+main.init();

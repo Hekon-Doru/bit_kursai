@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-export default class LS {
+export default class localStorage {
 
     static key;
 
