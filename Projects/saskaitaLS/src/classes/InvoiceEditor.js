@@ -1,5 +1,6 @@
 // /src/classes/InvoiceEditor.js
 
+
 export default class InvoiceEditor {
   constructor(app) {
     this.app = app;

@@ -1,5 +1,3 @@
-// /src/classes/Sidebar.js
-
 export default class Sidebar {
   constructor(app) {
     this.app = app;
@@ -31,6 +29,19 @@ export default class Sidebar {
       const spanNumber = document.createElement('span');
       spanNumber.textContent = invoiceData.number;
 
+
+      //edit mygtukas 
+      const editBtn = document.createElement('button');
+      editBtn.className = 'invoice-edit-btn';
+      editBtn.textContent = '✎'; // arba „Edit“, jei nori teksto vietoje ikonos
+      editBtn.title = 'Redaguoti sąskaitą';
+
+      editBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.app.editInvoice(index);
+      });
+
+      //delete mygtukas
       const delBtn = document.createElement('button');
       delBtn.className = 'invoice-delete-btn';
       delBtn.textContent = '×';
@@ -42,6 +53,7 @@ export default class Sidebar {
       });
 
       btn.appendChild(spanNumber);
+      btn.appendChild(editBtn);
       btn.appendChild(delBtn);
 
       btn.addEventListener('click', () => {

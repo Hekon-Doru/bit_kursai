@@ -96,8 +96,8 @@ ul, li {
   color: #FFFFFF;
   font-weight: bold;
   font-size: 1rem;
-  padding: 0 8px;
-  margin-left: 8px;
+  padding: 0 2px;
+  margin-left: 2px;
   border-radius: 6px 6px 6px 6px;
   cursor: pointer;
   -webkit-user-select: none;
@@ -112,6 +112,29 @@ ul, li {
 }
 .invoice-sidebar-btn .invoice-delete-btn:hover {
   background-color: rgb(201.8525345622, 46.8387096774, 40.1474654378);
+}
+.invoice-sidebar-btn .invoice-edit-btn {
+  background-color: #E3B505;
+  border: none;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 8px;
+  margin-left: 8px;
+  border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+.invoice-sidebar-btn .invoice-edit-btn:hover {
+  background-color: rgb(177.099137931, 141.2112068966, 3.900862069);
 }
 
 .fetch-btn {

@@ -178,12 +178,11 @@ var Invoice = /*#__PURE__*/function () {
   return _createClass(Invoice, [{
     key: "renderDisplay",
     value: function renderDisplay(container) {
-      var _this = this;
       var div = document.createElement('div');
       div.className = 'invoice-card';
       var data = this.data;
       var totals = _InvoiceCalculations_js__WEBPACK_IMPORTED_MODULE_1__["default"].totals(data.items);
-      div.innerHTML = "\n      <h2>S\u0105skaita #<span>".concat(data.number, "</span></h2>\n      <p>I\u0161ra\u0161yta: <span>").concat(data.date, "</span></p>\n      <p>Apmok\u0117ti iki: <span>").concat(data.due_date, "</span></p>\n      <div class=\"seller-buyer-wrapper\">\n        <div class=\"seller-buyer-block\">\n          <h3>Pardav\u0117jas</h3>\n          <p>").concat(data.company.seller.name, "</p>\n          <p>Kodas: ").concat(data.company.seller.code, "</p>\n          <p>PVM: ").concat(data.company.seller.vat, "</p>\n          <p>Adresas: ").concat(data.company.seller.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.seller.email, "</p>\n          <p>Tel: ").concat(data.company.seller.phone, "</p>\n        </div>\n        <div class=\"seller-buyer-block\">\n          <h3>Pirk\u0117jas</h3>\n          <p>").concat(data.company.buyer.name, "</p>\n          <p>Kodas: ").concat(data.company.buyer.code, "</p>\n          <p>PVM: ").concat(data.company.buyer.vat, "</p>\n          <p>Adresas: ").concat(data.company.buyer.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.buyer.email, "</p>\n          <p>Tel: ").concat(data.company.buyer.phone, "</p>\n        </div>\n      </div>\n      <h3>Prek\u0117s</h3>\n      <div class=\"products-table-wrapper\"></div>\n      <div class=\"invoice-totals\"></div>\n      <button class=\"edit-invoice-btn\">Redaguoti</button>\n    ");
+      div.innerHTML = "\n      <h2>S\u0105skaita #<span>".concat(data.number, "</span></h2>\n      <p>I\u0161ra\u0161yta: <span>").concat(data.date, "</span></p>\n      <p>Apmok\u0117ti iki: <span>").concat(data.due_date, "</span></p>\n      <div class=\"seller-buyer-wrapper\">\n        <div class=\"seller-buyer-block\">\n          <h3>Pardav\u0117jas</h3>\n          <p>").concat(data.company.seller.name, "</p>\n          <p>Kodas: ").concat(data.company.seller.code, "</p>\n          <p>PVM: ").concat(data.company.seller.vat, "</p>\n          <p>Adresas: ").concat(data.company.seller.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.seller.email, "</p>\n          <p>Tel: ").concat(data.company.seller.phone, "</p>\n        </div>\n        <div class=\"seller-buyer-block\">\n          <h3>Pirk\u0117jas</h3>\n          <p>").concat(data.company.buyer.name, "</p>\n          <p>Kodas: ").concat(data.company.buyer.code, "</p>\n          <p>PVM: ").concat(data.company.buyer.vat, "</p>\n          <p>Adresas: ").concat(data.company.buyer.address, "</p>\n          <p>El. pa\u0161tas: ").concat(data.company.buyer.email, "</p>\n          <p>Tel: ").concat(data.company.buyer.phone, "</p>\n        </div>\n      </div>\n      <h3>Prek\u0117s</h3>\n      <div class=\"products-table-wrapper\"></div>\n      <div class=\"invoice-totals\"></div>\n    ");
 
       // Produktų lentelė
       var productsTable = _InvoiceTable_js__WEBPACK_IMPORTED_MODULE_0__["default"].render(data.items);
@@ -192,11 +191,6 @@ var Invoice = /*#__PURE__*/function () {
       // Totals
       var totalsDiv = div.querySelector('.invoice-totals');
       totalsDiv.innerHTML = "\n      <p>Pristatymas: \u20AC".concat(parseFloat(data.shippingPrice).toFixed(2), "</p>\n      <p>Viso: \u20AC").concat(totals.viso.toFixed(2), "</p>\n      <p>PVM: \u20AC").concat(totals.pvm.toFixed(2), "</p>\n      <p>I\u0161 viso su PVM ir pristatymu: \u20AC").concat((totals.isViso + parseFloat(data.shippingPrice)).toFixed(2), "</p>\n    ");
-
-      // Redaguoti mygtukas
-      div.querySelector('.edit-invoice-btn').addEventListener('click', function () {
-        _this.app.editInvoice(_this.index);
-      });
       container.innerHTML = '';
       container.appendChild(div);
     }
@@ -443,7 +437,6 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-// /src/classes/Sidebar.js
 var Sidebar = /*#__PURE__*/function () {
   function Sidebar(app) {
     _classCallCheck(this, Sidebar);
@@ -487,6 +480,18 @@ var Sidebar = /*#__PURE__*/function () {
         if (index === activeIndex) btn.classList.add('active');
         var spanNumber = document.createElement('span');
         spanNumber.textContent = invoiceData.number;
+
+        //edit mygtukas 
+        var editBtn = document.createElement('button');
+        editBtn.className = 'invoice-edit-btn';
+        editBtn.textContent = '✎'; // arba „Edit“, jei nori teksto vietoje ikonos
+        editBtn.title = 'Redaguoti sąskaitą';
+        editBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          _this.app.editInvoice(index);
+        });
+
+        //delete mygtukas
         var delBtn = document.createElement('button');
         delBtn.className = 'invoice-delete-btn';
         delBtn.textContent = '×';
@@ -496,6 +501,7 @@ var Sidebar = /*#__PURE__*/function () {
           _this.app.deleteInvoice(index);
         });
         btn.appendChild(spanNumber);
+        btn.appendChild(editBtn);
         btn.appendChild(delBtn);
         btn.addEventListener('click', function () {
           _this.app.renderInvoice(index);

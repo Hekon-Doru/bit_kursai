@@ -44,7 +44,6 @@ export default class Invoice {
       <h3>Prekės</h3>
       <div class="products-table-wrapper"></div>
       <div class="invoice-totals"></div>
-      <button class="edit-invoice-btn">Redaguoti</button>
     `;
 
     // Produktų lentelė
@@ -59,11 +58,6 @@ export default class Invoice {
       <p>PVM: €${totals.pvm.toFixed(2)}</p>
       <p>Iš viso su PVM ir pristatymu: €${(totals.isViso + parseFloat(data.shippingPrice)).toFixed(2)}</p>
     `;
-
-    // Redaguoti mygtukas
-    div.querySelector('.edit-invoice-btn').addEventListener('click', () => {
-      this.app.editInvoice(this.index);
-    });
 
     container.innerHTML = '';
     container.appendChild(div);

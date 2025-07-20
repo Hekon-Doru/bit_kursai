@@ -139,6 +139,28 @@ ul, li {
     color: $white;
     font-weight: bold;
     font-size: 1rem;
+    padding: 0 2px;
+    margin-left: 2px;
+    border-radius: 6px 6px 6px 6px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      background-color: darken($red, 10%);
+    }
+  }
+  .invoice-edit-btn {
+    background-color: $yellow;
+    border: none;
+    color: $white;
+    font-weight: bold;
+    font-size: 1rem;
     padding: 0 8px;
     margin-left: 8px;
     border-radius: 6px 6px 6px 6px;
@@ -152,7 +174,7 @@ ul, li {
     height: 24px;
 
     &:hover {
-      background-color: darken($red, 10%);
+      background-color: darken($yellow, 10%);
     }
   }
 }
