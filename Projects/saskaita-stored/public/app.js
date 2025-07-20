@@ -2,179 +2,182 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/Main.js":
-/*!*********************!*\
-  !*** ./src/Main.js ***!
-  \*********************/
+/***/ "./src/Invoice.js":
+/*!************************!*\
+  !*** ./src/Invoice.js ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */   Invoice: () => (/* binding */ Invoice)
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './Frame'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './LS'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+var Invoice = /*#__PURE__*/_createClass(function Invoice(data) {
+  _classCallCheck(this, Invoice);
+  this.number = data.number;
+  this.date = data.date;
+  this.due_date = data.due_date;
+  this.company = data.company;
+  this.items = data.items;
+  this.shippingPrice = data.shippingPrice;
+});
+
+/***/ }),
+
+/***/ "./src/InvoiceAPI.js":
+/*!***************************!*\
+  !*** ./src/InvoiceAPI.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InvoiceAPI: () => (/* binding */ InvoiceAPI)
+/* harmony export */ });
+/* harmony import */ var _Invoice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Invoice.js */ "./src/Invoice.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+var InvoiceAPI = /*#__PURE__*/function () {
+  function InvoiceAPI() {
+    _classCallCheck(this, InvoiceAPI);
+  }
+  return _createClass(InvoiceAPI, null, [{
+    key: "fetchInvoice",
+    value: function () {
+      var _fetchInvoice = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+        var response, data;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              _context.n = 1;
+              return fetch('https://in3.dev/inv/');
+            case 1:
+              response = _context.v;
+              _context.n = 2;
+              return response.json();
+            case 2:
+              data = _context.v;
+              return _context.a(2, new _Invoice_js__WEBPACK_IMPORTED_MODULE_0__.Invoice(data));
+          }
+        }, _callee);
+      }));
+      function fetchInvoice() {
+        return _fetchInvoice.apply(this, arguments);
+      }
+      return fetchInvoice;
+    }()
+  }]);
+}();
+
+/***/ }),
+
+/***/ "./src/InvoiceRenderer.js":
+/*!********************************!*\
+  !*** ./src/InvoiceRenderer.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InvoiceRenderer: () => (/* binding */ InvoiceRenderer)
+/* harmony export */ });
+/* harmony import */ var _Invoice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Invoice.js */ "./src/Invoice.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
-function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
-function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
-function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
-function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 
-
-var Main = /*#__PURE__*/function (_LS) {
-  function Main() {
-    _classCallCheck(this, Main);
-    return _callSuper(this, Main, arguments);
+var InvoiceRenderer = /*#__PURE__*/function () {
+  function InvoiceRenderer(invoice) {
+    _classCallCheck(this, InvoiceRenderer);
+    this.invoice = invoice;
   }
-  _inherits(Main, _LS);
-  return _createClass(Main, null, [{
-    key: "init",
-    value: function init() {
-      this.storageInit({
-        key: 'niceArt'
+  return _createClass(InvoiceRenderer, [{
+    key: "render",
+    value: function render() {
+      // Numeris, datos
+      document.querySelector('[data-number]').innerText = this.invoice.number;
+      document.querySelector('[data-date]').innerText = this.invoice.date;
+      document.querySelector('[data-due-date]').innerText = this.invoice.due_date;
+
+      // Pardavėjas
+      document.querySelector('[data-seller-name]').innerText = this.invoice.company.seller.name;
+      document.querySelector('[data-seller-code]').innerText = this.invoice.company.seller.code;
+      document.querySelector('[data-seller-email]').innerText = this.invoice.company.seller.email;
+      document.querySelector('[data-seller-address]').innerText = this.invoice.company.seller.address;
+      document.querySelector('[data-seller-phone]').innerText = this.invoice.company.seller.phone;
+      document.querySelector('[data-seller-vat]').innerText = this.invoice.company.seller.vat;
+
+      // Pirkėjas
+      document.querySelector('[data-buyer-name]').innerText = this.invoice.company.buyer.name;
+      document.querySelector('[data-buyer-code]').innerText = this.invoice.company.buyer.code;
+      document.querySelector('[data-buyer-email]').innerText = this.invoice.company.buyer.email;
+      document.querySelector('[data-buyer-address]').innerText = this.invoice.company.buyer.address;
+      document.querySelector('[data-buyer-phone]').innerText = this.invoice.company.buyer.phone;
+      document.querySelector('[data-buyer-vat]').innerText = this.invoice.company.buyer.vat;
+
+      // Prekių lentelė
+      var productsHtmlBin = document.querySelector('[data-item-table]');
+      var itemTable = document.querySelector('[data-table-template]');
+      productsHtmlBin.innerHTML = '';
+      var viso = 0;
+      var pvm = 0;
+      var isViso = 0;
+      this.invoice.items.forEach(function (item) {
+        var clone = itemTable.content.cloneNode(true);
+        clone.querySelector('[data-item-description]').textContent = item.description;
+        clone.querySelector('[data-item-quantity]').textContent = item.quantity;
+        clone.querySelector('[data-item-price]').textContent = parseFloat(item.price).toFixed(2);
+
+        // Nuolaida
+        var discountText = '-';
+        if (item.discount && typeof item.discount.value !== 'undefined') {
+          discountText = item.discount.value;
+          if (item.discount.type === "percentage") discountText += "%";
+        }
+        clone.querySelector('[data-item-discount]').textContent = discountText;
+        var totalSum = parseFloat(item.price);
+        var discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
+        var discountedSum = totalSum;
+        if (item.discount && item.discount.type === "percentage") {
+          discountedSum = totalSum - totalSum * (discount / 100);
+        } else if (item.discount && item.discount.type === "fixed") {
+          discountedSum = totalSum - discount;
+        }
+        var taxesAfter = discountedSum * 0.21;
+        clone.querySelector('[data-item-discounted-price]').textContent = parseFloat(discountedSum).toFixed(2);
+        clone.querySelector('[data-item-taxes]').textContent = taxesAfter.toFixed(2);
+        var totalWithTax = discountedSum + taxesAfter;
+        clone.querySelector('[data-item-total]').textContent = parseFloat(totalWithTax).toFixed(2);
+        productsHtmlBin.appendChild(clone);
+        viso += discountedSum;
+        pvm += taxesAfter;
+        isViso += totalWithTax;
       });
-      if (document.querySelector('[data-create]')) {
-        this.initCreate();
-      } else if (document.querySelector('[data-read]')) {
-        this.initRead();
-      } else if (document.querySelector('[data-delete]')) {
-        this.initDelete();
-      } else if (document.querySelector('[data-edit]')) {
-        this.initEdit();
-      } else if (document.querySelector('[data-show]')) {
-        this.initShow();
-      }
-    }
-  }, {
-    key: "initShow",
-    value: function initShow() {
-      var frames = this.read();
-      var id = window.location.hash.slice(1); // id paemimas is hastago
-      var frameToShow = frames.find(function (f) {
-        return f.id == id;
-      });
-      if (!frameToShow) {
-        window.location.href = 'read.html'; // puslapio redirectas
-      }
-      var f = document.querySelector('[data-frame]');
-      var frame = new Object(function webpackMissingModule() { var e = new Error("Cannot find module './Frame'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(24, frameToShow.frame, f, 'view');
-      frame.addBorders('transparent', 1);
-    }
-  }, {
-    key: "initDelete",
-    value: function initDelete() {
-      var _this = this;
-      var frames = this.read();
-      var id = window.location.hash.slice(1); // id paemimas is hastago
-      var frame = frames.find(function (f) {
-        return f.id == id;
-      });
-      if (!frame) {
-        window.location.href = 'read.html'; // puslapio redirectas
-      }
-      document.querySelector('[data-art-title]').innerText = frame.title;
-      var destroyButton = document.querySelector('[data-destroy]');
-      destroyButton.addEventListener('click', function (_) {
-        _this.destroy(frame.id);
-        window.location.href = 'read.html';
-      });
-    }
-  }, {
-    key: "initRead",
-    value: function initRead() {
-      var frames = this.read();
-      var template = document.querySelector('template');
-      var listEl = document.querySelector('[data-list]');
-      frames.forEach(function (activeFrame) {
-        var clone = template.content.cloneNode(true);
-        clone.querySelector('[data-title]').textContent = activeFrame.title;
-        clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
-        clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
-        clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + activeFrame.id);
-        var f = clone.querySelector('[data-frame]');
-        var frame = new Object(function webpackMissingModule() { var e = new Error("Cannot find module './Frame'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(4, activeFrame.frame, f, 'view');
-        frame.addBorders('gray', 1);
-        listEl.appendChild(clone);
-      });
-    }
-  }, {
-    key: "initEdit",
-    value: function initEdit() {
-      var _this2 = this;
-      var frames = this.read();
-      var id = window.location.hash.slice(1); // id paemimas is hastago
-      var frameToEdit = frames.find(function (f) {
-        return f.id == id;
-      });
-      if (!frameToEdit) {
-        window.location.href = 'read.html'; // puslapio redirectas
-      }
-      var f = document.querySelector('[data-edit-frame]');
-      var colorInput = document.querySelector('[type="color"]');
-      var titleInput = document.querySelector('input[data-title]');
-      var saveButton = document.querySelector('button[data-save]');
-      var clear = document.querySelector('button[data-clear]');
-      titleInput.value = frameToEdit.title;
-      var frame = new Object(function webpackMissingModule() { var e = new Error("Cannot find module './Frame'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(10, frameToEdit.frame, f, 'edit');
-      frame.addBorders('gray', 1);
-      frame.setActiveColor(colorInput.value);
-      colorInput.addEventListener('change', function (e) {
-        frame.setActiveColor(e.target.value);
-      });
-      clear.addEventListener('click', function (_) {
-        frame.reset();
-      });
-      saveButton.addEventListener('click', function (_) {
-        _this2.update(frameToEdit.id, {
-          frame: frame["export"](),
-          title: titleInput.value
-        });
-        window.location.href = 'read.html';
-      });
-    }
-  }, {
-    key: "initCreate",
-    value: function initCreate() {
-      var _this3 = this;
-      var f = document.querySelector('[data-create-frame]');
-      var colorInput = document.querySelector('[type="color"]');
-      var titleInput = document.querySelector('input[data-title]');
-      var saveButton = document.querySelector('button[data-save]');
-      var clear = document.querySelector('button[data-clear]');
-      var aiButton = document.querySelector('button[data-ai]');
-      var frame = new Object(function webpackMissingModule() { var e = new Error("Cannot find module './Frame'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(10, 20, f, 'create');
-      frame.addBorders('gray', 1);
-      frame.setActiveColor(colorInput.value);
-      colorInput.addEventListener('change', function (e) {
-        frame.setActiveColor(e.target.value);
-      });
-      clear.addEventListener('click', function (_) {
-        frame.reset();
-      });
-      aiButton.addEventListener('click', function (_) {
-        frame.ai();
-      });
-      saveButton.addEventListener('click', function (_) {
-        _this3.store({
-          frame: frame["export"](),
-          title: titleInput.value
-        });
-        colorInput.value = '#000000';
-        frame.reset();
-        titleInput.value = '';
-      });
+      document.querySelector('[data-item-shipping]').textContent = parseFloat(this.invoice.shippingPrice).toFixed(2);
+      document.querySelector('[data-item-total-sum]').textContent = viso.toFixed(2);
+      document.querySelector('[data-item-total-tax]').textContent = pvm.toFixed(2);
+      document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(isViso) + parseFloat(this.invoice.shippingPrice)).toFixed(2);
     }
   }]);
-}(Object(function webpackMissingModule() { var e = new Error("Cannot find module './LS'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
+}();
 
 /***/ }),
 
@@ -185,10 +188,34 @@ var Main = /*#__PURE__*/function (_LS) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Main */ "./src/Main.js");
+/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.js */ "./src/main.js");
 console.log('Labas Projektai');
 
-_Main__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+_main_js__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvoiceAPI.js */ "./src/InvoiceAPI.js");
+/* harmony import */ var _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvoiceRenderer.js */ "./src/InvoiceRenderer.js");
+
+
+_InvoiceAPI_js__WEBPACK_IMPORTED_MODULE_0__.InvoiceAPI.fetchInvoice().then(function (invoice) {
+  var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);
+  renderer.render();
+});
+
+// fetch duomenis iš API
+// ir atspausdinti sąskaitą į HTML  
+
+var clone = template.content.cloneNode(true);
+clone.querySelector('[data-list-item-title]').textContent = activeFrame.title;
 
 /***/ }),
 
