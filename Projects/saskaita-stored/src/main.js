@@ -107,8 +107,8 @@ export default class main extends StorageManager {
     renderer.render(saskaita, 'edit');
 
 
-    const visiItemai = document.querySelectorAll('.item-edit');
-    console.log(visiItemai);
+    const itemElements = document.querySelectorAll('.item-edit');
+    console.log(itemElements);
 
 
     /* console.log(invoice.items.quantity, items.discount); */
@@ -120,11 +120,11 @@ export default class main extends StorageManager {
       const items = [];
 
       invoice.items.forEach((item, index) => {
-        const quantity = visiItemai[index].querySelector('input[data-item-quantity]').value;
-        const discountAmount = visiItemai[index].querySelector('input[data-item-discount]').value;
-        const discountType = visiItemai[index].querySelector('select[data-item-discount-type]').value;
+        const quantity = itemElements[index].querySelector('input[data-item-quantity]').value;
+        const discountAmount = itemElements[index].querySelector('input[data-item-discount]').value;
+        const discountType = itemElements[index].querySelector('select[data-item-discount-type]').value;
 
-        console.log(visiItemai[index]);
+        console.log(itemElements[index]);
         console.log(quantity, discountAmount.value);
 
          item.quantity = parseFloat(quantity);

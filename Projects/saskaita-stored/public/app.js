@@ -641,8 +641,8 @@ var main = /*#__PURE__*/function (_StorageManager) {
       console.log('Edit Invoice', invoice);
       var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);
       renderer.render(saskaita, 'edit');
-      var visiItemai = document.querySelectorAll('.item-edit');
-      console.log(visiItemai);
+      var itemElements = document.querySelectorAll('.item-edit');
+      console.log(itemElements);
 
       /* console.log(invoice.items.quantity, items.discount); */
 
@@ -650,10 +650,10 @@ var main = /*#__PURE__*/function (_StorageManager) {
       saveButton.addEventListener('click', function (_) {
         var items = [];
         invoice.items.forEach(function (item, index) {
-          var quantity = visiItemai[index].querySelector('input[data-item-quantity]').value;
-          var discountAmount = visiItemai[index].querySelector('input[data-item-discount]').value;
-          var discountType = visiItemai[index].querySelector('select[data-item-discount-type]').value;
-          console.log(visiItemai[index]);
+          var quantity = itemElements[index].querySelector('input[data-item-quantity]').value;
+          var discountAmount = itemElements[index].querySelector('input[data-item-discount]').value;
+          var discountType = itemElements[index].querySelector('select[data-item-discount-type]').value;
+          console.log(itemElements[index]);
           console.log(quantity, discountAmount.value);
           item.quantity = parseFloat(quantity);
           var discount;
