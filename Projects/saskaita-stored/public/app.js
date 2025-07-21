@@ -654,12 +654,14 @@ var main = /*#__PURE__*/function (_StorageManager) {
         invoice.items.forEach(function (item, index) {
           var quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
           var discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
-          var discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]');
+          /* const discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]'); */
+
           console.log(visiItemai[index]);
           console.log(quantityInputs.value, discountInputs.value);
           item.quantity = parseFloat(quantityInputs.value);
           item.discount = parseFloat(discountInputs.value);
-          item.discount.type = discountTypeInputs.value;
+          /* item.discount.type = discountTypeInputs.value; */
+
           if (isNaN(item.quantity)) item.quantity = 0;
           if (isNaN(item.discount)) item.discount = 0;
           _this3.update(invoice.id, {

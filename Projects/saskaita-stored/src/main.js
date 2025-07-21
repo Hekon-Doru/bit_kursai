@@ -123,15 +123,15 @@ export default class main extends StorageManager {
       invoice.items.forEach((item, index) => {
         const quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
         const discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
-        const discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]');
+        /* const discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]'); */
         
         console.log(visiItemai[index]);
         console.log(quantityInputs.value, discountInputs.value);
         
-        
+
         item.quantity = parseFloat(quantityInputs.value);
         item.discount = parseFloat(discountInputs.value);
-        item.discount.type = discountTypeInputs.value;
+        /* item.discount.type = discountTypeInputs.value; */
         
 
         if (isNaN(item.quantity)) item.quantity = 0;
