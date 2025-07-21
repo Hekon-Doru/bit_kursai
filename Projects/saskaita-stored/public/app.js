@@ -334,7 +334,11 @@ var InvoiceRenderer = /*#__PURE__*/function () {
         clone.querySelector('[data-item-discount]').textContent = discountText;
         var itemDiscountInput = clone.querySelector('[data-item-discount]');
         if (itemDiscountInput) {
-          itemDiscountInput.value = discountText;
+          itemDiscountInput.value = item.discount.value || 0;
+        }
+        var itemDiscountTypeInput = clone.querySelector('[data-item-discount-type]');
+        if (itemDiscountTypeInput) {
+          itemDiscountTypeInput.value = item.discount.type || 'fixed';
         }
         var totalSum = parseFloat(item.price);
         var discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
@@ -650,22 +654,17 @@ var main = /*#__PURE__*/function (_StorageManager) {
         invoice.items.forEach(function (item, index) {
           var quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
           var discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
+          var discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]');
           console.log(visiItemai[index]);
           console.log(quantityInputs.value, discountInputs.value);
           item.quantity = parseFloat(quantityInputs.value);
           item.discount = parseFloat(discountInputs.value);
+          item.discount.type = discountTypeInputs.value;
           if (isNaN(item.quantity)) item.quantity = 0;
           if (isNaN(item.discount)) item.discount = 0;
           _this3.update(invoice.id, {
             items: _toConsumableArray(invoice.items)
-          }
-          /*  company: {...invoice.company},
-           date: invoice.date, */
-
-          /* description: item.description,
-          price: parseFloat(item.price),
-          quantity: parseFloat(item.quantity),
-          discount: parseFloat(item.discount) */);
+          });
         });
         console.log('Save Invoice', renderer.invoice);
         /* window.location.href = 'list.html'; */

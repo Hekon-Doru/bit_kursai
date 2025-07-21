@@ -123,37 +123,38 @@ export default class main extends StorageManager {
       invoice.items.forEach((item, index) => {
         const quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
         const discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
+        const discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]');
+        
         console.log(visiItemai[index]);
         console.log(quantityInputs.value, discountInputs.value);
+        
+        
         item.quantity = parseFloat(quantityInputs.value);
         item.discount = parseFloat(discountInputs.value);
+        item.discount.type = discountTypeInputs.value;
+        
+
         if (isNaN(item.quantity)) item.quantity = 0;
         if (isNaN(item.discount)) item.discount = 0;
         this.update(invoice.id, {
-          items: [...invoice.items,]
-
+          items: [
+            ...invoice.items,
+          ]
         }
-          /*  company: {...invoice.company},
-           date: invoice.date, */
+        );
+      });
 
-            /* description: item.description,
-            price: parseFloat(item.price),
-            quantity: parseFloat(item.quantity),
-            discount: parseFloat(item.discount) */
-                );
+
+      console.log('Save Invoice', renderer.invoice);
+      /* window.location.href = 'list.html'; */
     });
 
-
-    console.log('Save Invoice', renderer.invoice);
-    /* window.location.href = 'list.html'; */
-  });
-
-  const cancelButton = document.querySelector('[data-cancel]');
+    const cancelButton = document.querySelector('[data-cancel]');
 
     cancelButton.addEventListener('click', _ => {
-    window.location.href = 'list.html';
-  });
-}
+      window.location.href = 'list.html';
+    });
+  }
 }
 
 

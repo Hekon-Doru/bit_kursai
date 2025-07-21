@@ -66,9 +66,15 @@ export class InvoiceRenderer {
 
       let itemDiscountInput = clone.querySelector('[data-item-discount]');
       if (itemDiscountInput) {
-        itemDiscountInput.value = discountText;
+        itemDiscountInput.value = item.discount.value || 0;
+      }
+      
+      let itemDiscountTypeInput = clone.querySelector('[data-item-discount-type]');
+      if (itemDiscountTypeInput) {
+        itemDiscountTypeInput.value = item.discount.type || 'fixed';
       }
 
+      
 
       let totalSum = parseFloat(item.price);
       let discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
