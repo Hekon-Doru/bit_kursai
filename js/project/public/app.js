@@ -433,13 +433,13 @@ var Main = /*#__PURE__*/function (_LS) {
       });
       if (document.querySelector('[data-create]')) {
         this.initCreate();
-      } else if (document.querySelector('[data-read]')) {
+      } else if (document.querySelector('[page-list]')) {
         this.initRead();
-      } else if (document.querySelector('[data-delete]')) {
+      } else if (document.querySelector('[page-delete]')) {
         this.initDelete();
-      } else if (document.querySelector('[data-edit]')) {
+      } else if (document.querySelector('[page-edit]')) {
         this.initEdit();
-      } else if (document.querySelector('[data-show]')) {
+      } else if (document.querySelector('[page-show]')) {
         this.initShow();
       }
     }
@@ -452,7 +452,7 @@ var Main = /*#__PURE__*/function (_LS) {
         return f.id == id;
       });
       if (!frameToShow) {
-        window.location.href = 'read.html'; // puslapio redirectas
+        window.location.href = 'list.html'; // puslapio redirectas
       }
       var f = document.querySelector('[data-frame]');
       var frame = new _Frame__WEBPACK_IMPORTED_MODULE_0__["default"](24, frameToShow.frame, f, 'view');
@@ -468,13 +468,13 @@ var Main = /*#__PURE__*/function (_LS) {
         return f.id == id;
       });
       if (!frame) {
-        window.location.href = 'read.html'; // puslapio redirectas
+        window.location.href = 'list.html'; // puslapio redirectas
       }
       document.querySelector('[data-art-title]').innerText = frame.title;
       var destroyButton = document.querySelector('[data-destroy]');
       destroyButton.addEventListener('click', function (_) {
         _this.destroy(frame.id);
-        window.location.href = 'read.html';
+        window.location.href = 'list.html';
       });
     }
   }, {
@@ -486,9 +486,9 @@ var Main = /*#__PURE__*/function (_LS) {
       frames.forEach(function (activeFrame) {
         var clone = template.content.cloneNode(true);
         clone.querySelector('[data-title]').textContent = activeFrame.title;
-        clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
-        clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
-        clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + activeFrame.id);
+        clone.querySelector('[page-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
+        clone.querySelector('[page-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
+        clone.querySelector('[page-show]').setAttribute('href', 'show.html#' + activeFrame.id);
         var f = clone.querySelector('[data-frame]');
         var frame = new _Frame__WEBPACK_IMPORTED_MODULE_0__["default"](4, activeFrame.frame, f, 'view');
         frame.addBorders('gray', 1);
@@ -505,9 +505,9 @@ var Main = /*#__PURE__*/function (_LS) {
         return f.id == id;
       });
       if (!frameToEdit) {
-        window.location.href = 'read.html'; // puslapio redirectas
+        window.location.href = 'list.html'; // puslapio redirectas
       }
-      var f = document.querySelector('[data-edit-frame]');
+      var f = document.querySelector('[page-edit-frame]');
       var colorInput = document.querySelector('[type="color"]');
       var titleInput = document.querySelector('input[data-title]');
       var saveButton = document.querySelector('button[data-save]');
@@ -527,7 +527,7 @@ var Main = /*#__PURE__*/function (_LS) {
           frame: frame["export"](),
           title: titleInput.value
         });
-        window.location.href = 'read.html';
+        window.location.href = 'list.html';
       });
     }
   }, {

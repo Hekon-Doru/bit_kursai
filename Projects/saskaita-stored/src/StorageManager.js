@@ -25,11 +25,11 @@ export default class StorageManager {
     }
 
     static destroy(id) {
-        this.write(this.read().filter(invoices => invoices.id != id));
+        this.write(this.read().filter(d => d.id != id));
     }
 
     static update(id, data) {
-        this.write(this.read().map(invoices => invoices.id == id ? { ...invoices, ...data, id } : invoices));
+        this.write(this.read().map(d => d.id == id ? { ...d, ...data, id } : d));
     }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" page-list>
 
 <head>
   <meta charset="UTF-8">
@@ -15,10 +15,10 @@
       <div class="col-2">
         <div class="mt-5">
           <button data-get class="btn btn-primary mb-2 col-12">Gauti naują sąskaitą</button>
-          <a href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
+          <a href="list.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
         </div>
       </div>
-      <div class="col-10" data-read>
+      <div class="col-10">
         <div class="card mt-5">
           <div class="card-header">
             <h1>Visos sąskaitos</h1>
@@ -37,12 +37,14 @@
 
               <div class="data">
                 <div class="title" data-number></div>
+                <div class="date" data-date></div>
+                <div class="d-none" data-id></div>
               </div>
 
               <div class="buttons">
-                <a data-edit class="btn btn-success">Edit</a>
-                <a data-show class="btn btn-info">Show</a>
-                <a data-delete class="btn btn-danger">Delete</a>
+                <a page-edit class="btn btn-success">Edit</a>
+                <a page-show class="btn btn-info">Show</a>
+                <a page-delete class="btn btn-danger">Delete</a>
               </div>
 
             </div>

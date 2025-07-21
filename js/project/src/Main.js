@@ -11,13 +11,13 @@ export default class Main extends LS {
 
         if (document.querySelector('[data-create]')) {
             this.initCreate();
-        } else if (document.querySelector('[data-read]')) {
+        } else if (document.querySelector('[page-list]')) {
             this.initRead();
-        } else if (document.querySelector('[data-delete]')) {
+        } else if (document.querySelector('[page-delete]')) {
             this.initDelete();
-        } else if (document.querySelector('[data-edit]')) {
+        } else if (document.querySelector('[page-edit]')) {
             this.initEdit();
-        } else if (document.querySelector('[data-show]')) {
+        } else if (document.querySelector('[page-show]')) {
             this.initShow();
         }
     }
@@ -27,7 +27,7 @@ export default class Main extends LS {
         const id = window.location.hash.slice(1); // id paemimas is hastago
         const frameToShow = frames.find(f => f.id == id);
         if (!frameToShow) {
-            window.location.href = 'read.html'; // puslapio redirectas
+            window.location.href = 'list.html'; // puslapio redirectas
         }
         const f = document.querySelector('[data-frame]');
         const frame = new Frame(24, frameToShow.frame, f, 'view');
@@ -40,14 +40,14 @@ export default class Main extends LS {
         const id = window.location.hash.slice(1); // id paemimas is hastago
         const frame = frames.find(f => f.id == id);
         if (!frame) {
-            window.location.href = 'read.html'; // puslapio redirectas
+            window.location.href = 'list.html'; // puslapio redirectas
         }
         document.querySelector('[data-art-title]').innerText = frame.title;
         const destroyButton = document.querySelector('[data-destroy]');
 
         destroyButton.addEventListener('click', _ => {
             this.destroy(frame.id);
-            window.location.href = 'read.html';
+            window.location.href = 'list.html';
         });
     }
 
@@ -60,9 +60,9 @@ export default class Main extends LS {
         frames.forEach(activeFrame => {
             const clone = template.content.cloneNode(true);
             clone.querySelector('[data-title]').textContent = activeFrame.title;
-            clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
-            clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
-            clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + activeFrame.id);
+            clone.querySelector('[page-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
+            clone.querySelector('[page-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
+            clone.querySelector('[page-show]').setAttribute('href', 'show.html#' + activeFrame.id);
 
             const f = clone.querySelector('[data-frame]');
             const frame = new Frame(4, activeFrame.frame, f, 'view');
@@ -77,10 +77,10 @@ export default class Main extends LS {
         const id = window.location.hash.slice(1); // id paemimas is hastago
         const frameToEdit = frames.find(f => f.id == id);
         if (!frameToEdit) {
-            window.location.href = 'read.html'; // puslapio redirectas
+            window.location.href = 'list.html'; // puslapio redirectas
         }
 
-        const f = document.querySelector('[data-edit-frame]');
+        const f = document.querySelector('[page-edit-frame]');
         const colorInput = document.querySelector('[type="color"]');
         const titleInput = document.querySelector('input[data-title]');
         const saveButton = document.querySelector('button[data-save]');
@@ -104,7 +104,7 @@ export default class Main extends LS {
                 frame: frame.export(),
                 title: titleInput.value
             });
-            window.location.href = 'read.html';
+            window.location.href = 'list.html';
         });
     }
 

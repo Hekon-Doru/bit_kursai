@@ -6,4 +6,6 @@ export class InvoiceAPI {
     const data = await response.json();
     return new Invoice(data);
   }
+
+  
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" page-edit>
 
 <head>
   <meta charset="UTF-8">
@@ -15,10 +15,10 @@
       <div class="col-2">
         <div class="mt-5">
           <button data-get class="btn btn-primary mb-2 col-12">Gauti naują sąskaitą</button>
-          <a href="read.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
+          <a href="list.html" class="btn btn-light mb-2 col-12">Visos sąskaitos</a>
         </div>
       </div>
-      <div class="col-10" data-edit>
+      <div class="col-10">
         <div class="card mt-5">
           <div class="card-header">
             <h1>Sąskaita Nr. <span data-number></span></h1>
@@ -68,7 +68,7 @@
 
             <div class="prekiu-lentele" data-item-table></div>
 
-          <!--   <div class="row">
+            <!--   <div class="row">
               <p class="col-6"><span data-item-description>-</span></p>
               <input data-item-quantity type="number" class="form-control col">
               <p class="col"><span data-item-price>-</span></p>
@@ -78,6 +78,17 @@
               <p class="col"><span data-item-total>-</span></p>
             </div> -->
 
+            <div class="row totals">
+              <div class="col-6"></div>
+              <div class="col-6" data-item-table-total>
+                <p class="col">Siuntimas: <span data-item-shipping>0</span> Eur</p>
+                <p class="col">Viso: <span data-item-total-sum>0</span> Eur</p>
+                <p class="col">PVM: <span data-item-total-tax>0</span> Eur</p>
+                <p class="col"><b>Iš viso su PVM: <span data-item-total-w-tax>0</span> Eur</b></p>
+
+              </div>
+
+            </div>
 
             <div class="mt-5">
               <button data-save class="btn btn-success">Išsaugoti</button>
@@ -95,7 +106,7 @@
 
 </body>
 <template data-table-template>
-  <div class="row">
+  <div class="row item-edit">
     <p class="col-6"><span data-item-description>-</span></p>
     <input data-item-quantity type="number" class="form-control col">
     <p class="col"><span data-item-price>-</span></p>

@@ -42,6 +42,12 @@ export class InvoiceRenderer {
 
       clone.querySelector('[data-item-description]').textContent = item.description;
       clone.querySelector('[data-item-quantity]').textContent = item.quantity;
+
+      let itemQuantityInput = clone.querySelector('[data-item-quantity]');
+      if (itemQuantityInput) {
+        itemQuantityInput.value = item.quantity;
+      }
+
       clone.querySelector('[data-item-price]').textContent = parseFloat(item.price).toFixed(2);
 
       // Nuolaida
@@ -51,6 +57,12 @@ export class InvoiceRenderer {
         if (item.discount.type === "percentage") discountText += "%";
       }
       clone.querySelector('[data-item-discount]').textContent = discountText;
+
+      let itemDiscountInput = clone.querySelector('[data-item-discount]');
+      if (itemDiscountInput) {
+        itemDiscountInput.value = discountText;
+      }
+
 
       let totalSum = parseFloat(item.price);
       let discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
