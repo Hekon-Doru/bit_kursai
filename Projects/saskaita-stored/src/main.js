@@ -110,21 +110,21 @@ export default class main extends StorageManager {
     const saveButton = document.querySelector('[data-save]');
 
     saveButton.addEventListener('click', _ => {
-      
+
       invoice.items.forEach((item, index) => {
         const quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
         const discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
         console.log(visiItemai[index]);
         console.log(quantityInputs.value, discountInputs.value);
-        item.quantity = quantityInputs.value;
-        item.discount = discountInputs.value;
-        
+        item.quantity = parseFloat(quantityInputs.value);
+        item.discount = parseFloat(discountInputs.value);
+        this.update(invoice.id, {
+          quantity: parseFloat(item.quantity),
+          discount: parseFloat(item.discount)
+        });
       });
-      
-      this.update(invoice.id, {
-        quantity: item.quantity,
-        discount: item.discount
-      });
+
+
       console.log('Save Invoice', renderer.invoice);
       /* window.location.href = 'list.html'; */
     });

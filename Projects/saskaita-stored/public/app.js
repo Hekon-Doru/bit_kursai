@@ -617,12 +617,12 @@ var main = /*#__PURE__*/function (_StorageManager) {
           var discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
           console.log(visiItemai[index]);
           console.log(quantityInputs.value, discountInputs.value);
-          item.quantity = quantityInputs.value;
-          item.discount = discountInputs.value;
-        });
-        _this3.update(invoice.id, {
-          quantity: item.quantity,
-          discount: item.discount
+          item.quantity = parseFloat(quantityInputs.value);
+          item.discount = parseFloat(discountInputs.value);
+          _this3.update(invoice.id, {
+            quantity: parseFloat(item.quantity),
+            discount: parseFloat(item.discount)
+          });
         });
         console.log('Save Invoice', renderer.invoice);
         /* window.location.href = 'list.html'; */
