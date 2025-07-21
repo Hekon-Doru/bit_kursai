@@ -57,32 +57,38 @@ export class InvoiceRenderer {
       clone.querySelector('[data-item-price]').textContent = parseFloat(item.price).toFixed(2);
 
       // Nuolaida
-      let discountText = '-';
+      let discountText = '';
       if (item.discount && typeof item.discount.value !== 'undefined') {
         discountText = item.discount.value;
-        if (item.discount.type === "percentage") discountText += "%";
+        if (item.discount.type === "percentage") {
+          discountText += " %";
+        } else {
+          discountText += " €";
+        }
       }
+
       clone.querySelector('[data-item-discount]').textContent = discountText;
 
       let itemDiscountInput = clone.querySelector('[data-item-discount]');
-      if (itemDiscountInput) {
-        itemDiscountInput.value = item.discount.value || 0;
-      }
-      
       let itemDiscountTypeInput = clone.querySelector('[data-item-discount-type]');
-      if (itemDiscountTypeInput) {
-        itemDiscountTypeInput.value = item.discount.type || 'fixed';
+      
+      if (itemDiscountTypeInput && itemDiscountInput) {
+        if (item.discount && item.discount.length !== 0) {
+          itemDiscountInput.value = item.discount.value;
+          itemDiscountTypeInput.value = item.discount.type;
+        }
       }
 
-      
 
       let totalSum = parseFloat(item.price);
       let discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
+      let discountType = item.discount && item.discount.type ? item.discount.type : 'fixed';
       let discountedSum = totalSum;
 
-      if (item.discount && item.discount.type === "percentage") {
+
+      if (item.discount && discountType === "percentage") {
         discountedSum = totalSum - (totalSum * (discount / 100));
-      } else if (item.discount && item.discount.type === "fixed") {
+      } else if (item.discount && discountType === "fixed") {
         discountedSum = totalSum - discount;
       }
 
@@ -105,7 +111,7 @@ export class InvoiceRenderer {
       /* console.log('viso', viso);
       console.log('pvm', pvm);
       console.log('isViso', isViso);
-
+  
       console.log('discountedSumWithQuantity', discountedSumWithQuantity);
       console.log('taxesAfterWithQuantity', taxesAfterWithQuantity);
       console.log('totalWithTaxWithQuantity', totalWithTaxWithQuantity); */

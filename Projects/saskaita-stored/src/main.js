@@ -106,9 +106,6 @@ export default class main extends StorageManager {
 
     renderer.render(saskaita, 'edit');
 
-    //reikšmės dar neišrenderintos 
-    /* console.log(quantityInputs, discountInputs);
-    console.log(quantityInputs.value, discountInputs.value); */
 
     const visiItemai = document.querySelectorAll('.item-edit');
     console.log(visiItemai);
@@ -120,33 +117,43 @@ export default class main extends StorageManager {
 
     saveButton.addEventListener('click', _ => {
 
+      const items = [];
+
       invoice.items.forEach((item, index) => {
-        const quantityInputs = visiItemai[index].querySelector('input[data-item-quantity]');
-        const discountInputs = visiItemai[index].querySelector('input[data-item-discount]');
-        /* const discountTypeInputs = visiItemai[index].querySelector('input[data-item-discount-type]'); */
-        
+        const quantity = visiItemai[index].querySelector('input[data-item-quantity]').value;
+        const discountAmount = visiItemai[index].querySelector('input[data-item-discount]').value;
+        const discountType = visiItemai[index].querySelector('select[data-item-discount-type]').value;
+
         console.log(visiItemai[index]);
-        console.log(quantityInputs.value, discountInputs.value);
-        
+        console.log(quantity, discountAmount.value);
 
-        item.quantity = parseFloat(quantityInputs.value);
-        item.discount = parseFloat(discountInputs.value);
-        /* item.discount.type = discountTypeInputs.value; */
-        
-
-        if (isNaN(item.quantity)) item.quantity = 0;
-        if (isNaN(item.discount)) item.discount = 0;
-        this.update(invoice.id, {
-          items: [
-            ...invoice.items,
-          ]
+         item.quantity = parseFloat(quantity);
+         
+ 
+         
+        let discount;
+        // discount nusirode
+        if (discountAmount === '' && discountType === '') {
+          discount = [];
+        } else if (discountAmount === '' || discountType === '') {
+          discount = [];
+        } else {
+          discount = {
+            value: discountAmount === '' ? undefined : parseFloat(discountAmount),
+            type: discountType
+          }
         }
-        );
+
+        items.push({ ...item, discount });
+
       });
 
+      this.update(invoice.id, {
+        items
+      });
 
       console.log('Save Invoice', renderer.invoice);
-      /* window.location.href = 'list.html'; */
+      window.location.href = 'list.html';
     });
 
     const cancelButton = document.querySelector('[data-cancel]');

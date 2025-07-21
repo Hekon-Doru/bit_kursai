@@ -57,7 +57,7 @@
           <div class="card-body">
 
             <div class="row">
-              <p class="col-6"><strong>Prekė</strong></p>
+              <p class="col-5"><strong>Prekė</strong></p>
               <p class="col">Kiekis</p>
               <p class="col">Kaina</p>
               <p class="col">Nuolaida</p>
@@ -106,14 +106,21 @@
 
 </body>
 <template data-table-template>
-  <div class="row item-edit">
-    <p class="col-6 mt-1 mb-1"><span data-item-description>-</span></p>
+  <div class="input-group mb-3 mt-3 row item-edit">
+    <p class="input-group-text col-5 mt-1 mb-1"><span data-item-description>-</span></p>
     <input data-item-quantity type="number" class="form-control col">
-    <p class="col mt-1 mb-1"><span data-item-price>-</span></p>
-    <input data-item-discount type="number" class="form-control col">
-    <p class="col mt-1 mb-1"><span data-item-discounted-price>-</span></p>
-    <p class="col mt-1 mb-1"><span data-item-taxes>-</span></p>
-    <p class="col mt-1 mb-1"><span data-item-total>-</span></p>
+    <p class="input-group-text col mt-1 mb-1"><span data-item-price>-</span></p>
+
+    <input data-item-discount type="number" class="form-control ">
+    <select data-item-discount-type class="form-select" aria-label="€" placeholder="€">
+      <option selected>-</option>
+      <option value="percentage">%</option>
+      <option value="fixed">€</option>
+    </select>
+
+    <p class="input-group-text col mt-1 mb-1"><span data-item-discounted-price>-</span></p>
+    <p class="input-group-text col mt-1 mb-1"><span data-item-taxes>-</span></p>
+    <p class="input-group-text col mt-1 mb-1"><span data-item-total>-</span></p>
   </div>
 </template>
 
