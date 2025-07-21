@@ -41,17 +41,25 @@ export default class main extends StorageManager {
   }
 
   static initDelete() {
+    console.log('Delete Invoice');
     const invoices = this.read();
     const id = window.location.hash.slice(1); // id paemimas is hastago
     const invoice = invoices.find(inv => inv.id == id);
     if (!invoice) {
       window.location.href = 'list.html'; // puslapio redirectas
     }
-    document.querySelector('[data-art-title]').innerText = invoice.number;
-    const destroyButton = document.querySelector('[data-destroy]');
+    document.querySelector('[data-number]').innerText = invoice.number;
+    console.log('Delete Invoice', invoice.id);
 
-    destroyButton.addEventListener('click', _ => {
+    const destroyButton = document.querySelector('[data-destroy]');
+    destroyButton.addEventListener('click', async () => {
       this.destroy(invoice.id);
+      window.location.href = 'list.html';
+    });
+
+    const cancelButton = document.querySelector('[data-cancel]');
+    cancelButton.addEventListener('click', _ => {
+      console.log('Cancel Delete');
       window.location.href = 'list.html';
     });
   }
@@ -91,7 +99,8 @@ export default class main extends StorageManager {
     if (!invoice) {
       window.location.href = 'list.html'; // puslapio redirectas
     }
-    const saskaita = document.querySelector('[data-frame]');// saskaita elementas 
+    const saskaita = document.querySelector('[data-invoice]');// saskaita elementas 
+    console.log('saskaita', saskaita);
     console.log('Edit Invoice', invoice);
     const renderer = new InvoiceRenderer(invoice);
 
@@ -118,23 +127,33 @@ export default class main extends StorageManager {
         console.log(quantityInputs.value, discountInputs.value);
         item.quantity = parseFloat(quantityInputs.value);
         item.discount = parseFloat(discountInputs.value);
+        if (isNaN(item.quantity)) item.quantity = 0;
+        if (isNaN(item.discount)) item.discount = 0;
         this.update(invoice.id, {
-          quantity: parseFloat(item.quantity),
-          discount: parseFloat(item.discount)
-        });
-      });
+          items: [...invoice.items,]
 
+        }
+          /*  company: {...invoice.company},
+           date: invoice.date, */
 
-      console.log('Save Invoice', renderer.invoice);
-      /* window.location.href = 'list.html'; */
+            /* description: item.description,
+            price: parseFloat(item.price),
+            quantity: parseFloat(item.quantity),
+            discount: parseFloat(item.discount) */
+                );
     });
 
-    const cancelButton = document.querySelector('[data-cancel]');
+
+    console.log('Save Invoice', renderer.invoice);
+    /* window.location.href = 'list.html'; */
+  });
+
+  const cancelButton = document.querySelector('[data-cancel]');
 
     cancelButton.addEventListener('click', _ => {
-      window.location.href = 'list.html';
-    });
-  }
+    window.location.href = 'list.html';
+  });
+}
 }
 
 

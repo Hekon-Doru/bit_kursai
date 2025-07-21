@@ -37,6 +37,12 @@ export class InvoiceRenderer {
     let pvm = 0;
     let isViso = 0;
 
+    let discountedSumWithQuantity = 0;
+    let taxesAfterWithQuantity = 0;
+    let totalWithTaxWithQuantity = 0;
+
+
+    console.log('Invoice Items', this.invoice.items);
     this.invoice.items.forEach(item => {
       const clone = itemTable.content.cloneNode(true);
 
@@ -67,6 +73,7 @@ export class InvoiceRenderer {
       let totalSum = parseFloat(item.price);
       let discount = item.discount && typeof item.discount.value !== 'undefined' ? item.discount.value : 0;
       let discountedSum = totalSum;
+
       if (item.discount && item.discount.type === "percentage") {
         discountedSum = totalSum - (totalSum * (discount / 100));
       } else if (item.discount && item.discount.type === "fixed") {
@@ -84,11 +91,22 @@ export class InvoiceRenderer {
       viso += discountedSum;
       pvm += taxesAfter;
       isViso += totalWithTax;
-    });
 
+      discountedSumWithQuantity += discountedSum * item.quantity;
+      taxesAfterWithQuantity += taxesAfter * item.quantity;
+      totalWithTaxWithQuantity += totalWithTax * item.quantity;
+
+      /* console.log('viso', viso);
+      console.log('pvm', pvm);
+      console.log('isViso', isViso);
+
+      console.log('discountedSumWithQuantity', discountedSumWithQuantity);
+      console.log('taxesAfterWithQuantity', taxesAfterWithQuantity);
+      console.log('totalWithTaxWithQuantity', totalWithTaxWithQuantity); */
+    });
     document.querySelector('[data-item-shipping]').textContent = parseFloat(this.invoice.shippingPrice).toFixed(2);
-    document.querySelector('[data-item-total-sum]').textContent = viso.toFixed(2);
-    document.querySelector('[data-item-total-tax]').textContent = pvm.toFixed(2);
-    document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(isViso) + parseFloat(this.invoice.shippingPrice)).toFixed(2);
+    document.querySelector('[data-item-total-sum]').textContent = discountedSumWithQuantity.toFixed(2);
+    document.querySelector('[data-item-total-tax]').textContent = taxesAfterWithQuantity.toFixed(2);
+    document.querySelector('[data-item-total-w-tax]').textContent = (parseFloat(totalWithTaxWithQuantity) + parseFloat(this.invoice.shippingPrice)).toFixed(2);
   }
 }

@@ -82,6 +82,8 @@ const parse = data => {
       discountedSum = totalSum;
     };
 
+
+    
     let taxesAfter = discountedSum * (21 / 100);
     clone.querySelector('[data-item-discounted-price]').textContent = parseFloat(discountedSum).toFixed(2);
     clone.querySelector('[data-item-taxes]').textContent = taxesAfter.toFixed(2);
