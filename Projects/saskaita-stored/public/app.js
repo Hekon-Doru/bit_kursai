@@ -265,7 +265,7 @@ var InvoiceAPI = /*#__PURE__*/function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   InvoiceRenderer: () => (/* binding */ InvoiceRenderer)
+/* harmony export */   InvoiceCalculations: () => (/* binding */ InvoiceCalculations)
 /* harmony export */ });
 /* harmony import */ var _Invoice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Invoice.js */ "./src/Invoice.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -275,12 +275,12 @@ function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), 
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
-var InvoiceRenderer = /*#__PURE__*/function () {
-  function InvoiceRenderer(invoice) {
-    _classCallCheck(this, InvoiceRenderer);
+var InvoiceCalculations = /*#__PURE__*/function () {
+  function InvoiceCalculations(invoice) {
+    _classCallCheck(this, InvoiceCalculations);
     this.invoice = invoice;
   }
-  return _createClass(InvoiceRenderer, [{
+  return _createClass(InvoiceCalculations, [{
     key: "render",
     value: function render() {
       // Numeris, datos
@@ -365,13 +365,6 @@ var InvoiceRenderer = /*#__PURE__*/function () {
         discountedSumWithQuantity += discountedSum * item.quantity;
         taxesAfterWithQuantity += taxesAfter * item.quantity;
         totalWithTaxWithQuantity += totalWithTax * item.quantity;
-
-        /* console.log('viso', viso);
-        console.log('pvm', pvm);
-        console.log('isViso', isViso);
-            console.log('discountedSumWithQuantity', discountedSumWithQuantity);
-        console.log('taxesAfterWithQuantity', taxesAfterWithQuantity);
-        console.log('totalWithTaxWithQuantity', totalWithTaxWithQuantity); */
       });
       document.querySelector('[data-item-shipping]').textContent = parseFloat(this.invoice.shippingPrice).toFixed(2);
       document.querySelector('[data-item-total-sum]').textContent = discountedSumWithQuantity.toFixed(2);
@@ -548,9 +541,8 @@ var main = /*#__PURE__*/function (_StorageManager) {
       if (!invoiceToShow) {
         window.location.href = 'list.html'; // puslapio redirectas
       }
-      var saskaita = document.querySelector('[data-invoice]');
-      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoiceToShow);
-      renderer.render(saskaita, 'view');
+      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceCalculations(invoiceToShow);
+      renderer.render();
     }
   }, {
     key: "initDelete",
@@ -636,16 +628,10 @@ var main = /*#__PURE__*/function (_StorageManager) {
       if (!invoice) {
         window.location.href = 'list.html'; // puslapio redirectas
       }
-      var saskaita = document.querySelector('[data-invoice]'); // saskaita elementas 
-      console.log('saskaita', saskaita);
-      console.log('Edit Invoice', invoice);
-      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceRenderer(invoice);
-      renderer.render(saskaita, 'edit');
+      var renderer = new _InvoiceRenderer_js__WEBPACK_IMPORTED_MODULE_1__.InvoiceCalculations(invoice);
+      renderer.render();
       var itemElements = document.querySelectorAll('.item-edit');
       console.log(itemElements);
-
-      /* console.log(invoice.items.quantity, items.discount); */
-
       var saveButton = document.querySelector('[data-save]');
       saveButton.addEventListener('click', function (_) {
         var items = [];

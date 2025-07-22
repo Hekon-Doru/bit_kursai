@@ -1,5 +1,5 @@
 import { InvoiceAPI } from './InvoiceAPI.js';
-import { InvoiceRenderer } from './InvoiceRenderer.js';
+import { InvoiceCalculations } from './InvoiceRenderer.js';
 import StorageManager from './StorageManager.js';
 
 export default class main extends StorageManager {
@@ -33,10 +33,8 @@ export default class main extends StorageManager {
       window.location.href = 'list.html'; // puslapio redirectas
     }
 
-    const saskaita = document.querySelector('[data-invoice]');
-
-    const renderer = new InvoiceRenderer(invoiceToShow);
-    renderer.render(saskaita, 'view');
+    const renderer = new InvoiceCalculations(invoiceToShow);
+    renderer.render();
 
   }
 
@@ -99,19 +97,12 @@ export default class main extends StorageManager {
     if (!invoice) {
       window.location.href = 'list.html'; // puslapio redirectas
     }
-    const saskaita = document.querySelector('[data-invoice]');// saskaita elementas 
-    console.log('saskaita', saskaita);
-    console.log('Edit Invoice', invoice);
-    const renderer = new InvoiceRenderer(invoice);
-
-    renderer.render(saskaita, 'edit');
-
+  
+    const renderer = new InvoiceCalculations(invoice);
+    renderer.render();
 
     const itemElements = document.querySelectorAll('.item-edit');
     console.log(itemElements);
-
-
-    /* console.log(invoice.items.quantity, items.discount); */
 
     const saveButton = document.querySelector('[data-save]');
 
@@ -128,8 +119,6 @@ export default class main extends StorageManager {
         console.log(quantity, discountAmount.value);
 
          item.quantity = parseFloat(quantity);
-         
- 
          
         let discount;
         // discount nusirode

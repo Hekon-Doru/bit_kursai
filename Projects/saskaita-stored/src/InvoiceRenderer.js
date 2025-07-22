@@ -1,7 +1,7 @@
 import { Invoice } from './Invoice.js';
 
 
-export class InvoiceRenderer {
+export class InvoiceCalculations {
   constructor(invoice) {
     this.invoice = invoice;
   }
@@ -108,13 +108,6 @@ export class InvoiceRenderer {
       taxesAfterWithQuantity += taxesAfter * item.quantity;
       totalWithTaxWithQuantity += totalWithTax * item.quantity;
 
-      /* console.log('viso', viso);
-      console.log('pvm', pvm);
-      console.log('isViso', isViso);
-  
-      console.log('discountedSumWithQuantity', discountedSumWithQuantity);
-      console.log('taxesAfterWithQuantity', taxesAfterWithQuantity);
-      console.log('totalWithTaxWithQuantity', totalWithTaxWithQuantity); */
     });
     document.querySelector('[data-item-shipping]').textContent = parseFloat(this.invoice.shippingPrice).toFixed(2);
     document.querySelector('[data-item-total-sum]').textContent = discountedSumWithQuantity.toFixed(2);

@@ -106,19 +106,16 @@
 
 </body>
 <template data-table-template>
-  <div class="input-group mb-5 mt-1 row item-edit">
-    
+  <div class="input-group row item-edit">
     <p class="input-group-text col-5 mt-1 mb-1"><span data-item-description>-</span></p>
-    <input data-item-quantity type="number" class="form-control col">
+    <input data-item-quantity type="number" class="form-control col mt-1 mb-1">
     <p class="input-group-text col mt-1 mb-1"><span data-item-price>-</span></p>
-
-    <input data-item-discount type="number" class="form-control ">
-    <select data-item-discount-type class="form-select" aria-label="€" placeholder="€">
+    <input data-item-discount type="number" class="form-control mt-1 mb-1">
+    <select data-item-discount-type class="form-select mt-1 mb-1" aria-label="€" placeholder="€">
       <option selected>-</option>
       <option value="percentage">%</option>
       <option value="fixed">€</option>
     </select>
-
     <p class="input-group-text col mt-1 mb-1"><span data-item-discounted-price>-</span></p>
     <p class="input-group-text col mt-1 mb-1"><span data-item-taxes>-</span></p>
     <p class="input-group-text col mt-1 mb-1"><span data-item-total>-</span></p>
