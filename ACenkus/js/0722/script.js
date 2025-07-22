@@ -29,19 +29,40 @@ fetch("https://stephen-king-api.onrender.com/api/books")
 
 tableDataEl.addEventListener("click", (e) => {
   const tr = e.target.parentElement;
+  const villainsRow = document.getElementById('villains-row');
   const bookID = tr.dataset.bookid;
-  console.log(bookID);
+  /* console.log(bookID); */
 
-  fetch("https://stephen-king-api.onrender.com/api/book/" + bookID)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      tr.insertAdjacentHTML(
-        "afterend",
-        `<tr>
-          <td colspan="2">${data.data.Title}</td>
-          <td colspan="4">${data.data.villains}</td>
-        </tr>`
-      );
-    });
+  if (villainsRow && villainsRow != tr) {
+    tableDataEl.removeChild(villainsRow);
+  }
+
+  if (villainsRow != tr) {
+    fetch("https://stephen-king-api.onrender.com/api/book/" + bookID)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        tr.insertAdjacentHTML(
+          "afterend",
+          `<tr id="villains-row">
+            <td colspan="2">${data.data.Title}</td>
+            <td colspan="4">${data.data.villains
+            .map((villain) => `<a class="villain-link" href="${villain.url}">${villain.name}</a>`)
+            .join('</br>')}</td>
+          </tr>`
+        );
+
+        const links = Array.from(document.getElementsByClassName('villain-link'));
+        console.log(links);
+        links.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log(e.target);
+          })
+        })
+      });
+  }
+
+
 });

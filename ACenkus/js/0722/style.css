@@ -51,9 +51,11 @@ td {
 td {
   padding: 10px 15px;
 }
+
 td:nth-child(3) {
   text-align: right;
 }
+
 th {
   background-color: #222;
   padding: 5px;
@@ -83,6 +85,12 @@ thead {
   text-align: center;
   padding: 10rem 2rem;
 }
+
 .hide {
   display: none;
+}
+
+#villains-row td {
+  background-color: #000000;
+  cursor: default;
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Duomenų siuntėjas</h1>
+
+
+
+    <input type="text" name="animal" placeholder="Įveskite gyvūno pavadinimą">
+    <input type="text" name="tail" placeholder="Įveskite gyvūno uodegėlės ilgį">
+    <button data-action="send">Siųsti</button>
+    <div data-response></div>
+
+
+    <h2>Sąrašas CSR</h2>
+    <button data-action="get-csr">Rodyk</button>
+    <div data-list="CSR">
+        <ul>
+            <!-- Čia bus įdėti duomenys -->
+        </ul>
+    </div>
+
+    <h2>Sąrašas SSR</h2>
+    <button data-action="get-ssr">Rodyk</button>
+    <div data-list="SSR">
+        <ul>
+            <!-- Čia bus įdėti duomenys -->
+        </ul>
+    </div>
+
+</body>
+</html>
