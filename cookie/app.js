@@ -82,7 +82,7 @@ app.post('/login', (req, res) => {
 
 app.post('/signup', (req, res) => {
 
-  const name = req.body.username;
+  const name = req.body.name;
   const email = req.body.email;
   const psw = md5(req.body.psw);
 
