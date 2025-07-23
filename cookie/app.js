@@ -80,6 +80,67 @@ app.post('/login', (req, res) => {
 
 });
 
+app.post('/signup', (req, res) => {
+
+  const name = req.body.username;
+  const email = req.body.email;
+  const psw = md5(req.body.psw);
+
+  console.log(email.value, name);
+
+  let users = fs.readFileSync('./users.json', 'utf8');
+  users = JSON.parse(users);
+
+  const newUser = {
+    name: name,
+    email: email,
+    psw: psw,
+    token: "",
+  }
+
+  const exists = users.find(u => u.email === newUser.email);
+  
+  if (name === undefined && name === null) {
+    res.json({
+      success: false,
+      message: 'Neivestas vartotojo slapyvardis',
+    });
+  } else if (email === undefined && email === null) {
+    res.json({
+      success: false,
+      message: 'Neivestas elektroninis paštas',
+    });
+  }
+
+  if (!exists) {
+    users.push(newUser);
+    fs.writeFileSync('./users.json', JSON.stringify(users, null, 2));
+    res.json({
+      success: true,
+      message: `Vartotojas pridėtas`,
+    });
+  } else {
+    res.json({
+      success: false,
+      message: 'Toks vartotojas jau egzistuoja',
+    });
+  }
+
+
+
+
+  const token = md5(Math.random() + 'SALT 6548921345'); //pseudo atsitiktinis stringas
+
+  user.token = token;
+  users = JSON.stringify(users);
+
+  fs.writeFileSync('./users.json', users);
+
+  res.cookie('session', token);
+
+
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

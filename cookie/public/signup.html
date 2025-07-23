@@ -18,10 +18,17 @@
 
       <div class="card col mt-5">
         <div class="card-header row">
-          Prisijunkite
+          Užsiregistruokite
         </div>
-        <form class="card-body" data-login>
+        <form class="card-body" data-signup>
           <div>
+            <div class="mb-3 was-validated">
+              <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username"
+                aria-label="user" aria-describedby="button-addon2" required>
+              <div class="invalid-feedback">
+                Iveskite vartotojo slapyvardį.
+              </div>
+            </div>
             <div class="mb-3 was-validated">
               <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email"
                 aria-label="user" aria-describedby="button-addon2" required>
@@ -30,9 +37,16 @@
               </div>
             </div>
             <div class="mb-3 was-validated">
-              <input type="password" id="password" name="password" class="form-control mt-2" placeholder="Password"
+              <input type="text" id="password1" name="password1" class="form-control mt-2" placeholder="Password"
                 aria-label="psw" aria-describedby="button-addon2" required>
-              <div for="password" class="invalid-feedback">
+              <div for="password1" class="invalid-feedback">
+                Iveskite slaptažodį.
+              </div>
+            </div>
+            <div class="mb-3 was-validated">
+              <input type="text" id="password2" name="password2" class="form-control mt-2" placeholder="Password"
+                aria-label="psw" aria-describedby="button-addon2" required>
+              <div for="password2" class="invalid-feedback">
                 Iveskite slaptažodį.
               </div>
             </div>
@@ -46,10 +60,15 @@
             <button id="signup" class="btn btn-outline-secondary col-4 mb-3" type="button">Registruotis</button>
             <div class="col"></div>
           </div>
+          
         </form>
+        <!-- <div class="alert alert-warning" role="alert">
+            A simple warning alert—check it out!
+          </div> -->
       </div>
 
-      <div class="col"></div>
+      <div class="col">
+      </div>
 
     </div>
   </div>

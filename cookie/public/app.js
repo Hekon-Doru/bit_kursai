@@ -7085,7 +7085,8 @@ console.log(loginForm);
 if (loginForm) {
   var emailInput = loginForm.querySelector('[name="email"]');
   var pswInput = loginForm.querySelector('[name="password"]');
-  var loginButton = loginForm.querySelector('button');
+  var loginButton = loginForm.querySelector('#login');
+  var signupButton = loginForm.querySelector('#signup');
   loginButton.addEventListener('click', function (_) {
     console.log('clicking', emailInput.value, pswInput.value);
     axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/login', {
@@ -7096,6 +7097,64 @@ if (loginForm) {
     }).then(function (res) {
       console.log(res.data);
     });
+  });
+  signupButton.addEventListener('click', function (_) {
+    console.log('clicking', emailInput.value, pswInput.value);
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/login', {
+      email: emailInput.value,
+      psw: pswInput.value
+    }, {
+      withCredentials: false
+    }).then(function (res) {
+      console.log(res.data);
+      window.location.href = 'signup.html';
+    });
+  });
+}
+var signupForm = document.querySelector('[data-signup]');
+if (signupForm) {
+  var usernameInput = signupForm.querySelector('[name="username"]');
+  var _emailInput = signupForm.querySelector('[name="email"]');
+  var pswInput1 = signupForm.querySelector('[name="password1"]');
+  var pswInput2 = signupForm.querySelector('[name="password2"]');
+  var _loginButton = signupForm.querySelector('#login');
+  var _signupButton = signupForm.querySelector('#signup');
+  _loginButton.addEventListener('click', function (_) {
+    window.location.href = 'login.html';
+  });
+  var _pswInput;
+  _signupButton.addEventListener('click', function (_) {
+    //validationas ar abu laukai vienodi.
+
+    var allInputsFilled;
+    if (usernameInput.value && _emailInput.value && pswInput1.value && pswInput2.value) {
+      console.log(usernameInput.value);
+      console.log(_emailInput.value);
+      console.log(pswInput1.value);
+      console.log(pswInput2.value);
+      console.log('Užpildyti visi laukai');
+      allInputsFilled = true;
+    } else {
+      allInputsFilled = false;
+      console.log('Užpildyti ne visi laukai');
+    }
+    if (pswInput1.value === pswInput2.value) {
+      _pswInput = pswInput1.value;
+      console.log("Pirmas laukas: ".concat(pswInput1.value, ", Antras laukas: ").concat(pswInput1.value, ", galutin\u0117 reik\u0161m\u0117: ").concat(_pswInput));
+    }
+    console.log('clicking', usernameInput.value, _emailInput.value, _pswInput);
+    if (allInputsFilled === true) {
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/signup', {
+        name: usernameInput.value,
+        email: _emailInput.value,
+        psw: _pswInput
+      }, {
+        withCredentials: false
+      }).then(function (res) {
+        console.log(res.data);
+        /* window.location.href = 'login.html'; */
+      });
+    }
   });
 }
 
