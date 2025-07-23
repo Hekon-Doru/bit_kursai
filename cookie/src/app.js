@@ -1,8 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
-console.log('cookies');
+console.log('Cookies');
+
 
 const loginForm = document.querySelector('[data-login]');
+
+console.log(loginForm);
 
 if (loginForm) {
 
@@ -11,17 +14,18 @@ if (loginForm) {
   const loginButton = loginForm.querySelector('button');
 
   loginButton.addEventListener('click', _ => {
-    axios.post('http://localhost:80/login',
+    console.log('clicking', emailInput.value, pswInput.value)
+    axios.post('http://localhost/login',
       {
         email: emailInput.value,
         psw: pswInput.value
       },
       { withCredentials: true }
     )
-    .then(res => {
-      console.log(res.data);
-    })
-
+      .then(res => {
+        console.log(res.data)
+      })
   });
+
 
 }

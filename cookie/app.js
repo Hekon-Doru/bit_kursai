@@ -1,10 +1,10 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const port = 80
 const md5 = require('md5');
 const fs = require('node:fs');
+const port = 80
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -49,10 +49,12 @@ app.post('/login', (req, res) => {
   const email = req.body.email;
   const psw = md5(req.body.psw);
 
+  console.log(email.value);
+
   let users = fs.readFileSync('./users.json', 'utf8');
   users = JSON.parse(users);
 
-  const user = users.fund(u => u.email === email && u.psw === pws);
+  const user = users.find(u => u.email === email && u.psw === psw);
 
   if (!user) {
     res.json({

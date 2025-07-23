@@ -7079,14 +7079,16 @@ process.umask = function() { return 0; };
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 
-console.log('cookies');
+console.log('Cookies');
 var loginForm = document.querySelector('[data-login]');
+console.log(loginForm);
 if (loginForm) {
   var emailInput = loginForm.querySelector('[name="email"]');
   var pswInput = loginForm.querySelector('[name="password"]');
   var loginButton = loginForm.querySelector('button');
   loginButton.addEventListener('click', function (_) {
-    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:80/login', {
+    console.log('clicking', emailInput.value, pswInput.value);
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/login', {
       email: emailInput.value,
       psw: pswInput.value
     }, {
