@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-console.log('Cookies');
+console.log('Login ready');
 
 
 const loginForm = document.querySelector('[data-login]');
-
-console.log(loginForm);
 
 if (loginForm) {
 
@@ -59,44 +57,55 @@ if (signupForm) {
   const loginButton = signupForm.querySelector('#login');
   const signupButton = signupForm.querySelector('#signup');
 
+
+  //logino mygtukas
   loginButton.addEventListener('click', _ => {
     window.location.href = 'login.html';
   });
 
+  //laikini letai
 
   let pswInput;
 
   signupButton.addEventListener('click', _ => {
     //validationas ar abu laukai vienodi.
+    console.clear();
+    // nuclearinam console kad matytume ką gaunam
+    let allInputsFilledCorrect;
+    let emailInputFilledCorrect;
+    let email = emailInput.value;
 
-    let allInputsFilled;
+    //emailo dalis
+    let regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
 
-    if (
-      usernameInput.value &&
+    if (regex.test(email)) {
+      emailInputFilledCorrect = true;
+      console.log('Emailas geras');
+    } else {
+      emailInputFilledCorrect = false;
+    }
+    console.log(`Emailas užpildytas teisingai: ${emailInputFilledCorrect}`)
+
+    //pasitikrinam kas gaunasi praėjus koda
+
+    if (usernameInput.value &&
       emailInput.value &&
       pswInput1.value &&
-      pswInput2.value
-    ) 
-    {
-      console.log(usernameInput.value);
-      console.log(emailInput.value);
-      console.log(pswInput1.value);
-      console.log(pswInput2.value);
-      console.log('Užpildyti visi laukai');
-      allInputsFilled = true;
+      pswInput2.value) {
+      allInputsFilledCorrect = true;
     } else {
-      allInputsFilled = false;
-      console.log('Užpildyti ne visi laukai');
+      allInputsFilledCorrect = false;
     }
+    console.log(`Užpildyti visi laukai: ${allInputsFilledCorrect}`)
 
-    if (pswInput1.value === pswInput2.value) {
+
+    if (pswInput1.value === pswInput2.value && pswInput1.value !== '' && pswInput2.value !== '') {
       pswInput = pswInput1.value;
-      console.log(`Pirmas laukas: ${pswInput1.value}, Antras laukas: ${pswInput1.value}, galutinė reikšmė: ${pswInput}`)
-    }
+      /* console.log(pswInput1.value); */
+      console.log(`Slaptažodžia: sutampa`)
+    } console.log(`Slaptažodžiai: neįvesti`)
 
-    console.log('clicking', usernameInput.value, emailInput.value, pswInput)
-
-    if (allInputsFilled === true) {
+    if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios.post('http://localhost/signup',
         {
           name: usernameInput.value,

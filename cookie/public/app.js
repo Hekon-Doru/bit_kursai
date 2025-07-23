@@ -7079,9 +7079,8 @@ process.umask = function() { return 0; };
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 
-console.log('Cookies');
+console.log('Login ready');
 var loginForm = document.querySelector('[data-login]');
-console.log(loginForm);
 if (loginForm) {
   var emailInput = loginForm.querySelector('[name="email"]');
   var pswInput = loginForm.querySelector('[name="password"]');
@@ -7119,31 +7118,48 @@ if (signupForm) {
   var pswInput2 = signupForm.querySelector('[name="password2"]');
   var _loginButton = signupForm.querySelector('#login');
   var _signupButton = signupForm.querySelector('#signup');
+
+  //logino mygtukas
   _loginButton.addEventListener('click', function (_) {
     window.location.href = 'login.html';
   });
+
+  //laikini letai
+
   var _pswInput;
   _signupButton.addEventListener('click', function (_) {
     //validationas ar abu laukai vienodi.
+    console.clear();
+    // nuclearinam console kad matytume ką gaunam
+    var allInputsFilledCorrect;
+    var emailInputFilledCorrect;
+    var email = _emailInput.value;
 
-    var allInputsFilled;
-    if (usernameInput.value && _emailInput.value && pswInput1.value && pswInput2.value) {
-      console.log(usernameInput.value);
-      console.log(_emailInput.value);
-      console.log(pswInput1.value);
-      console.log(pswInput2.value);
-      console.log('Užpildyti visi laukai');
-      allInputsFilled = true;
+    //emailo dalis
+    var regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
+    if (regex.test(email)) {
+      emailInputFilledCorrect = true;
+      console.log('Emailas geras');
     } else {
-      allInputsFilled = false;
-      console.log('Užpildyti ne visi laukai');
+      emailInputFilledCorrect = false;
     }
-    if (pswInput1.value === pswInput2.value) {
+    console.log("Emailas u\u017Epildytas teisingai: ".concat(emailInputFilledCorrect));
+
+    //pasitikrinam kas gaunasi praėjus koda
+
+    if (usernameInput.value && _emailInput.value && pswInput1.value && pswInput2.value) {
+      allInputsFilledCorrect = true;
+    } else {
+      allInputsFilledCorrect = false;
+    }
+    console.log("U\u017Epildyti visi laukai: ".concat(allInputsFilledCorrect));
+    if (pswInput1.value === pswInput2.value && pswInput1.value !== '' && pswInput2.value !== '') {
       _pswInput = pswInput1.value;
-      console.log("Pirmas laukas: ".concat(pswInput1.value, ", Antras laukas: ").concat(pswInput1.value, ", galutin\u0117 reik\u0161m\u0117: ").concat(_pswInput));
+      /* console.log(pswInput1.value); */
+      console.log("Slapta\u017Eod\u017Eia: sutampa");
     }
-    console.log('clicking', usernameInput.value, _emailInput.value, _pswInput);
-    if (allInputsFilled === true) {
+    console.log("Slapta\u017Eod\u017Eiai: ne\u012Fvesti");
+    if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/signup', {
         name: usernameInput.value,
         email: _emailInput.value,
