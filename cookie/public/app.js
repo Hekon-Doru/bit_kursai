@@ -7170,6 +7170,21 @@ if (signupForm) {
         console.log(res.data);
         /* window.location.href = 'login.html'; */
       });
+    } else {
+      var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+      var appendAlert = function appendAlert(message, type) {
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = ["<div class=\"alert alert-".concat(type, " alert-dismissible\" role=\"alert\">"), "   <div>".concat(message, "</div>"), '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>', '</div>'].join('');
+        alertPlaceholder.append(wrapper);
+      };
+      /* window.location.href = 'signup.html'; */
+
+      var alertTrigger = document.getElementById('signup');
+      if (alertTrigger) {
+        alertTrigger.addEventListener('click', function () {
+          appendAlert('Sum tin wong!', 'warning');
+        });
+      }
     }
   });
 }

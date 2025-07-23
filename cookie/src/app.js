@@ -106,6 +106,8 @@ if (signupForm) {
       console.log(`Slaptažodžiai: neįvesti`)
     }
 
+
+
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios.post('http://localhost/signup',
         {
@@ -120,6 +122,29 @@ if (signupForm) {
           console.log(res.data);
           /* window.location.href = 'login.html'; */
         });
+    } else {
+      const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+      const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+          `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+          `   <div>${message}</div>`,
+          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+          '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+      }
+      /* window.location.href = 'signup.html'; */
+
+      const alertTrigger = document.getElementById('signup')
+      if (alertTrigger) {
+        alertTrigger.addEventListener('click', () => {
+          appendAlert('Sum tin wong!', 'warning')
+        })
+             
+        
+      }
     }
 
   });
