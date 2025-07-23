@@ -80,7 +80,6 @@ if (signupForm) {
 
     if (regex.test(email)) {
       emailInputFilledCorrect = true;
-      console.log('Emailas geras');
     } else {
       emailInputFilledCorrect = false;
     }
@@ -103,7 +102,9 @@ if (signupForm) {
       pswInput = pswInput1.value;
       /* console.log(pswInput1.value); */
       console.log(`Slaptažodžia: sutampa`)
-    } console.log(`Slaptažodžiai: neįvesti`)
+    } else {
+      console.log(`Slaptažodžiai: neįvesti`)
+    }
 
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios.post('http://localhost/signup',

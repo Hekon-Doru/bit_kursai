@@ -7139,7 +7139,6 @@ if (signupForm) {
     var regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
     if (regex.test(email)) {
       emailInputFilledCorrect = true;
-      console.log('Emailas geras');
     } else {
       emailInputFilledCorrect = false;
     }
@@ -7157,8 +7156,9 @@ if (signupForm) {
       _pswInput = pswInput1.value;
       /* console.log(pswInput1.value); */
       console.log("Slapta\u017Eod\u017Eia: sutampa");
+    } else {
+      console.log("Slapta\u017Eod\u017Eiai: ne\u012Fvesti");
     }
-    console.log("Slapta\u017Eod\u017Eiai: ne\u012Fvesti");
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/signup', {
         name: usernameInput.value,
