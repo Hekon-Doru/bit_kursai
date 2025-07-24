@@ -2,8 +2,41 @@ import axios from 'axios';
 
 console.log('Login ready');
 
-
 const loginForm = document.querySelector('[data-login]');
+const logoutForm = document.querySelector('[data-logout]');
+const signupForm = document.querySelector('[data-signup]');
+
+//alertai
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
+
+if (logoutForm) {
+
+  const logoutButton = logoutForm.querySelector('#logout');
+
+  logoutButton.addEventListener('click', _ => {
+    axios.post(
+      'http://localhost/logout',
+      {},
+      { withCredentials: true }
+    )
+      .then(res => {
+        window.location.href = 'http://localhost';
+      });
+  });
+}
+
 
 if (loginForm) {
 
@@ -11,6 +44,7 @@ if (loginForm) {
   const pswInput = loginForm.querySelector('[name="password"]');
   const loginButton = loginForm.querySelector('#login');
   const signupButton = loginForm.querySelector('#signup');
+  const alertTrigger = loginForm.getElementById('login')
 
 
   loginButton.addEventListener('click', _ => {
@@ -21,10 +55,40 @@ if (loginForm) {
         psw: pswInput.value
       },
       { withCredentials: true }
-    )
-      .then(res => {
-        console.log(res.data)
-      })
+    ) 
+    .then(res => {
+      if (!res.data.success) {
+        /* alertTrigger.innerText = res.data.message; */
+        console.log('Didnt log in')
+      } else {
+        console.log('Did log in')
+        /* alertTrigger.innerText = res.data.message; */
+        setTimeout(_ => {
+          window.location.href = 'http://localhost';
+        }, 1000);
+      }
+    })
+     /*  .then(res => {
+      console.log('res.data neveikia', res.data)
+      console.log(res.data.message, 'test');
+      if (!res.data.success) {
+        if (alertTrigger) {
+          alertTrigger.addEventListener('click', () => {
+            appendAlert(res.data.message, 'warning')
+          });
+        }
+
+      } else {
+
+        if (alertTrigger) {
+          alertTrigger.addEventListener('click', () => {
+            appendAlert(res.data.message, 'warning')
+          })
+        }
+        console.log('res.data.message neveikia', res.data.message);
+        window.location.href = 'http://localhost/profile';
+      };
+    }) */
   });
 
   signupButton.addEventListener('click', _ => {
@@ -38,7 +102,7 @@ if (loginForm) {
     )
       .then(res => {
         console.log(res.data);
-        window.location.href = 'signup.html';
+        window.location.href = 'http://localhost/signup';
       })
   });
 
@@ -46,7 +110,6 @@ if (loginForm) {
 }
 
 
-const signupForm = document.querySelector('[data-signup]');
 
 if (signupForm) {
 
@@ -56,11 +119,12 @@ if (signupForm) {
   const pswInput2 = signupForm.querySelector('[name="password2"]');
   const loginButton = signupForm.querySelector('#login');
   const signupButton = signupForm.querySelector('#signup');
+  const alertTrigger = signupForm.getElementById('signup')
 
 
   //logino mygtukas
   loginButton.addEventListener('click', _ => {
-    window.location.href = 'login.html';
+    window.location.href = 'http://localhost/login';
   });
 
   //laikini letai
@@ -120,30 +184,15 @@ if (signupForm) {
       )
         .then(res => {
           console.log(res.data);
-          /* window.location.href = 'login.html'; */
+
         });
     } else {
-      const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-      const appendAlert = (message, type) => {
-        const wrapper = document.createElement('div')
-        wrapper.innerHTML = [
-          `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-          `   <div>${message}</div>`,
-          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-          '</div>'
-        ].join('')
 
-        alertPlaceholder.append(wrapper)
-      }
-      /* window.location.href = 'signup.html'; */
 
-      const alertTrigger = document.getElementById('signup')
       if (alertTrigger) {
         alertTrigger.addEventListener('click', () => {
-          appendAlert('Sum tin wong!', 'warning')
+          appendAlert(res.data.message, res.data.type)
         })
-             
-        
       }
     }
 

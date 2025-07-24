@@ -10,6 +10,38 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  console.log('Labas aš midwitas');
+
+  const token = req.cookies.session || '';
+  if (token) {
+    let users = fs.readFileSync('./users.json', 'utf8');
+    users = JSON.parse(users);
+    const user = users.find(u => u.token === token);
+    if (user) {
+      req.user = {
+        name: user.name,
+        email: user.email
+      }
+    } else {
+      req.user = null;
+    }
+  } else {
+    req.user = null;
+  }
+
+  const url = req.originalUrl;
+
+  if (url === '/profile' && !req.user) {
+    res.status(401).send('Not authorised');
+    return;
+  }
+  next();
+})
+
+
+
 app.get('/', (req, res) => {
 
   let counter;
@@ -36,13 +68,58 @@ app.get('/', (req, res) => {
 
 app.get('/reset', (req, res) => {
 
-  setTimeout(_ => {
+  setTimeout( _ => {
 
     res.clearCookie('kartai'); // isštrina kooki uzdedant praeita laika
     res.redirect('http://localhost:80/');
 
   }, 5000);
-})
+});
+
+app.get('/login', (req, res) => {
+
+  if (req.user) {
+    res.redirect('http://localhost/');
+    return;
+  }
+
+  const file = fs.readFileSync('./templates/login.html', 'utf8');
+  res.send(file);
+});
+
+
+app.get('/signup', (req, res) => {
+
+  if (req.user) {
+    res.redirect('http://localhost/');
+    return;
+  }
+
+  const file = fs.readFileSync('./templates/signup.html', 'utf8');
+  res.send(file);
+});
+
+app.get('/profile', (req, res) => {
+
+ const userName = req.user.name;
+
+ let file = fs.readFileSync('./templates/profile.html', 'utf8');
+ file = file.replace('{{userName}}', userName)
+  res.send(file);
+
+});
+// POST
+
+app.post('/logout', (req, res) => {
+
+  res.clearCookie('session');
+  res.json({
+    success: true
+  })
+
+  const file = fs.readFileSync('./templates/login.html', 'utf8');
+  res.send(file);
+});
 
 app.post('/login', (req, res) => {
 
@@ -61,22 +138,26 @@ app.post('/login', (req, res) => {
       success: false,
       message: 'User email or password invalid'
     })
+  } else {
+
+    const token = md5(Math.random() + 'SALT 6548921345'); //pseudo atsitiktinis stringas
+
+    user.token = token;
+    users = JSON.stringify(users);
+
+    fs.writeFileSync('./users.json', users);
+
+    res.cookie('session', token);
+
+    res.json({
+      success: true,
+      message: 'Welcome',
+      name: user.name
+    });
+
   }
 
-  const token = md5(Math.random() + 'SALT 6548921345'); //pseudo atsitiktinis stringas
 
-  user.token = token;
-  users = JSON.stringify(users);
-
-  fs.writeFileSync('./users.json', users);
-
-  res.cookie('session', token);
-
-  res.json({
-    success: true,
-    message: 'Welcome',
-    name: user.name
-  });
 
 });
 
@@ -99,7 +180,7 @@ app.post('/signup', (req, res) => {
   }
 
   const exists = users.find(u => u.email === newUser.email);
-  
+
   if (name === undefined && name === null) {
     res.json({
       success: false,
@@ -140,6 +221,10 @@ app.post('/signup', (req, res) => {
 
 
 });
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

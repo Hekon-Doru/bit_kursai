@@ -2,6 +2,24 @@ const tableDataEl = document.getElementById("table-data");
 const loadingEl = document.getElementById("loading");
 const tableEl = document.getElementById("table");
 
+const blurDiv = document.createElement('div');
+blurDiv.id = 'blur-div';
+
+const modalDiv = document.createElement('div');
+modalDiv.className = 'modal-div';
+
+const closeBtn = document.createElement('div');
+closeBtn.id = 'close-btn';
+
+const contentEl = document.createElement('div');
+contentEl.className = 'content-div';
+
+modalDiv.appendChild(closeBtn);
+modalDiv.appendChild(contentEl);
+blurDiv.appendChild(modalDiv);
+
+/* console.log(modalDiv); */
+
 tableEl.classList.add("hide");
 
 fetch("https://stephen-king-api.onrender.com/api/books")
@@ -59,6 +77,28 @@ tableDataEl.addEventListener("click", (e) => {
             e.stopPropagation();
             e.preventDefault();
             console.log(e.target);
+
+
+            fetch(e.target.href)
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+
+                loadingEl.classList.add("hide");
+                tableEl.classList.remove("hide");
+
+                data.data.forEach((villain) => {
+                  tableDataEl.insertAdjacentHTML(
+                    "beforeend",
+                    `<tr data-bookid="${villain.id}">
+                    <td>${villain.name}</td>
+                    <td>${villain.gender}</td>
+                    <td>${villain.status}</td>
+                    </tr>`
+                  );
+                });
+              });
+
           })
         })
       });
