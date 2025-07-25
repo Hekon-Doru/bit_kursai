@@ -7079,7 +7079,6 @@ process.umask = function() { return 0; };
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 
-console.log('Login ready');
 var loginForm = document.querySelector('[data-login]');
 var logoutForm = document.querySelector('[data-logout]');
 var signupForm = document.querySelector('[data-signup]');
@@ -7092,6 +7091,7 @@ var appendAlert = function appendAlert(message, type) {
   alertPlaceholder.append(wrapper);
 };
 if (logoutForm) {
+  console.log('Profile ready');
   var logoutButton = logoutForm.querySelector('#logout');
   logoutButton.addEventListener('click', function (_) {
     axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/logout', {}, {
@@ -7102,6 +7102,7 @@ if (logoutForm) {
   });
 }
 if (loginForm) {
+  console.log('Login ready');
   var emailInput = loginForm.querySelector('[name="email"]');
   var pswInput = loginForm.querySelector('[name="password"]');
   var loginButton = loginForm.querySelector('#login');
@@ -7142,6 +7143,7 @@ if (loginForm) {
   });
 }
 if (signupForm) {
+  console.log('Signup ready');
   var usernameInput = signupForm.querySelector('[name="username"]');
   var _emailInput = signupForm.querySelector('[name="email"]');
   var pswInput1 = signupForm.querySelector('[name="password1"]');
@@ -7161,6 +7163,7 @@ if (signupForm) {
   _signupButton.addEventListener('click', function (_) {
     //validationas ar abu laukai vienodi.
     console.clear();
+    alertPlaceholder.innerHTML = '';
     // nuclearinam console kad matytume ką gaunam
     var allInputsFilledCorrect;
     var emailInputFilledCorrect;
@@ -7170,8 +7173,11 @@ if (signupForm) {
     var regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
     if (_emailInput.value !== null && regex.test(email)) {
       emailInputFilledCorrect = true;
+    } else if (_emailInput.value === '') {
+      appendAlert('Email adresas  neįvestas', 'warning');
+      emailInputFilledCorrect = false;
     } else {
-      appendAlert('Email adresas neteisingas', 'warning');
+      appendAlert('Email adresas  įvestas neteisingai', 'warning');
       emailInputFilledCorrect = false;
     }
     console.log("Emailas u\u017Epildytas teisingai: ".concat(emailInputFilledCorrect));
@@ -7188,38 +7194,13 @@ if (signupForm) {
       _pswInput = pswInput1.value;
       /* console.log(pswInput1.value); */
       console.log("Slapta\u017Eod\u017Eia: sutampa");
+    } else if (pswInput1.value === '' && pswInput2.value === '') {
+      appendAlert('Slaptažodžiai neįvesti.', 'warning');
+    } else if (pswInput1.value !== pswInput2.value) {
+      appendAlert('Slaptažodžiai nesutampa.', 'warning');
     } else {
-      appendAlert('Slaptažodžiai nesutampa arba yra neįvesti', 'warning');
-      console.log("Slapta\u017Eod\u017Eiai: ne\u012Fvesti");
+      appendAlert('Slaptažodžiai įvesti neteisingai.', 'warning');
     }
-
-    /* loginButton.addEventListener('click', _ => {
-        console.log('clicking', emailInput.value, pswInput.value)
-        axios.post('http://localhost/login',
-          {
-            email: emailInput.value,
-            psw: pswInput.value
-          },
-          { withCredentials: true }
-        )
-          .then(res => {
-            if (!res.data.success) {
-              appendAlert(res.data.message, 'warning');
-              setTimeout(_ => {
-                window.location.href = 'http://localhost/login';
-              }, 2000);
-    
-            } else {
-              appendAlert(res.data.message, 'success');
-              setTimeout(_ => {
-                window.location.href = 'http://localhost/profile';
-              }, 1000);
-            }
-    
-          })
-    
-      }); */
-
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/signup', {
         name: usernameInput.value,
@@ -7230,9 +7211,6 @@ if (signupForm) {
       }).then(function (res) {
         if (!res.data.success) {
           appendAlert(res.data.message, 'warning');
-          setTimeout(function (_) {
-            window.location.href = 'http://localhost/signup';
-          }, 2000);
         } else {
           appendAlert(res.data.message, 'success');
           setTimeout(function (_) {
@@ -7240,15 +7218,7 @@ if (signupForm) {
           }, 1000);
         }
       });
-    } /* else {
-       
-      if (alertTrigger) {
-        alertTrigger.addEventListener('click', () => {
-          appendAlert(res.data.message, res.data.type)
-        })
-      }
-      //
-      } */
+    }
   });
 }
 

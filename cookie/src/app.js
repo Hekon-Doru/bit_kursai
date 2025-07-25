@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-console.log('Login ready');
-
 const loginForm = document.querySelector('[data-login]');
 const logoutForm = document.querySelector('[data-logout]');
 const signupForm = document.querySelector('[data-signup]');
@@ -23,6 +21,7 @@ const appendAlert = (message, type) => {
 
 if (logoutForm) {
 
+  console.log('Profile ready');
   const logoutButton = logoutForm.querySelector('#logout');
 
   logoutButton.addEventListener('click', _ => {
@@ -40,6 +39,7 @@ if (logoutForm) {
 
 if (loginForm) {
 
+  console.log('Login ready');
   const emailInput = loginForm.querySelector('[name="email"]');
   const pswInput = loginForm.querySelector('[name="password"]');
   const loginButton = loginForm.querySelector('#login');
@@ -97,6 +97,10 @@ if (loginForm) {
 
 if (signupForm) {
 
+  console.log('Signup ready');
+
+
+
   const usernameInput = signupForm.querySelector('[name="username"]');
   const emailInput = signupForm.querySelector('[name="email"]');
   const pswInput1 = signupForm.querySelector('[name="password1"]');
@@ -118,6 +122,7 @@ if (signupForm) {
   signupButton.addEventListener('click', _ => {
     //validationas ar abu laukai vienodi.
     console.clear();
+    alertPlaceholder.innerHTML = '';
     // nuclearinam console kad matytume ką gaunam
     let allInputsFilledCorrect;
     let emailInputFilledCorrect;
@@ -128,8 +133,11 @@ if (signupForm) {
 
     if (emailInput.value !== null && regex.test(email)) {
       emailInputFilledCorrect = true;
+    } else if (emailInput.value === '') {
+      appendAlert('Email adresas  neįvestas', 'warning');
+      emailInputFilledCorrect = false;
     } else {
-      appendAlert('Email adresas neteisingas', 'warning');
+      appendAlert('Email adresas  įvestas neteisingai', 'warning');
       emailInputFilledCorrect = false;
     }
     console.log(`Emailas užpildytas teisingai: ${emailInputFilledCorrect}`)
@@ -151,37 +159,13 @@ if (signupForm) {
       pswInput = pswInput1.value;
       /* console.log(pswInput1.value); */
       console.log(`Slaptažodžia: sutampa`)
+    } else if (pswInput1.value === '' && pswInput2.value === '') {
+      appendAlert('Slaptažodžiai neįvesti.', 'warning');
+    } else if (pswInput1.value !== pswInput2.value) {
+      appendAlert('Slaptažodžiai nesutampa.', 'warning');
     } else {
-      appendAlert('Slaptažodžiai nesutampa arba yra neįvesti', 'warning');
-      console.log(`Slaptažodžiai: neįvesti`)
+      appendAlert('Slaptažodžiai įvesti neteisingai.', 'warning');
     }
-
-    /* loginButton.addEventListener('click', _ => {
-        console.log('clicking', emailInput.value, pswInput.value)
-        axios.post('http://localhost/login',
-          {
-            email: emailInput.value,
-            psw: pswInput.value
-          },
-          { withCredentials: true }
-        )
-          .then(res => {
-            if (!res.data.success) {
-              appendAlert(res.data.message, 'warning');
-              setTimeout(_ => {
-                window.location.href = 'http://localhost/login';
-              }, 2000);
-    
-            } else {
-              appendAlert(res.data.message, 'success');
-              setTimeout(_ => {
-                window.location.href = 'http://localhost/profile';
-              }, 1000);
-            }
-    
-          })
-    
-      }); */
 
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios.post('http://localhost/signup',
@@ -196,10 +180,6 @@ if (signupForm) {
         .then(res => {
           if (!res.data.success) {
             appendAlert(res.data.message, 'warning');
-            setTimeout(_ => {
-              window.location.href = 'http://localhost/signup';
-            }, 2000);
-
           } else {
             appendAlert(res.data.message, 'success');
             setTimeout(_ => {
@@ -208,15 +188,7 @@ if (signupForm) {
           }
 
         })
-    } /* else {
-       
-      if (alertTrigger) {
-        alertTrigger.addEventListener('click', () => {
-          appendAlert(res.data.message, res.data.type)
-        })
-      }
-      //
-    } */
+    }
 
   });
 
