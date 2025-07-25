@@ -32,7 +32,7 @@ if (logoutForm) {
       { withCredentials: true }
     )
       .then(res => {
-        window.location.href = 'http://localhost';
+        window.location.href = 'http://localhost/login';
       });
   });
 }
@@ -44,7 +44,8 @@ if (loginForm) {
   const pswInput = loginForm.querySelector('[name="password"]');
   const loginButton = loginForm.querySelector('#login');
   const signupButton = loginForm.querySelector('#signup');
-  const alertTrigger = loginForm.getElementById('login')
+  const alertTrigger = document.getElementById('login')
+
 
 
   loginButton.addEventListener('click', _ => {
@@ -55,40 +56,23 @@ if (loginForm) {
         psw: pswInput.value
       },
       { withCredentials: true }
-    ) 
-    .then(res => {
-      if (!res.data.success) {
-        /* alertTrigger.innerText = res.data.message; */
-        console.log('Didnt log in')
-      } else {
-        console.log('Did log in')
-        /* alertTrigger.innerText = res.data.message; */
-        setTimeout(_ => {
-          window.location.href = 'http://localhost';
-        }, 1000);
-      }
-    })
-     /*  .then(res => {
-      console.log('res.data neveikia', res.data)
-      console.log(res.data.message, 'test');
-      if (!res.data.success) {
-        if (alertTrigger) {
-          alertTrigger.addEventListener('click', () => {
-            appendAlert(res.data.message, 'warning')
-          });
+    )
+      .then(res => {
+        if (!res.data.success) {
+          appendAlert(res.data.message, 'warning');
+          setTimeout(_ => {
+            window.location.href = 'http://localhost/login';
+          }, 2000);
+
+        } else {
+          appendAlert(res.data.message, 'success');
+          setTimeout(_ => {
+            window.location.href = 'http://localhost/profile';
+          }, 1000);
         }
 
-      } else {
+      })
 
-        if (alertTrigger) {
-          alertTrigger.addEventListener('click', () => {
-            appendAlert(res.data.message, 'warning')
-          })
-        }
-        console.log('res.data.message neveikia', res.data.message);
-        window.location.href = 'http://localhost/profile';
-      };
-    }) */
   });
 
   signupButton.addEventListener('click', _ => {
@@ -119,7 +103,7 @@ if (signupForm) {
   const pswInput2 = signupForm.querySelector('[name="password2"]');
   const loginButton = signupForm.querySelector('#login');
   const signupButton = signupForm.querySelector('#signup');
-  const alertTrigger = signupForm.getElementById('signup')
+  const alertTrigger = document.getElementById('signup')
 
 
   //logino mygtukas
@@ -142,9 +126,10 @@ if (signupForm) {
     //emailo dalis
     let regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
 
-    if (regex.test(email)) {
+    if (emailInput.value !== null && regex.test(email)) {
       emailInputFilledCorrect = true;
     } else {
+      appendAlert('Email adresas neteisingas', 'warning');
       emailInputFilledCorrect = false;
     }
     console.log(`Emailas užpildytas teisingai: ${emailInputFilledCorrect}`)
@@ -167,10 +152,36 @@ if (signupForm) {
       /* console.log(pswInput1.value); */
       console.log(`Slaptažodžia: sutampa`)
     } else {
+      appendAlert('Slaptažodžiai nesutampa arba yra neįvesti', 'warning');
       console.log(`Slaptažodžiai: neįvesti`)
     }
 
-
+    /* loginButton.addEventListener('click', _ => {
+        console.log('clicking', emailInput.value, pswInput.value)
+        axios.post('http://localhost/login',
+          {
+            email: emailInput.value,
+            psw: pswInput.value
+          },
+          { withCredentials: true }
+        )
+          .then(res => {
+            if (!res.data.success) {
+              appendAlert(res.data.message, 'warning');
+              setTimeout(_ => {
+                window.location.href = 'http://localhost/login';
+              }, 2000);
+    
+            } else {
+              appendAlert(res.data.message, 'success');
+              setTimeout(_ => {
+                window.location.href = 'http://localhost/profile';
+              }, 1000);
+            }
+    
+          })
+    
+      }); */
 
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios.post('http://localhost/signup',
@@ -183,18 +194,29 @@ if (signupForm) {
         { withCredentials: false }
       )
         .then(res => {
-          console.log(res.data);
+          if (!res.data.success) {
+            appendAlert(res.data.message, 'warning');
+            setTimeout(_ => {
+              window.location.href = 'http://localhost/signup';
+            }, 2000);
 
-        });
-    } else {
+          } else {
+            appendAlert(res.data.message, 'success');
+            setTimeout(_ => {
+              window.location.href = 'http://localhost/login';
+            }, 1000);
+          }
 
-
+        })
+    } /* else {
+       
       if (alertTrigger) {
         alertTrigger.addEventListener('click', () => {
           appendAlert(res.data.message, res.data.type)
         })
       }
-    }
+      //
+    } */
 
   });
 

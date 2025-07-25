@@ -7081,11 +7081,32 @@ __webpack_require__.r(__webpack_exports__);
 
 console.log('Login ready');
 var loginForm = document.querySelector('[data-login]');
+var logoutForm = document.querySelector('[data-logout]');
+var signupForm = document.querySelector('[data-signup]');
+
+//alertai
+var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+var appendAlert = function appendAlert(message, type) {
+  var wrapper = document.createElement('div');
+  wrapper.innerHTML = ["<div class=\"alert alert-".concat(type, " alert-dismissible\" role=\"alert\">"), "   <div>".concat(message, "</div>"), '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>', '</div>'].join('');
+  alertPlaceholder.append(wrapper);
+};
+if (logoutForm) {
+  var logoutButton = logoutForm.querySelector('#logout');
+  logoutButton.addEventListener('click', function (_) {
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/logout', {}, {
+      withCredentials: true
+    }).then(function (res) {
+      window.location.href = 'http://localhost/login';
+    });
+  });
+}
 if (loginForm) {
   var emailInput = loginForm.querySelector('[name="email"]');
   var pswInput = loginForm.querySelector('[name="password"]');
   var loginButton = loginForm.querySelector('#login');
   var signupButton = loginForm.querySelector('#signup');
+  var alertTrigger = document.getElementById('login');
   loginButton.addEventListener('click', function (_) {
     console.log('clicking', emailInput.value, pswInput.value);
     axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/login', {
@@ -7094,7 +7115,17 @@ if (loginForm) {
     }, {
       withCredentials: true
     }).then(function (res) {
-      console.log(res.data);
+      if (!res.data.success) {
+        appendAlert(res.data.message, 'warning');
+        setTimeout(function (_) {
+          window.location.href = 'http://localhost/login';
+        }, 2000);
+      } else {
+        appendAlert(res.data.message, 'success');
+        setTimeout(function (_) {
+          window.location.href = 'http://localhost/profile';
+        }, 1000);
+      }
     });
   });
   signupButton.addEventListener('click', function (_) {
@@ -7106,11 +7137,10 @@ if (loginForm) {
       withCredentials: false
     }).then(function (res) {
       console.log(res.data);
-      window.location.href = 'signup.html';
+      window.location.href = 'http://localhost/signup';
     });
   });
 }
-var signupForm = document.querySelector('[data-signup]');
 if (signupForm) {
   var usernameInput = signupForm.querySelector('[name="username"]');
   var _emailInput = signupForm.querySelector('[name="email"]');
@@ -7118,10 +7148,11 @@ if (signupForm) {
   var pswInput2 = signupForm.querySelector('[name="password2"]');
   var _loginButton = signupForm.querySelector('#login');
   var _signupButton = signupForm.querySelector('#signup');
+  var _alertTrigger = document.getElementById('signup');
 
   //logino mygtukas
   _loginButton.addEventListener('click', function (_) {
-    window.location.href = 'login.html';
+    window.location.href = 'http://localhost/login';
   });
 
   //laikini letai
@@ -7137,9 +7168,10 @@ if (signupForm) {
 
     //emailo dalis
     var regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
-    if (regex.test(email)) {
+    if (_emailInput.value !== null && regex.test(email)) {
       emailInputFilledCorrect = true;
     } else {
+      appendAlert('Email adresas neteisingas', 'warning');
       emailInputFilledCorrect = false;
     }
     console.log("Emailas u\u017Epildytas teisingai: ".concat(emailInputFilledCorrect));
@@ -7157,8 +7189,37 @@ if (signupForm) {
       /* console.log(pswInput1.value); */
       console.log("Slapta\u017Eod\u017Eia: sutampa");
     } else {
+      appendAlert('Slaptažodžiai nesutampa arba yra neįvesti', 'warning');
       console.log("Slapta\u017Eod\u017Eiai: ne\u012Fvesti");
     }
+
+    /* loginButton.addEventListener('click', _ => {
+        console.log('clicking', emailInput.value, pswInput.value)
+        axios.post('http://localhost/login',
+          {
+            email: emailInput.value,
+            psw: pswInput.value
+          },
+          { withCredentials: true }
+        )
+          .then(res => {
+            if (!res.data.success) {
+              appendAlert(res.data.message, 'warning');
+              setTimeout(_ => {
+                window.location.href = 'http://localhost/login';
+              }, 2000);
+    
+            } else {
+              appendAlert(res.data.message, 'success');
+              setTimeout(_ => {
+                window.location.href = 'http://localhost/profile';
+              }, 1000);
+            }
+    
+          })
+    
+      }); */
+
     if (allInputsFilledCorrect === true && emailInputFilledCorrect === true) {
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost/signup', {
         name: usernameInput.value,
@@ -7167,25 +7228,27 @@ if (signupForm) {
       }, {
         withCredentials: false
       }).then(function (res) {
-        console.log(res.data);
-        /* window.location.href = 'login.html'; */
+        if (!res.data.success) {
+          appendAlert(res.data.message, 'warning');
+          setTimeout(function (_) {
+            window.location.href = 'http://localhost/signup';
+          }, 2000);
+        } else {
+          appendAlert(res.data.message, 'success');
+          setTimeout(function (_) {
+            window.location.href = 'http://localhost/login';
+          }, 1000);
+        }
       });
-    } else {
-      var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-      var appendAlert = function appendAlert(message, type) {
-        var wrapper = document.createElement('div');
-        wrapper.innerHTML = ["<div class=\"alert alert-".concat(type, " alert-dismissible\" role=\"alert\">"), "   <div>".concat(message, "</div>"), '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>', '</div>'].join('');
-        alertPlaceholder.append(wrapper);
-      };
-      /* window.location.href = 'signup.html'; */
-
-      var alertTrigger = document.getElementById('signup');
+    } /* else {
+       
       if (alertTrigger) {
-        alertTrigger.addEventListener('click', function () {
-          appendAlert('Sum tin wong!', 'warning');
-        });
+        alertTrigger.addEventListener('click', () => {
+          appendAlert(res.data.message, res.data.type)
+        })
       }
-    }
+      //
+      } */
   });
 }
 

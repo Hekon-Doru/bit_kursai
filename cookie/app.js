@@ -79,7 +79,7 @@ app.get('/reset', (req, res) => {
 app.get('/login', (req, res) => {
 
   if (req.user) {
-    res.redirect('http://localhost/');
+    res.redirect('http://localhost/profile');
     return;
   }
 
