@@ -40,8 +40,6 @@ app.use((req, res, next) => {
   next();
 })
 
-
-
 app.get('/', (req, res) => {
 
   let counter;
@@ -86,7 +84,6 @@ app.get('/login', (req, res) => {
   const file = fs.readFileSync('./templates/login.html', 'utf8');
   res.send(file);
 });
-
 
 app.get('/signup', (req, res) => {
 
