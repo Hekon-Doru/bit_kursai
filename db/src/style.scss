@@ -1,0 +1,158 @@
+// Variables
+$primary-color: #4CAF50;
+$secondary-color: #f4f4f4;
+$text-color: #333;
+$border-radius: 8px;
+$spacing: 1rem;
+$funky-color-1: #FF6F61; // A vibrant red-orange
+$funky-color-2: #6B5B95; // A muted purple
+$funky-color-3: #88B04B; // A lively green-yellow
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button-styles($bg-color) {
+    padding: 10px;
+    background-color: $bg-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// General Styles
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: $secondary-color;
+    color: $text-color;
+    padding: $spacing;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing;
+    padding: 20px;
+    background-color: lighten($secondary-color, 3%); // Slightly lighter for contrast
+}
+
+// Section Styles
+section {
+    background: white;
+    border-radius: $border-radius;
+    padding: $spacing;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        margin-bottom: 0.5rem;
+        color: $primary-color;
+        text-align: center; // Center section titles for a cleaner look
+    }
+}
+
+// View Trees List
+[data-tree-list] {
+    list-style: none;
+
+    li {
+        padding: 0.75rem; // Slightly more padding
+        border-bottom: 1px solid #eee; // Lighter border
+        display: flex;
+        gap: 1rem;
+        align-items: center; // Align items vertically
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .tree-id {
+            font-weight: bold;
+            color: $funky-color-1; // Funky color for ID
+            flex-shrink: 0; // Prevent shrinking
+        }
+
+        .tree-name {
+            flex: 1;
+            font-size: 1.1rem; // Slightly larger font
+        }
+
+        .tree-type {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+
+        .tree-height {
+            color: $funky-color-3; // Funky color for height
+            font-weight: 600; // A bit bolder
+        }
+    }
+}
+
+// Plant Section Specific Styles
+.plant {
+    @include flex-center; // Use the mixin for centering
+    flex-direction: column;
+    background-color: lighten($primary-color, 40%); // Lighter shade of primary
+    border: 2px dashed $primary-color; // Dashed border for a funky touch
+
+    form {
+        @include flex-center;
+        flex-direction: column;
+        width: 100%; // Make form take full width of its container
+        max-width: 300px; // Limit form width for better appearance
+
+        input,
+        select {
+            margin-bottom: 1rem; // More spacing
+            padding: 12px; // More padding
+            border: 1px solid darken($secondary-color, 10%); // Slightly darker border
+            border-radius: $border-radius;
+            width: 100%; // Take full width of form
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color; // Highlight on focus
+                box-shadow: 0 0 5px rgba($primary-color, 0.5);
+            }
+        }
+
+        button {
+            @include button-styles($primary-color);
+            width: 100%; // Take full width of form
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+    }
+}
+
+// Other Section Styles (More distinct "funky" colors)
+.edit {
+    background-color: lighten($funky-color-1, 45%);
+    border-left: 4px solid $funky-color-1;
+}
+
+.add {
+    background-color: lighten($funky-color-2, 45%);
+    border-left: 4px solid $funky-color-2;
+}
+
+.delete {
+    background-color: lighten($funky-color-3, 45%);
+    border-left: 4px solid $funky-color-3;
+}

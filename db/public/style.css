@@ -1,1 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 20px;
+  background-color: rgb(251.65, 251.65, 251.65);
+}
+
+section {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+section h2 {
+  margin-bottom: 0.5rem;
+  color: #4CAF50;
+  text-align: center;
+}
+
+[data-tree-list] {
+  list-style: none;
+}
+[data-tree-list] li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+[data-tree-list] li:last-child {
+  border-bottom: none;
+}
+[data-tree-list] li .tree-id {
+  font-weight: bold;
+  color: #FF6F61;
+  flex-shrink: 0;
+}
+[data-tree-list] li .tree-name {
+  flex: 1;
+  font-size: 1.1rem;
+}
+[data-tree-list] li .tree-type {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-tree-list] li .tree-height {
+  color: #88B04B;
+  font-weight: 600;
+}
+
+.plant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(216.6533864542, 238.3466135458, 217.5298804781);
+  border: 2px dashed #4CAF50;
+}
+.plant form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+}
+.plant form input,
+.plant form select {
+  margin-bottom: 1rem;
+  padding: 12px;
+  border: 1px solid rgb(218.5, 218.5, 218.5);
+  border-radius: 8px;
+  width: 100%;
+}
+.plant form input:focus,
+.plant form select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+.plant form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.plant form button:hover {
+  background-color: rgb(60.5577689243, 139.4422310757, 63.7450199203);
+}
+
+.edit {
+  background-color: white;
+  border-left: 4px solid #FF6F61;
+}
+
+.add {
+  background-color: rgb(232.55625, 229.85625, 239.64375);
+  border-left: 4px solid #6B5B95;
+}
+
+.delete {
+  background-color: rgb(241.484063745, 246.1852589641, 234.3147410359);
+  border-left: 4px solid #88B04B;
+}

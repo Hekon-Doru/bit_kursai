@@ -12,39 +12,76 @@ const con = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'forest'
-})
-
-con.connect(err => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log(`Connected to the database!`);
 });
 
-// Router
+con.connect(err => {
+  if (err) throw err;
+  console.log('Connected!');
+});
+
+
 
 app.get('/all-trees', (req, res) => {
 
-
-  // SELECT * FROM trees
-  // SELECT column1, column2
-  // FROM table-name
+  // SELECT column1, column2, ...
+  // FROM table_name;
 
   const sql = `
-  SELECT id, name, height, type 
+  SELECT id, name, height, type
   FROM trees
+  -- WHERE name LIKE '%a_'
+  ORDER BY type DESC, name
   `;
+
 
   con.query(sql, (err, result) => {
     if (err) throw err;
     res.json(result);
   });
 
-/* 
-const labasX20 = 'Labas';
 
-res.send(labasX20); */
+
+
+});
+
+
+app.post('/tree', (req, res) => {
+
+  const name = req.body.name;
+  const type = req.body.type;
+  const height = req.body.height;
+
+  // INSERT INTO table_name (column1, column2, column3, ...)
+  // VALUES (value1, value2, value3, ...);
+
+  const sql = `
+    INSERT INTO trees (name, type, height)
+    VALUES (?, ?, ?)
+  `;
+
+  con.query(sql, [name, type, height], (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
+});
+
+app.delete('/tree/:id', (req, res) => {
+
+  const id = req.params.id
+
+  // DELETE FROM table_name WHERE condition;
+
+  const sql = `
+    DELETE FROM trees
+    WHERE id = ?
+  `;
+
+  con.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
 });
 
 
