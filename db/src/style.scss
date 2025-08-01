@@ -143,16 +143,106 @@ section {
 
 // Other Section Styles (More distinct "funky" colors)
 .edit {
+     @include flex-center; // Use the mixin for centering
+    flex-direction: column;
     background-color: lighten($funky-color-1, 45%);
     border-left: 4px solid $funky-color-1;
+    form {
+        @include flex-center;
+        flex-direction: column;
+        width: 100%; // Make form take full width of its container
+        max-width: 300px; // Limit form width for better appearance
+
+        input,
+        select {
+            margin-bottom: 1rem; // More spacing
+            padding: 12px; // More padding
+            border: 1px solid darken($secondary-color, 10%); // Slightly darker border
+            border-radius: $border-radius;
+            width: 100%; // Take full width of form
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color; // Highlight on focus
+                box-shadow: 0 0 5px rgba($primary-color, 0.5);
+            }
+        }
+
+        button {
+            @include button-styles($primary-color);
+            width: 100%; // Take full width of form
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+    }
 }
 
 .add {
+     @include flex-center; // Use the mixin for centering
+    flex-direction: column;
     background-color: lighten($funky-color-2, 45%);
     border-left: 4px solid $funky-color-2;
+    form {
+        @include flex-center;
+        flex-direction: column;
+        width: 100%; // Make form take full width of its container
+        max-width: 300px; // Limit form width for better appearance
+
+        input,
+        select {
+            margin-bottom: 1rem; // More spacing
+            padding: 12px; // More padding
+            border: 1px solid darken($secondary-color, 10%); // Slightly darker border
+            border-radius: $border-radius;
+            width: 100%; // Take full width of form
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color; // Highlight on focus
+                box-shadow: 0 0 5px rgba($primary-color, 0.5);
+            }
+        }
+
+        button {
+            @include button-styles($primary-color);
+            width: 100%; // Take full width of form
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+    }
 }
 
 .delete {
+     @include flex-center; // Use the mixin for centering
+    flex-direction: column;
     background-color: lighten($funky-color-3, 45%);
     border-left: 4px solid $funky-color-3;
+    form {
+        @include flex-center;
+        flex-direction: column;
+        width: 100%; // Make form take full width of its container
+        max-width: 300px; // Limit form width for better appearance
+
+        input,
+        select {
+            margin-bottom: 1rem; // More spacing
+            padding: 12px; // More padding
+            border: 1px solid darken($secondary-color, 10%); // Slightly darker border
+            border-radius: $border-radius;
+            width: 100%; // Take full width of form
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color; // Highlight on focus
+                box-shadow: 0 0 5px rgba($primary-color, 0.5);
+            }
+        }
+
+        button {
+            @include button-styles($primary-color);
+            width: 100%; // Take full width of form
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+    }
 }

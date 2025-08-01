@@ -7085,15 +7085,32 @@ var plantForm = document.querySelector('[data-plant-form]');
 var plantButton = plantForm.querySelector('button');
 var cutForm = document.querySelector('[data-cut-form]');
 var cutButton = cutForm.querySelector('button');
+var growForm = document.querySelector('[data-edit-form]');
+var growButton = growForm.querySelector('button');
 plantButton.addEventListener('click', function (_) {
   return plantTree();
 });
 cutButton.addEventListener('click', function (_) {
   return cutTree();
 });
+growButton.addEventListener('click', function (_) {
+  return growTree();
+});
 var getList = function getList(_) {
   axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('http://localhost:3000/all-trees').then(function (res) {
     return renderTree(res.data);
+  });
+};
+var growTree = function growTree(_) {
+  var heightEl = growForm.querySelector('[type="number"]');
+  var idEl = growForm.querySelector('[type="text"]');
+  var id = idEl.value;
+  axios__WEBPACK_IMPORTED_MODULE_0__["default"].put('http://localhost:3000/tree/' + id, {
+    height: parseFloat(heightEl.value)
+  }).then(function (_) {
+    getList();
+    idEl.value = '';
+    heightEl.value = '';
   });
 };
 var cutTree = function cutTree(_) {

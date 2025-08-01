@@ -10,9 +10,12 @@ const plantButton = plantForm.querySelector('button');
 const cutForm = document.querySelector('[data-cut-form]');
 const cutButton = cutForm.querySelector('button');
 
+const growForm = document.querySelector('[data-edit-form]');
+const growButton = growForm.querySelector('button');
 
 plantButton.addEventListener('click', _ => plantTree());
 cutButton.addEventListener('click', _ => cutTree());
+growButton.addEventListener('click', _ => growTree());
 
 
 const getList = _ => {
@@ -20,10 +23,27 @@ const getList = _ => {
         .then(res => renderTree(res.data));
 }
 
+const growTree = _ => {
+
+    const heightEl = growForm.querySelector('[type="number"]');
+    const idEl = growForm.querySelector('[type="text"]');
+
+    const id = idEl.value;
+
+    axios.put('http://localhost:3000/tree/' + id, {
+        height: parseFloat(heightEl.value)
+    })
+        .then(_ => {
+            getList();
+            idEl.value = '';
+            heightEl.value = '';
+        });
+}
+
 const cutTree = _ => {
     const idEl = cutForm.querySelector('[type="text"]');
     const id = idEl.value;
-  
+
     axios.delete('http://localhost:3000/tree/' + id)
         .then(_ => {
             getList();

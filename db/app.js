@@ -66,6 +66,23 @@ app.post('/tree', (req, res) => {
 
 });
 
+app.put('/tree/:id', (req, res) => {
+  const id = req.params.id;
+  const height = req.body.height;
+
+  const sql = 
+  `
+  UPDATE trees
+  SET height = ?
+  WHERE id = ?
+  `
+
+  con.query(sql, [height, id], (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 app.delete('/tree/:id', (req, res) => {
 
   const id = req.params.id
