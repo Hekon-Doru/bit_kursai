@@ -21,7 +21,7 @@ con.connect(err => {
 
 app.get('/all-trees', (req, res) => {
 
-  const sortBy = req.query.sortBy ? undefined : 'id';
+  const sortBy = req.query.sortBy ? undefined : 'name';
   
   let sql;
   console.log(`List sorted by: ${sortBy}`);
