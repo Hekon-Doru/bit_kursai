@@ -66,6 +66,8 @@ app.post('/tree', (req, res) => {
   const name = req.body.name;
   const type = req.body.type;
   const height = req.body.height;
+  
+  console.log(name, type, height);
 
   // INSERT INTO table_name (column1, column2, column3, ...)
   // VALUES (value1, value2, value3, ...);
