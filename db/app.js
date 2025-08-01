@@ -45,7 +45,7 @@ app.get('/all-trees', (req, res) => {
       FROM trees
       ORDER BY type
     `;
-  } else {
+  } else if (sortBy === undefined) {
     sql = `
       SELECT id, name, height, type
       FROM trees
