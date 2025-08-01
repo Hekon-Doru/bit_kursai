@@ -17,9 +17,10 @@ const sortButtons = document.querySelectorAll('.view button');
 
 sortButtons.forEach(button => {
     button.addEventListener('click', _ => {
-        const sortBy = button.dataset.sortBy;
-        axios.get(`http://localhost:3000/all-trees?sortBy=${sortBy}`)
-            .then(res => renderTree(res.data));
+        const sortSelection = button.dataset.sortBy;
+        console.log(`click sorts by ${sortSelection}`);
+        axios.get(`http://localhost:3000/all-trees?sortBy=${sortSelection}`)
+        .then(res => renderTree(res.data));
     });
 });
 

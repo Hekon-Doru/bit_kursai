@@ -7090,8 +7090,9 @@ var growButton = growForm.querySelector('button');
 var sortButtons = document.querySelectorAll('.view button');
 sortButtons.forEach(function (button) {
   button.addEventListener('click', function (_) {
-    var sortBy = button.dataset.sortBy;
-    axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://localhost:3000/all-trees?sortBy=".concat(sortBy)).then(function (res) {
+    var sortSelection = button.dataset.sortBy;
+    console.log("click sorts by ".concat(sortSelection));
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://localhost:3000/all-trees?sortBy=".concat(sortSelection)).then(function (res) {
       return renderTree(res.data);
     });
   });

@@ -19,13 +19,13 @@ con.connect(err => {
   console.log('Connected!');
 });
 
-
-
 app.get('/all-trees', (req, res) => {
 
+  const sortBy = req.query.sortBy ? undefined : 'id';
+  
+  let sql;
+  console.log(`List sorted by: ${sortBy}`);
 
-/*   let sql;
- 
   if (sortBy === 'name') {
     sql = `
       SELECT id, name, height, type
@@ -45,24 +45,11 @@ app.get('/all-trees', (req, res) => {
       ORDER BY type
     `;
   }
- */
-  // SELECT column1, column2, ...
-  // FROM table_name;
-
-  const sql = `
-  SELECT id, name, height, type
-  FROM trees
-  ORDER BY type DESC, name
-  `;
-
 
   con.query(sql, (err, result) => {
     if (err) throw err;
     res.json(result);
   });
-
-
-
 
 });
 
@@ -92,8 +79,8 @@ app.put('/tree/:id', (req, res) => {
   const id = req.params.id;
   const height = req.body.height;
 
-  const sql = 
-  `
+  const sql =
+    `
   UPDATE trees
   SET height = ?
   WHERE id = ?
