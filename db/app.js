@@ -21,9 +21,10 @@ con.connect(err => {
 
 app.get('/all-trees', (req, res) => {
 
-  const sortBy = req.query.sortBy ? undefined : 'name';
+  const sortBy = req.query.sortBy ;
   
   let sql;
+
   console.log(`List sorted by: ${sortBy}`);
 
   if (sortBy === 'name') {
@@ -43,6 +44,12 @@ app.get('/all-trees', (req, res) => {
       SELECT id, name, height, type
       FROM trees
       ORDER BY type
+    `;
+  } else {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY id
     `;
   }
 
