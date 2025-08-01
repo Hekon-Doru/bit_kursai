@@ -245,3 +245,29 @@ section h2 {
 .delete form button:hover {
   background-color: rgb(60.5577689243, 139.4422310757, 63.7450199203);
 }
+
+.sorting-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.sorting-controls button {
+  padding: 10px;
+  background-color: #6B5B95;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease;
+}
+.sorting-controls button:hover {
+  background-color: rgb(84.2625, 71.6625, 117.3375);
+}
+.sorting-controls button:hover {
+  background-color: rgb(84.2625, 71.6625, 117.3375);
+}

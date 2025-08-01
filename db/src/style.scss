@@ -246,3 +246,22 @@ section {
         }
     }
 }
+
+.sorting-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+        @include button-styles($funky-color-2);
+        padding: 10px 20px; // More padding for better appearance
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($funky-color-2, 10%);
+        }
+    }
+}
