@@ -23,13 +23,35 @@ con.connect(err => {
 
 app.get('/all-trees', (req, res) => {
 
+
+/*   let sql;
+ 
+  if (sortBy === 'name') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY name
+    `;
+  } else if (sortBy === 'height') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY height
+    `;
+  } else if (sortBy === 'type') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY type
+    `;
+  }
+ */
   // SELECT column1, column2, ...
   // FROM table_name;
 
   const sql = `
   SELECT id, name, height, type
   FROM trees
-  -- WHERE name LIKE '%a_'
   ORDER BY type DESC, name
   `;
 

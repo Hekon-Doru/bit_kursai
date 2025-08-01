@@ -7087,6 +7087,15 @@ var cutForm = document.querySelector('[data-cut-form]');
 var cutButton = cutForm.querySelector('button');
 var growForm = document.querySelector('[data-edit-form]');
 var growButton = growForm.querySelector('button');
+var sortButtons = document.querySelectorAll('.view button');
+sortButtons.forEach(function (button) {
+  button.addEventListener('click', function (_) {
+    var sortBy = button.dataset.sortBy;
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://localhost:3000/all-trees?sortBy=".concat(sortBy)).then(function (res) {
+      return renderTree(res.data);
+    });
+  });
+});
 plantButton.addEventListener('click', function (_) {
   return plantTree();
 });

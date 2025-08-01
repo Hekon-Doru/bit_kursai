@@ -13,6 +13,17 @@ const cutButton = cutForm.querySelector('button');
 const growForm = document.querySelector('[data-edit-form]');
 const growButton = growForm.querySelector('button');
 
+const sortButtons = document.querySelectorAll('.view button');
+
+sortButtons.forEach(button => {
+    button.addEventListener('click', _ => {
+        const sortBy = button.dataset.sortBy;
+        axios.get(`http://localhost:3000/all-trees?sortBy=${sortBy}`)
+            .then(res => renderTree(res.data));
+    });
+});
+
+
 plantButton.addEventListener('click', _ => plantTree());
 cutButton.addEventListener('click', _ => cutTree());
 growButton.addEventListener('click', _ => growTree());
