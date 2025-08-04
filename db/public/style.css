@@ -271,3 +271,108 @@ section h2 {
 .sorting-controls button:hover {
   background-color: rgb(84.2625, 71.6625, 117.3375);
 }
+
+[data-client-list] {
+  list-style: none;
+}
+[data-client-list] li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+[data-client-list] li:last-child {
+  border-bottom: none;
+}
+[data-client-list] li .client-id {
+  font-weight: bold;
+  color: #FF6F61;
+  flex-shrink: 0;
+}
+[data-client-list] li .client-name {
+  flex: 1;
+  font-size: 1.1rem;
+}
+[data-client-list] li .client-phone {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list] li .client-phone-id {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list] li .client-cid {
+  color: #88B04B;
+  font-weight: 600;
+}
+
+[data-client-list-left] {
+  list-style: none;
+}
+[data-client-list-left] li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+[data-client-list-left] li:last-child {
+  border-bottom: none;
+}
+[data-client-list-left] li .client-id {
+  font-weight: bold;
+  color: #FF6F61;
+  flex-shrink: 0;
+}
+[data-client-list-left] li .client-name {
+  flex: 1;
+  font-size: 1.1rem;
+}
+[data-client-list-left] li .client-phone {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list-left] li .client-phone-id {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list-left] li .client-cid {
+  color: #88B04B;
+  font-weight: 600;
+}
+
+[data-client-list-right] {
+  list-style: none;
+}
+[data-client-list-right] li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+[data-client-list-right] li:last-child {
+  border-bottom: none;
+}
+[data-client-list-right] li .client-id {
+  font-weight: bold;
+  color: #FF6F61;
+  flex-shrink: 0;
+}
+[data-client-list-right] li .client-name {
+  flex: 1;
+  font-size: 1.1rem;
+}
+[data-client-list-right] li .client-phone {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list-right] li .client-phone-id {
+  font-style: italic;
+  color: #6B5B95;
+}
+[data-client-list-right] li .client-cid {
+  color: #88B04B;
+  font-weight: 600;
+}

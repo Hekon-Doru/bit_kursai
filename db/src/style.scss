@@ -265,3 +265,127 @@ section {
         }
     }
 }
+
+// View Clients List
+[data-client-list] {
+    list-style: none;
+
+    li {
+        padding: 0.75rem; // Slightly more padding
+        border-bottom: 1px solid #eee; // Lighter border
+        display: flex;
+        gap: 1rem;
+        align-items: center; // Align items vertically
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .client-id {
+            font-weight: bold;
+            color: $funky-color-1; // Funky color for ID
+            flex-shrink: 0; // Prevent shrinking
+        }
+
+        .client-name {
+            flex: 1;
+            font-size: 1.1rem; // Slightly larger font
+        }
+
+        .client-phone {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+        .client-phone-id {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+
+        .client-cid {
+            color: $funky-color-3; // Funky color for height
+            font-weight: 600; // A bit bolder
+        }
+    }
+}
+
+[data-client-list-left] {
+    list-style: none;
+
+    li {
+        padding: 0.75rem; // Slightly more padding
+        border-bottom: 1px solid #eee; // Lighter border
+        display: flex;
+        gap: 1rem;
+        align-items: center; // Align items vertically
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .client-id {
+            font-weight: bold;
+            color: $funky-color-1; // Funky color for ID
+            flex-shrink: 0; // Prevent shrinking
+        }
+
+        .client-name {
+            flex: 1;
+            font-size: 1.1rem; // Slightly larger font
+        }
+
+        .client-phone {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+        .client-phone-id {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+
+        .client-cid {
+            color: $funky-color-3; // Funky color for height
+            font-weight: 600; // A bit bolder
+        }
+    }
+}
+
+[data-client-list-right] {
+    list-style: none;
+
+    li {
+        padding: 0.75rem; // Slightly more padding
+        border-bottom: 1px solid #eee; // Lighter border
+        display: flex;
+        gap: 1rem;
+        align-items: center; // Align items vertically
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .client-id {
+            font-weight: bold;
+            color: $funky-color-1; // Funky color for ID
+            flex-shrink: 0; // Prevent shrinking
+        }
+
+        .client-name {
+            flex: 1;
+            font-size: 1.1rem; // Slightly larger font
+        }
+
+        .client-phone {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+        .client-phone-id {
+            font-style: italic;
+            color: $funky-color-2; // Funky color for type
+        }
+
+        .client-cid {
+            color: $funky-color-3; // Funky color for height
+            font-weight: 600; // A bit bolder
+        }
+    }
+}

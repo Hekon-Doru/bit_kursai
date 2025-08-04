@@ -21,8 +21,8 @@ con.connect(err => {
 
 app.get('/all-trees', (req, res) => {
 
-  const sortBy = req.query.sortBy ;
-  
+  const sortBy = req.query.sortBy;
+
   let sql;
 
   console.log(`List sorted by: ${sortBy}`);
@@ -61,12 +61,83 @@ app.get('/all-trees', (req, res) => {
 });
 
 
+app.get('/all-clients', (req, res) => {
+  /* 
+    const sortBy = req.query.sortBy;
+  
+    let sql; */
+
+  /*  |
+  SELECT column_name(s)
+  FROM table1
+  INNER JOIN table2
+  ON table1.column_name = table2.column_name;
+  */
+
+  const sql = `
+  SELECT c.id, name, p.id AS pid, number, client_id
+  FROM clients AS c
+  INNER JOIN phones AS p
+  ON c.id = p.client_id;
+  `;
+
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
+});
+
+app.get('/all-clients-left', (req, res) => {
+  /* 
+    const sortBy = req.query.sortBy;
+  
+    let sql; */
+
+  /*  |
+  SELECT column_name(s)
+  FROM table1
+  INNER JOIN table2
+  ON table1.column_name = table2.column_name;
+  */
+
+  const sql = `
+  SELECT c.id, name, p.id AS pid, number, client_id
+  FROM clients AS c
+  LEFT JOIN phones AS p
+  ON c.id = p.client_id;
+  `;
+
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
+});
+
+app.get('/all-clients-right', (req, res) => {
+
+  const sql = `
+  SELECT c.id, name, p.id AS pid, number, client_id
+  FROM clients AS c
+  RIGHT JOIN phones AS p
+  ON c.id = p.client_id;
+  `;
+
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
+});
+
+
 app.post('/tree', (req, res) => {
 
   const name = req.body.name;
   const type = req.body.type;
   const height = req.body.height;
-  
+
   console.log(name, type, height);
 
   // INSERT INTO table_name (column1, column2, column3, ...)
